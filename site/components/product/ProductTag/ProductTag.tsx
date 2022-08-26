@@ -1,6 +1,7 @@
 import cn from 'clsx'
 import { inherits } from 'util'
-import s from './ProductTag.module.css'
+import s from './ProductTag.module.scss'
+import styles from "./ProductTag.module.scss"
 
 interface ProductTagProps {
   className?: string
@@ -16,7 +17,7 @@ const ProductTag: React.FC<ProductTagProps> = ({
   fontSize = 32,
 }) => {
   return (
-    <div className={cn(s.root, className)}>
+    <div className={cn(s.root, className, styles.root)}>
       <h3 className={s.name}>
         <span
           className={cn({ [s.fontsizing]: fontSize < 32 })}
@@ -28,7 +29,10 @@ const ProductTag: React.FC<ProductTagProps> = ({
           {name}
         </span>
       </h3>
-      <div className={s.price}>{price}</div>
+      <h4>
+        
+      </h4>
+      <h4 className={s.price}>{price}</h4>
     </div>
   )
 }

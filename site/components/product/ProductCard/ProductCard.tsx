@@ -7,13 +7,14 @@ import Image, { ImageProps } from 'next/image'
 import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
+import styles from "./ProductCard.module.scss"
 
 interface Props {
   className?: string
   product: Product
   noNameTag?: boolean
   imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
-  variant?: 'default' | 'slim' | 'simple'
+  variant?: 'default' | 'slim' | 'simple' | 'custom' | 'grid'
 }
 
 const placeholderImg = '/product-img-placeholder.svg'
@@ -33,13 +34,66 @@ const ProductCard: FC<Props> = ({
 
   const rootClassName = cn(
     s.root,
-    { [s.slim]: variant === 'slim', [s.simple]: variant === 'simple' },
+    { [s.slim]: variant === 'slim', [s.simple]: variant === 'simple' , [s.custom]: variant === 'custom'},
     className
   )
 
   return (
     <Link href={`/product/${product.slug}`}>
       <a className={rootClassName} aria-label={product.name}>
+        {variant === 'grid' && (
+          <div className={styles.gridImg}>
+            <div className={styles.product_card}>
+              <div className="header">
+
+              </div>
+              {product?.images && (
+                <>
+                  <img
+                  quality="85"
+                  src={product.images[0]?.url || placeholderImg}
+                  alt={product.name || 'Product Image'}
+                  className={styles.product_image}
+                  layout="fill"
+                  {...imgProps}
+                  />
+                </>
+              )}
+              <div className={styles.infoContainer}>
+                <p className={styles.product_name}>{product.name}</p>
+                <p className={styles.product_price}>{`${price}`}</p>
+              </div>
+              
+              {/* {[...Array(rating)].map((e ,i) => <AiFillStar key={i}/>)}
+              {[...Array(5-rating)].map((e ,i) => <AiOutlineStar key={i}/>)} */}
+            </div>
+          </div>
+        )}
+        {variant === 'custom' && (
+          <div className={styles.customImg}>
+            <div className={styles.product_card}>
+              <div className="header">
+
+              </div>
+              {product?.images && (
+                <>
+                <img
+                quality="85"
+                src={product.images[0]?.url || placeholderImg}
+                alt={product.name || 'Product Image'}
+                className={styles.product_image}
+                layout="fill"
+                {...imgProps}
+                />
+                </>
+              )}
+              <p className={styles.product_name}>{product.name}</p>
+              <p className={styles.product_price}>{`${price}`}</p>
+              {/* {[...Array(rating)].map((e ,i) => <AiFillStar key={i}/>)}
+              {[...Array(5-rating)].map((e ,i) => <AiOutlineStar key={i}/>)} */}
+            </div>
+          </div>
+        )}
         {variant === 'slim' && (
           <>
             <div className={s.header}>

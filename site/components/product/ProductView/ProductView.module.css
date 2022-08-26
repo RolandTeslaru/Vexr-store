@@ -39,6 +39,9 @@
 .relatedProductsGrid {
   @apply grid grid-cols-2 py-2 gap-2 md:grid-cols-4 md:gap-7;
 }
+.root{
+
+}
 
 @screen lg {
   .root {

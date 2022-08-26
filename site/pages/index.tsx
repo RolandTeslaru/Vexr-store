@@ -4,6 +4,8 @@ import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import styles from "./Home.module.scss"
+import { ALL } from 'dns'
 
 export async function getStaticProps({
   preview,
@@ -39,8 +41,8 @@ export default function Home({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <>
-      <Grid variant="filled">
+    <div className={styles.homeContainer}>
+      <Grid variant="default">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
             key={product.id}
@@ -50,6 +52,7 @@ export default function Home({
               height: i === 0 ? 1080 : 540,
               priority: true,
             }}
+            variant="grid"
           />
         ))}
       </Grid>
@@ -75,16 +78,24 @@ export default function Home({
         ))}
       </Grid>
       <Marquee>
-        {products.slice(3).map((product: any, i: number) => (
-          <ProductCard key={product.id} product={product} variant="slim" />
+        {products.slice(0, 10).map((product: any, i: number) => (
+          <ProductCard key={product.id} product={product} variant="custom" />
         ))}
       </Marquee>
+      <div className="marquee">
+            <div 
+            className={`track ${styles.maylike_products_container}`} >
+              {products.map((product:any , i:number) => (
+                <ProductCard key={product.id} product={product} variant="custom" />
+              ))}
+            </div>
+          </div>
       {/* <HomeAllProductsGrid
         newestProducts={products}
         categories={categories}
         brands={brands}
       /> */}
-    </>
+    </div>
   )
 }
 

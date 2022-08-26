@@ -1,0 +1,25 @@
+.homeContainer{
+    width: 80vw;
+    margin: 0px auto;
+}
+.product_slider{
+    width: 30px!important;
+    
+}
+.maylike_products_wrapper{
+    margin-top: 40px;
+    h2{
+      text-align: center;
+      margin: 50px;
+      margin-bottom: 30px;
+      color: #324d67;
+    
+      font-size: 28px;
+    }
+  }
+  .maylike_products_container{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+  }

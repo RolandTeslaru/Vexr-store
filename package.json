@@ -23,5 +23,9 @@
       "pre-commit": "turbo run lint"
     }
   },
-  "packageManager": "yarn@1.22.17"
+  "packageManager": "yarn@1.22.17",
+  "dependencies": {
+    "graphql": "^16.6.0",
+    "sass": "^1.54.5"
+  }
 }
