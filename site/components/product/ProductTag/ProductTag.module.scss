@@ -12,17 +12,18 @@
 }
 
 .root .name span {
-  @apply py-4 px-6 bg-primary text-primary font-bold;
+  @apply bg-primary text-primary font-bold;
   min-height: 70px;
   font-size: inherit;
   letter-spacing: inherit;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+  padding: 1rem;
+  border-radius: 7px;
 }
 
 .root .name span.fontsizing {
   display: flex;
-  padding-top: 1.5rem;
 }
 
 .root .price {

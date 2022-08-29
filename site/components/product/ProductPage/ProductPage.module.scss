@@ -1,0 +1,26 @@
+.productWindow{
+    // background-color: var(--accent-1);
+    width: 70vw;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.507);
+    border-top: none;
+    border-bottom: none;
+    padding: 0px 3%;
+    display: flex;
+    .leftContainer{
+        background-color: var(--accent-1);
+        padding: 30px 2% ;
+        border-radius: 10px;
+        width: 60%;
+    }   
+     
+}
+@media screen and (max-width:1200px){
+    .productWindow{
+        flex-direction: column;
+        width: 90%;
+        .leftContainer{
+            width: 100%;
+        }
+    }
+}

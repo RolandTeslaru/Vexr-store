@@ -1,7 +1,10 @@
 .control {
-  @apply bg-violet absolute bottom-10 right-10 flex flex-row
+  @apply absolute bottom-10 right-10 flex flex-row
   border-accent-0 border text-accent-0 z-30 shadow-xl select-none;
   height: 48px;
+  background-color: black;
+  color: white;
+  border-color: white
 }
 
 .leftControl,
@@ -12,7 +15,9 @@
 
 .leftControl:hover,
 .rightControl:hover {
-  background-color: var(--violet-dark);
+  background-color: white;
+  border-color: black;
+  color: black;
 }
 
 .leftControl:focus,
@@ -22,8 +27,15 @@
 
 .rightControl {
   @apply border-l border-accent-0;
+  border-color: white;
 }
 
 .leftControl {
   margin-right: -1px;
+}
+
+@media screen  and (max-width:800px){
+  .control{
+    height: 35px;
+  }
 }

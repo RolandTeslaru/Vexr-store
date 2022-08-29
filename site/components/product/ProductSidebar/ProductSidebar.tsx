@@ -51,6 +51,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
 
   return (
     <div className={className}>
+
       <ProductTag
               name={product.name}
               price={`${price} ${product.price?.currencyCode}`}

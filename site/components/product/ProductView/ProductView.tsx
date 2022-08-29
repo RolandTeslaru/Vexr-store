@@ -1,9 +1,8 @@
 import cn from 'clsx'
 import Image from 'next/image'
-import s from './ProductView.module.css'
-import styles from "./ProductView.module.scss"
-import { FC } from 'react'
+import s from './ProductView.module.scss'
 import type { Product } from '@commerce/types/product'
+import { FC, useState } from 'react'
 import usePrice from '@framework/product/use-price'
 import { WishlistButton } from '@components/wishlist'
 import { ProductSlider, ProductCard } from '@components/product'
@@ -22,11 +21,12 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
     baseAmount: product.price.retailPrice,
     currencyCode: product.price.currencyCode!,
   })
+  const [index , setIndex] = useState(0);
 
   return (
     <>
-      <Container className="max-w-none w-full" clean>
-        <div className={cn(s.root, styles.root)}>
+      <Container className={s.container} clean>
+        <div className={cn(s.root, s.root)}>
           <div className={cn(s.main, 'fit')}>
             {/* <ProductTag
               name={product.name}
@@ -34,6 +34,8 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
               fontSize={32}
             /> */}
             <div className={s.sliderContainer}>
+              
+              {/* ========= PRDUCT THUMBNAIL AND ALBUM CONTAINER -======= */}
               <ProductSlider key={product.id}>
                 {product.images.map((image, i) => (
                   <div key={image.url} className={s.imageContainer}>
@@ -50,6 +52,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                 ))}
               </ProductSlider>
             </div>
+            {/* ========== ALBUM BUTTON ========== */}
             {process.env.COMMERCE_WISHLIST_ENABLED && (
               <WishlistButton
                 className={s.wishlistButton}

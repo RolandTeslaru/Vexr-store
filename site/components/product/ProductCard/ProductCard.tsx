@@ -49,14 +49,13 @@ const ProductCard: FC<Props> = ({
               </div>
               {product?.images && (
                 <>
-                  <img
-                  quality="85"
-                  src={product.images[0]?.url || placeholderImg}
-                  alt={product.name || 'Product Image'}
-                  className={styles.product_image}
-                  layout="fill"
-                  {...imgProps}
-                  />
+                <img
+                quality="85"
+                src={product.images[0]?.url || placeholderImg}
+                alt={product.name || 'Product Image'}
+                className={styles.product_image}
+                {...imgProps}
+                />
                 </>
               )}
               <div className={styles.infoContainer}>
@@ -77,18 +76,20 @@ const ProductCard: FC<Props> = ({
               </div>
               {product?.images && (
                 <>
-                <img
-                quality="85"
-                src={product.images[0]?.url || placeholderImg}
-                alt={product.name || 'Product Image'}
-                className={styles.product_image}
-                layout="fill"
-                {...imgProps}
-                />
+                  <img
+                  quality="85"
+                  src={product.images[0]?.url || placeholderImg}
+                  alt={product.name || 'Product Image'}
+                  className={styles.product_image}
+                  layout="fill"
+                  {...imgProps}
+                  />
                 </>
               )}
-              <p className={styles.product_name}>{product.name}</p>
-              <p className={styles.product_price}>{`${price}`}</p>
+              <div className={styles.infoContainer}>
+                <p className={styles.product_name}>{product.name}</p>
+                <p className={styles.product_price}>{`${price}`}</p>
+              </div>
               {/* {[...Array(rating)].map((e ,i) => <AiFillStar key={i}/>)}
               {[...Array(5-rating)].map((e ,i) => <AiOutlineStar key={i}/>)} */}
             </div>

@@ -42,9 +42,10 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className={styles.homeContainer}>
-      <Grid variant="default">
+      <Grid variant="default" className={styles.grid}>
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
+          className='animated fadeIn'
             key={product.id}
             product={product}
             imgProps={{
@@ -78,18 +79,10 @@ export default function Home({
         ))}
       </Grid>
       <Marquee>
-        {products.slice(0, 10).map((product: any, i: number) => (
+        {products.slice(0, 5).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="custom" />
         ))}
       </Marquee>
-      <div className="marquee">
-            <div 
-            className={`track ${styles.maylike_products_container}`} >
-              {products.map((product:any , i:number) => (
-                <ProductCard key={product.id} product={product} variant="custom" />
-              ))}
-            </div>
-          </div>
       {/* <HomeAllProductsGrid
         newestProducts={products}
         categories={categories}

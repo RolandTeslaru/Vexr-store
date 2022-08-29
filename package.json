@@ -26,6 +26,7 @@
   "packageManager": "yarn@1.22.17",
   "dependencies": {
     "graphql": "^16.6.0",
+    "next-image-zoom": "^1.1.7",
     "sass": "^1.54.5"
   }
 }

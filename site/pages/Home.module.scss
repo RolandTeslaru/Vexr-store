@@ -1,6 +1,8 @@
 .homeContainer{
-    width: 80vw;
+    width: 70vw;
+    padding: 20px;
     margin: 0px auto;
+    background-color: var(--accent-1);
 }
 .product_slider{
     width: 30px!important;
@@ -23,3 +25,8 @@
     gap: 15px;
     margin-top: 10px;
   }
+@media screen and (max-width:1200px) {
+    .homeContainer{
+        width: 80vw;
+    }
+}

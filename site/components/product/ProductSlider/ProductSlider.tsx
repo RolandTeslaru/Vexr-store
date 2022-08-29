@@ -8,8 +8,9 @@ import React, {
 } from 'react'
 import cn from 'clsx'
 import { a } from '@react-spring/web'
-import s from './ProductSlider.module.css'
+import s from './ProductSlider.module.scss'
 import ProductSliderControl from '../ProductSliderControl'
+import Zoom from "next-image-zoom"
 
 interface ProductSliderProps {
   children: React.ReactNode[]
@@ -91,16 +92,14 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
               ...child,
               props: {
                 ...child.props,
-                className: `${
-                  child.props.className ? `${child.props.className} ` : ''
-                }keen-slider__slide`,
+                className: `${ child.props.className ? `${child.props.className} ` : '' }keen-slider__slide`,
               },
             }
           }
           return child
         })}
       </div>
-
+        {/* =========== PRODUCT ALBUM SLIDER ========= */}
       <a.div className={s.album} ref={thumbsContainerRef}>
         {slider &&
           Children.map(children, (child, idx) => {

@@ -1,0 +1,29 @@
+.sidebarContainer{
+    background-color: var(--accent-1);
+    margin-left: 20px;
+    padding: 30px 2%;
+    border-radius: 10px;
+    width: 40%;
+    .button{
+        width: 100%;
+        border-radius: 10px;
+    }
+    .productName{
+        font-size: 2rem;
+        font-weight: 700;
+        padding: 1rem;
+        text-align: center;
+        min-height: 70px;       
+        background-color: var(--primary); 
+    }
+    .productPrice{
+
+    }
+}
+@media screen and (max-width:1200px){
+    .sidebarContainer{
+        width: 100%;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
