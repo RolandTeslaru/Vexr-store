@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "./HeroBanner.module.css"
 
-const HeroBanner = ( {heroBanner}) => {
+const HeroBanner = ( {heroBanner}:any) => {
   return (
     <div className={styles.hero_banner_container} >
         <div className={styles.banner_left}>
