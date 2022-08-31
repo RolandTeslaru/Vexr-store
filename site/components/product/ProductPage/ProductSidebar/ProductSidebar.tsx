@@ -48,7 +48,19 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
             } catch (err) {
             setLoading(false)
         }
-  }
+    }
+    const addToWishlist = async () => {
+      setLoading(true)
+      try {
+        await addItem({
+          productId: String(product.id),
+          variantId: String(variant ? variant.id : product.variants[0]?.id),
+        })
+        setSidebarView('WISHLIST_VIEW')
+        } catch (err) {
+          setLoading(false);
+      }
+    }
 
   return (
     <div className={styles.sidebarContainer}>
@@ -72,7 +84,6 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
                 type="button"
                 className={styles.button}
                 onClick={addToCart}
-                loading={loading}
                 disabled={variant?.availableForSale === false}
             >
             {variant?.availableForSale === false
@@ -80,6 +91,18 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
               : 'Add To Cart'}
           </Button>
         )}
+        {true && (
+          <Button
+            aria-label='Add to Wishlist'
+            type='button'
+            className={styles.button}
+            onClick={addToWishlist}
+            loading={loading}
+          >
+
+          </Button>
+        )}
+        
         <Text
               className={styles.descriptionText}
               html={product.descriptionHtml || product.description}

@@ -6,6 +6,10 @@ import { Grid, Marquee, Hero } from '@components/ui'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import styles from "./Home.module.scss"
 import { ALL } from 'dns'
+import bannerImages from "./bannerImages.js"
+import Banner from '@components/Banner/Banner'
+import banner from 'shopify---clever-products-7224/schemas/banner'
+import Infobox from '@components/infobox/infobox'
 
 export async function getStaticProps({
   preview,
@@ -41,54 +45,59 @@ export default function Home({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <div className={styles.homeContainer}>
-      <Grid variant="default" className={styles.grid}>
-        {products.slice(0, 3).map((product: any, i: number) => (
-          <ProductCard
-          className='animated fadeIn'
-            key={product.id}
-            product={product}
-            imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
-              priority: true,
-            }}
-            variant="grid"
-          />
-        ))}
-      </Grid>
-      <Marquee variant="secondary">
-        {products.slice(0, 3).map((product: any, i: number) => (
-          <ProductCard key={product.id} product={product} variant="slim" />
-        ))}
-      </Marquee>
-      <Hero
-        headline=" Dessert dragée halvah croissant."
-        description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
-      />
-      <Grid layout="B" variant="filled">
-        {products.slice(0, 3).map((product: any, i: number) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
-            }}
-          />
-        ))}
-      </Grid>
-      <Marquee>
-        {products.slice(0, 5).map((product: any, i: number) => (
-          <ProductCard key={product.id} product={product} variant="custom" />
-        ))}
-      </Marquee>
-      {/* <HomeAllProductsGrid
-        newestProducts={products}
-        categories={categories}
-        brands={brands}
-      /> */}
-    </div>
+    <>
+      <Banner slideImages={bannerImages}></Banner>
+
+      <div className={styles.homeContainer}>
+        <Grid variant="default" className={styles.grid}>
+          {products.slice(0, 3).map((product: any, i: number) => (
+            <ProductCard
+            className='animated fadeIn'
+              key={product.id}
+              product={product}
+              imgProps={{
+                width: i === 0 ? 1080 : 540,
+                height: i === 0 ? 1080 : 540,
+                priority: true,
+              }}
+              variant="grid"
+            />
+          ))}
+        </Grid>
+        <Marquee variant="secondary">
+          {products.slice(0, 3).map((product: any, i: number) => (
+            <ProductCard key={product.id} product={product} variant="slim" />
+          ))}
+        </Marquee>
+        <Hero
+          headline=" Dessert dragée halvah croissant."
+          description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
+        />
+        <Grid layout="B" variant="filled">
+          {products.slice(0, 3).map((product: any, i: number) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              imgProps={{
+                width: i === 0 ? 1080 : 540,
+                height: i === 0 ? 1080 : 540,
+              }}
+            />
+          ))}
+        </Grid>
+        <Marquee>
+          {products.slice(0, 5).map((product: any, i: number) => (
+            <ProductCard key={product.id} product={product} variant="custom" />
+          ))}
+        </Marquee>
+        {/* <HomeAllProductsGrid
+          newestProducts={products}
+          categories={categories}
+          brands={brands}
+        /> */}
+      </div>
+    </>
+  
   )
 }
 

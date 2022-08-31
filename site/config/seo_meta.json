@@ -1,19 +1,19 @@
 {
-  "title": "ACME Storefront | Powered by Next.js Commerce",
+  "title": "Vexr store",
   "titleTemplate": "%s - ACME Storefront",
-  "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+  "description": "Vexr store commerce",
   "openGraph": {
-    "title": "ACME Storefront | Powered by Next.js Commerce",
-    "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+    "title": "Vexr",
+    "description": "Vexr store",
     "type": "website",
     "url": "https://nextjs.org/commerce",
-    "site_name": "Next.js Commerce",
+    "site_name": "Vexr",
     "images": [
       {
-        "url": "/card.png",
+        "url": "/favicon.png",
         "width": "800",
         "height": "600",
-        "alt": "Next.js Commerce"
+        "alt": "Vexr commerce"
       }
     ]
   },

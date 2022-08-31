@@ -1,0 +1,42 @@
+.BannerContainer{
+    display: flex;
+    flex-direction: column;
+    .infoBoxContainer{
+        background: rgb(0,0,0);
+            background: linear-gradient(90deg, rgb(0, 0, 0) 30%, rgba(0, 0, 0, 0.73) 63%, rgba(0, 0, 0, 0.092) 80%);
+            backdrop-filter:blur(10px);
+            width: 40vw;
+            position: absolute;
+            z-index: 4;
+            clip-path: polygon(0 0, 100% 0, 84% 100%, 0% 100%);
+            height: 600px;   
+        .infoBox{ 
+            // background-color: rgba(128, 128, 128, 0.585);
+            margin-left: 20px;
+            padding: 20px;
+            text-align: center;
+            margin-right: 100px;
+            height: 40%;
+            width: 60%;
+            margin: auto auto;
+            margin-top: 150px;
+            margin-bottom: auto;
+        }
+    }
+    .swiperContainer{
+        width: 100vw;
+        padding-left: 180px;
+    }
+}
+@media screen and (max-width:1200px){
+    .BannerContainer{
+        .infoBoxContainer{
+            height: 340px;
+            .infoBox{
+                margin: 0;
+                
+            }
+        }
+
+    }
+}

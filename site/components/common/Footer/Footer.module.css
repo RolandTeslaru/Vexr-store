@@ -1,6 +1,9 @@
 .root {
   @apply border-t border-accent-2;
 }
+.logo{
+  width:200px
+}
 
 .link {
   & > svg {
@@ -10,4 +13,5 @@
   &:hover > svg {
     @apply scale-110;
   }
+  
 }
