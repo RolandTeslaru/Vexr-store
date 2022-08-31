@@ -1,6 +1,7 @@
 import { InferGetServerSidePropsType } from 'next'
 import React from 'react'
 import styles from "./ProductsSlider.module.scss"
+import ProductCard from '@components/product/ProductCard'
 
 const ProductsSlider = ({products,}: any) => {
   return (
