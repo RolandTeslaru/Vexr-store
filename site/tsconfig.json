@@ -27,6 +27,13 @@
       "@framework/*": ["../packages/shopify/src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "components/common/SEO/SEO.tsx"
+  ],
   "exclude": ["node_modules"]
 }

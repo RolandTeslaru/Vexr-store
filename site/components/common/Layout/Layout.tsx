@@ -46,9 +46,12 @@ const FeatureBar = dynamic(() => import('@components/common/FeatureBar'), {
 const Modal = dynamic(() => import('@components/ui/Modal'), {
   ...dynamicProps,
   ssr: false,
-})
+}
+  
+)
 
 interface Props {
+  children: any
   pageProps: {
     pages?: Page[]
     categories: Category[]
