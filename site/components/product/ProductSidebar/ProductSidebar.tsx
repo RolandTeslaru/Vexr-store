@@ -87,7 +87,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
         )}
       </div>
       <div className="mt-6">
-        <Collapse title="Details" className="pb-4 break-words w-full max-w-xl"
+        <Collapse title="Details" 
 >{product.description}</Collapse>
         {/* <Collapse title="Size">
           This is a limited edition production run. Printing starts when the

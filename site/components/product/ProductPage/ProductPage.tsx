@@ -11,6 +11,11 @@ import styles from "./ProductPage.module.scss"
 import ProductSidebar from "./ProductSidebar/ProductSidebar"
 import ProductInfo from "./ProductInfo/ProductInfo"
 import ProductImages from "./ProductImages/ProductImages"
+import {Swiper , SwiperSlide} from "swiper/react"
+import { Navigation, Pagination, Mousewheel, Autoplay } from "swiper";
+import "swiper/css"
+import "swiper/css/navigation";
+import "swiper/css/pagination";
  
 interface ProductViewProps {
   product: Product
@@ -45,6 +50,33 @@ const ProductPage: FC<ProductViewProps> = ({product, relatedProducts}) => {
 
 
       {/* ======= Related Products */}
+      <div className={styles.sugestedProducts}>
+      <div className={styles.swiperContainer}>
+            <Swiper
+                slidesPerView={4}
+                spaceBetween={2}
+                cssMode={true}
+                pagination={{
+                    clickable:true
+                }}
+                mousewheel={true}
+                centeredSlides={true}
+
+                autoplay={{
+                    delay:2000,
+                    disableOnInteraction: true
+                }}
+                modules={[Navigation, Pagination, Mousewheel, Autoplay]}
+                className='mySwiper'
+            >
+                {relatedProducts.map((product:any, index:number) => (
+                    <SwiperSlide key={index}>
+                        <ProductCard product={product} variant={"custom"}></ProductCard>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
+      </div>
     <SEO
         title={product.name}
         description={product.description}

@@ -6,10 +6,10 @@ import { Grid, Marquee, Hero } from '@components/ui'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import styles from "./Home.module.scss"
 import { ALL } from 'dns'
-import bannerImages from "./bannerImages.js"
+import bannerImages from "../info/bannerImages.js"
 import Banner from '@components/Banner/Banner'
-import banner from 'shopify---clever-products-7224/schemas/banner'
-import Infobox from '@components/infobox/infobox'
+// import banner from 'shopify---clever-products-7224/schemas/banner'
+// import Infobox from '@components/infobox/infobox'
 
 export async function getStaticProps({
   preview,

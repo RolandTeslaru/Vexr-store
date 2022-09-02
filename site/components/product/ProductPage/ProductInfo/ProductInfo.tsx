@@ -51,7 +51,7 @@ const ProductInfo: FC<ProductSidebarProps> = ({product}) => {
 
   return (
     <div className={styles.productInfoContainer}>
-      <Collapse title="Details" className="pb-4 break-words w-full max-w-xl">
+      <Collapse title="Details" >
         <Text
           className={styles.descriptionText}
           html={product.descriptionHtml || product.description}

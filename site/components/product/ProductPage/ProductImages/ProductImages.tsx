@@ -5,9 +5,10 @@ import { FC, useState } from 'react'
 import styles from "./ProductImages.module.scss"
 import ProductSlider from '@components/product/ProductSlider'
 import type { Product } from '@commerce/types/product'
+
 interface ProductViewProps {
   product: Product
-  relatedProducts: Product[]
+  relatedProducts?: Product[]
 }
 
 const ProductImages: FC<ProductViewProps> = ({product}) => {
