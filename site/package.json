@@ -9,7 +9,11 @@
     "analyze": "BUNDLE_ANALYZE=both next build",
     "lint": "next lint",
     "prettier-fix": "prettier --write .",
-    "find:unused": "npx next-unused"
+    "find:unused": "npx next-unused",
+    "preinstall": "npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "@types/react": "^17.0.38"
   },
   "sideEffects": false,
   "dependencies": {
@@ -58,6 +62,7 @@
     "@types/lodash.throttle": "^4.1.6",
     "@types/node": "^17.0.8",
     "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.6",
     "eslint": "^8.6.0",
     "eslint-config-next": "^12.0.8",
     "eslint-config-prettier": "^8.3.0",
