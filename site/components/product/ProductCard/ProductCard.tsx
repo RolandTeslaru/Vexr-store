@@ -14,7 +14,7 @@ interface Props {
   product: Product
   noNameTag?: boolean
   imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
-  variant?: 'default' | 'slim' | 'simple' | 'custom' | 'grid'
+  variant?: 'default' | 'slim' | 'simple' | 'custom' | 'grid' | 'card' | 'mini'
 }
 
 const placeholderImg = '/product-img-placeholder.svg'
@@ -50,11 +50,9 @@ const ProductCard: FC<Props> = ({
               {product?.images && (
                 <>
                 <img
-                quality="85"
                 src={product.images[0]?.url || placeholderImg}
                 alt={product.name || 'Product Image'}
                 className={styles.product_image}
-                {...imgProps}
                 />
                 </>
               )}
@@ -184,6 +182,51 @@ const ProductCard: FC<Props> = ({
             </div>
           </>
         )}
+        {variant === "card" && (
+          <div className={styles.card}>
+            <div className={styles.product_card}>
+              <div className="header">
+
+              </div>
+              {product?.images && (
+                <>
+                  <img
+                    src={product.images[0]?.url || placeholderImg}
+                    alt={product.name || 'Product Image'}
+                    className={styles.product_image}
+                  />
+                </>
+              )}
+              <div className={styles.infoContainer}>
+                <p className={styles.product_name}>{product.name}</p>
+                <p className={styles.product_price}>{`${price}`}</p>
+              </div>
+              
+              {/* {[...Array(rating)].map((e ,i) => <AiFillStar key={i}/>)}
+              {[...Array(5-rating)].map((e ,i) => <AiOutlineStar key={i}/>)} */}
+            </div>
+
+          </div>
+        )}
+        {variant === "mini" && (
+          <div className={styles.miniCard}>
+            {product?.images && (
+              <>
+                <img 
+                  src={product.images[0]?.url || placeholderImg} 
+                  alt={product.name || 'Product Images'} 
+                  className={styles.product_image}
+                />
+              </> 
+            )}
+            <div className={styles.infoContainer}>
+                <p className={styles.product_name}>{product.name}</p>
+                <p className={styles.product_price}>{`${price}`}</p>
+            </div>
+          </div>
+        )
+
+        }
       </a>
     </Link>
   )

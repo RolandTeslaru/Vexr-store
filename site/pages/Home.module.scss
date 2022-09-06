@@ -1,12 +1,14 @@
 .homeContainer{
-    width: 70vw;
+    width: 80vw;
     padding: 20px;
     margin: 0px auto;
     background-color: var(--accent-1);
 }
 .product_slider{
     width: 30px!important;
-    
+}
+.grid{
+  height: 700px;
 }
 .maylike_products_wrapper{
     margin-top: 40px;
@@ -25,8 +27,66 @@
     gap: 15px;
     margin-top: 10px;
   }
+
+  .popularContainer{
+    color: black;
+    background: url("/content/img2.jpg");
+    background-position: center center;
+    background-size: cover;
+    .backgroundBlur{
+      backdrop-filter: blur(40px);
+      h2{
+        font-size: 4rem;
+        font-weight: 500;
+      }
+      h4{
+        font-size: 2rem;
+        font-weight: 600;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.557);
+        width: 100%;
+        text-align: center;
+        box-shadow: 3px 3px 30px black;
+      }
+      .header{
+        color: white;
+        width: 100%;
+        background: black;
+        padding-left: 20px;
+      }
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      .first_row{
+        display: flex;
+        flex-direction: row;
+        height: 600px;
+      }
+      .second_row{
+        display: flex;
+        flex-direction: row;
+        height: 600px;
+      }
+      .info{
+        width: 50%;
+      }
+      img{
+        object-fit:cover;
+        width: 50%;
+        height: 100%;
+        box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.698);
+      }
+
+    }
+  }
 @media screen and (max-width:1200px) {
     .homeContainer{
         width: 80vw;
     }
+}
+@media screen and (max-width:900px){
+  .homeContainer{
+    width: 95vw;
+    padding: 4px;
+  }
 }

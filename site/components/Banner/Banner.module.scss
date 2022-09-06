@@ -24,19 +24,32 @@
         }
     }
     .swiperContainer{
-        width: 100vw;
-        padding-left: 180px;
+        overflow: hidden;
+        width: 85vw;
+        margin-left: auto;
+        position: flex;
     }
 }
 @media screen and (max-width:1200px){
     .BannerContainer{
         .infoBoxContainer{
-            height: 340px;
+            height: 400px;
             .infoBox{
                 margin: 0;
-                
+                font-size: .3 rem;
             }
+        }
+        .swiperContainer{
+            height: 400px;
         }
 
     }
+}
+
+@media screen and (max-width:800px){
+    .BannerContainer{
+        .infoBoxContainer{
+            height: 340px;
+        }
+    }    
 }

@@ -25,6 +25,9 @@
   },
   "packageManager": "yarn@1.22.17",
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.3",
     "graphql": "^16.6.0",
     "next-image-zoom": "^1.1.7",
     "sass": "^1.54.5"

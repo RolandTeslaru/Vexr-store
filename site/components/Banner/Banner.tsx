@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "./Banner.module.scss"
-import {Swiper , SwiperSlide} from "swiper/react"
 import Link from 'next/link'
+import {Swiper , SwiperSlide} from "swiper/react"
 import "swiper/css"
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -39,6 +39,8 @@ const Banner = ({slideImages}:any) => {
                 }}
                 modules={[Navigation, Pagination, Mousewheel, Autoplay]}
                 className='mySwiper'
+
+                
             >
                 {slideImages.map((image:any, index:number) => (
                     <SwiperSlide key={index}>
