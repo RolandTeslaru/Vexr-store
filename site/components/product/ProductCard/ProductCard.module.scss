@@ -94,8 +94,13 @@
     }
   }
 
-  .card{
-    .product_card{
-      
+  .miniCard{
+    background: none;
+    width: 80%;
+    img{
+      width: 100%;
+    }
+    .infoContainer{
+      background-color: white;
     }
   }

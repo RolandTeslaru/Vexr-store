@@ -70,6 +70,11 @@
       .info{
         width: 50%;
       }
+      .swiperContainer{
+        .swiperSlide{
+          background: none;
+        }
+      }
       img{
         object-fit:cover;
         width: 50%;

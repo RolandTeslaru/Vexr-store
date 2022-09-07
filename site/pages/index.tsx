@@ -84,33 +84,50 @@ export default function Home({
                 <div className={styles.info}>
                   <h4>LED RGB products</h4>
                   <div className={styles.swiperContainer}>
-                  <Swiper
-                    cssMode={true}
-                    pagination={{
-                        clickable:true
-                    }}
-                    mousewheel={true}
-                    centeredSlides={true}
-                    
-                    modules={[Navigation, Pagination, Mousewheel]}
-                    className='mySwiper'
-                  >
-                {}
-            </Swiper>
-                  </div>
+                    <Swiper
+                      cssMode={true}
+                      pagination={{
+                          clickable:true
+                      }}
+                      mousewheel={true}
+                      centeredSlides={true}
+                      
+                      modules={[Navigation, Pagination, Mousewheel]}
+                      className='mySwiper'
+                    >
+                   {}
+                  </Swiper>
                 </div>
+              </div>
                 <img src="/content/img4.jpg" alt="" />
               </div>
               <div className={styles.second_row}>
                 <img src="/content/photo4.jpeg" alt="" />
                 <div className={styles.info}>
                   <h4>PC RGB Components</h4>
+                  <div className={styles.swiperContainer}>
+                    <Swiper
+                      cssMode={true}
+                      pagination={{
+                          clickable:true
+                      }}
+                      mousewheel={true}
+                      slidesPerView={3}
+                      modules={[Navigation, Pagination, Mousewheel]}
+                      className='mySwiper'
+                    >
+                   {products.map((product: any , index: number) => (
+                    <SwiperSlide key={index} className={styles.swiperSlide}>
+                      <ProductCard product={product} variant='mini'/>
+                    </SwiperSlide>
+                   ))}
+                  </Swiper>
+                </div>
                 </div>
               </div>
             </div>
           </div>
-
-      </div>
+        </div>
     </>
   
   )
