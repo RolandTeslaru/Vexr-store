@@ -3,8 +3,11 @@
 }
 
 .sidebar {
-  @apply h-full flex flex-col text-base bg-accent-0 shadow-xl overflow-y-auto overflow-x-hidden;
+  @apply h-full flex flex-col text-base shadow-xl overflow-y-auto overflow-x-hidden;
   -webkit-overflow-scrolling: touch !important;
+  background-color: rgba(0, 0, 0, 0.481);
+  backdrop-filter: blur(10px)
+  
 }
 
 .backdrop {

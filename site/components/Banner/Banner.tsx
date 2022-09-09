@@ -38,9 +38,7 @@ const Banner = ({slideImages}:any) => {
                     disableOnInteraction: false
                 }}
                 modules={[Navigation, Pagination, Mousewheel, Autoplay]}
-                className='mySwiper'
-
-                
+                className={styles.swiper}
             >
                 {slideImages.map((image:any, index:number) => (
                     <SwiperSlide key={index}>

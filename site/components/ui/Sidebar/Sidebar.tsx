@@ -1,7 +1,8 @@
 import cn from 'clsx'
-import s from './Sidebar.module.css'
+import s from './Sidebar.module.scss'
 import { useEffect, useRef } from 'react'
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
+
 interface SidebarProps {
   children: any
   onClose: () => void

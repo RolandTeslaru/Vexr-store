@@ -14,6 +14,7 @@ import "swiper/css"
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Mousewheel, Autoplay } from "swiper";
+import { useEffect, useState } from 'react'
 // import banner from 'shopify---clever-products-7224/schemas/banner'
 // import Infobox from '@components/infobox/infobox'
 
@@ -50,6 +51,21 @@ export async function getStaticProps({
 export default function Home({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+
+  const [slides , setSlides] = useState(3);
+
+  const handleMobile = () => {
+    if(window.innerWidth < 500) {
+      setSlides(2);
+    }
+    else {
+      setSlides(3);
+    }
+  }
+  useEffect(() => {
+    window.addEventListener("resize" , handleMobile);
+  })
+
   return (
     <>
       <Banner slideImages={bannerImages}></Banner>
@@ -61,7 +77,7 @@ export default function Home({
           header='Full Immersion'
           text='Be fully immersed in your video games, movies or tv shows with our LED RGB products. Reinvent your viewing experience with more color.'
         />
-        <Marquee>
+        <Marquee className={styles.marquee}>
           {products.slice(0, 5).map((product: any, i: number) => (
             <ProductCard key={product.id} product={product} variant="custom" />
           ))}
@@ -82,47 +98,32 @@ export default function Home({
             </div>
               <div className={styles.first_row}>
                 <div className={styles.info}>
-                  <h4>LED RGB products</h4>
+                  <h4 className={`${slides === 2 && styles.hide}`}>LED RGB products</h4>
                   <div className={styles.swiperContainer}>
-                    <Swiper
-                      cssMode={true}
-                      pagination={{
-                          clickable:true
-                      }}
-                      mousewheel={true}
-                      centeredSlides={true}
-                      
-                      modules={[Navigation, Pagination, Mousewheel]}
-                      className='mySwiper'
-                    >
-                   {}
-                  </Swiper>
+                  {products.slice(0,slides).map((product:any , index: number) => (
+                    <ProductCard product={product} variant='mini' key={index}/>
+                  ))}
                 </div>
               </div>
-                <img src="/content/img4.jpg" alt="" />
+              <div className={styles.imgContainer}>
+                <img src="/content/img4.jpg" alt="" className={styles.thumbnail}/>
+                <h4 className={`${slides === 2 ? styles.headerImg : styles.hide}`}>LED RGB products</h4>
+              </div>
+                
               </div>
               <div className={styles.second_row}>
-                <img src="/content/photo4.jpeg" alt="" />
                 <div className={styles.info}>
-                  <h4>PC RGB Components</h4>
+                  <h4 className={`${slides === 2 && styles.hide}`}>PC RGB Components</h4>
+                    {/* <img src="/content/photo4.jpeg" alt="" className={styles.thumbnail}/> */}
                   <div className={styles.swiperContainer}>
-                    <Swiper
-                      cssMode={true}
-                      pagination={{
-                          clickable:true
-                      }}
-                      mousewheel={true}
-                      slidesPerView={3}
-                      modules={[Navigation, Pagination, Mousewheel]}
-                      className='mySwiper'
-                    >
-                   {products.map((product: any , index: number) => (
-                    <SwiperSlide key={index} className={styles.swiperSlide}>
-                      <ProductCard product={product} variant='mini'/>
-                    </SwiperSlide>
-                   ))}
-                  </Swiper>
+                    {products.slice(0,slides).map((product:any , index: number) => (
+                      <ProductCard product={product} variant='mini' key={index}/>
+                    ))}
+                  </div>
                 </div>
+                <div className={styles.imgContainer}>
+                  <img src="/content/photo4.jpeg" alt="" className={styles.thumbnail}/>
+                  <h4 className={`${slides === 2 ? styles.headerImg : styles.hide}`}>PC RBB PRODUCTS</h4>
                 </div>
               </div>
             </div>
