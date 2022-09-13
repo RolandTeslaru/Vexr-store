@@ -33,8 +33,12 @@ export const Loading = () => {
     }
   })
 
-  return loading && (
-    <LoadingScreen/>
+  return (
+    <>
+      {loading && (
+        <LoadingScreen/>
+      )}
+    </>
   )
 }
 
