@@ -91,22 +91,11 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
               : 'Add To Cart'}
           </Button>
         )}
-        {true && (
-          <Button
-            aria-label='Add to Wishlist'
-            type='button'
-            className={styles.button}
-            onClick={addToWishlist}
-            loading={loading}
-          >
-
-          </Button>
-        )}
-        
-        <Text
+        {/* Description */}
+        {/* <Text
               className={styles.descriptionText}
               html={product.descriptionHtml || product.description}
-          />
+          /> */}
     </div>
   )
 }

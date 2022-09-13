@@ -11,6 +11,8 @@ import { Container, Skeleton } from '@components/ui'
 
 import useSearch from '@framework/product/use-search'
 
+import styles from "./search.module.scss"
+
 import getSlug from '@lib/get-slug'
 import rangeMap from '@lib/range-map'
 
@@ -65,8 +67,11 @@ export default function Search({ categories, brands }: SearchPropsType) {
 
   return (
     <Container>
+      
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-3 mb-20">
-        <div className="col-span-8 lg:col-span-2 order-1 lg:order-none">
+        
+        <div className={styles.sidebarLEFT }>
+
           {/* Categories */}
           <div className="relative inline-block w-full">
             <div className="lg:hidden">
@@ -104,56 +109,29 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   : ''
               }`}
             >
-              <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
+              <div className={styles.categories}>
                 <div
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
                 >
                   <ul>
-                    <li
-                      className={cn(
-                        'block text-sm leading-5 text-accent-4 lg:text-base lg:no-underline lg:font-bold lg:tracking-wide hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8',
-                        {
-                          underline: !activeCategory?.name,
-                        }
-                      )}
-                    >
-                      <Link
-                        href={{ pathname: getCategoryPath('', brand), query }}
-                      >
-                        <a
-                          onClick={(e) => handleClick(e, 'categories')}
-                          className={
-                            'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
-                          }
-                        >
+                    <li className={cn(styles.listBg, { underline: !activeCategory?.name, } )}>
+                      <Link href={{ pathname: getCategoryPath('', brand), query }}>
+                        <a onClick={(e) => handleClick(e, 'categories')} className={styles.headerText}>
                           All Categories
                         </a>
                       </Link>
                     </li>
                     {categories.map((cat: any) => (
-                      <li
-                        key={cat.path}
-                        className={cn(
-                          'block text-sm leading-5 text-accent-4 hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8',
-                          {
-                            underline: activeCategory?.id === cat.id,
-                          }
-                        )}
-                      >
-                        <Link
+                      <li key={cat.path} className={cn( styles.listSm, {underline: activeCategory?.id === cat.id,})}>
+                        <Link 
                           href={{
                             pathname: getCategoryPath(cat.path, brand),
                             query,
                           }}
                         >
-                          <a
-                            onClick={(e) => handleClick(e, 'categories')}
-                            className={
-                              'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
-                            }
-                          >
+                          <a onClick={(e) => handleClick(e, 'categories')} className={styles.headerText} >
                             {cat.name}
                           </a>
                         </Link>
@@ -202,33 +180,16 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   : ''
               }`}
             >
-              <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
+              <div className={styles.designers}>
                 <div
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
                 >
                   <ul>
-                    <li
-                      className={cn(
-                        'block text-sm leading-5 text-accent-4 lg:text-base lg:no-underline lg:font-bold lg:tracking-wide hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8',
-                        {
-                          underline: !activeBrand?.name,
-                        }
-                      )}
-                    >
-                      <Link
-                        href={{
-                          pathname: getDesignerPath('', category),
-                          query,
-                        }}
-                      >
-                        <a
-                          onClick={(e) => handleClick(e, 'brands')}
-                          className={
-                            'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
-                          }
-                        >
+                    <li className={cn( styles.listBg, {underline: !activeBrand?.name,})}>
+                      <Link href={{ pathname: getDesignerPath('', category), query, }} >
+                        <a onClick={(e) => handleClick(e, 'brands')} className={ styles.headerText } >
                           All Designers
                         </a>
                       </Link>
@@ -236,22 +197,16 @@ export default function Search({ categories, brands }: SearchPropsType) {
                     {brands.flatMap(({ node }: { node: any }) => (
                       <li
                         key={node.path}
-                        className={cn(
-                          'block text-sm leading-5 text-accent-4 hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8',
-                          {
+                        className={cn( styles.listSm,{
                             // @ts-ignore Shopify - Fix this types
                             underline: activeBrand?.entityId === node.entityId,
                           }
                         )}
                       >
                         <Link
-                          href={{
-                            pathname: getDesignerPath(node.path, category),
-                            query,
-                          }}
+                          href={{ pathname: getDesignerPath(node.path, category),query,}}
                         >
-                          <a
-                            onClick={(e) => handleClick(e, 'brands')}
+                          <a onClick={(e) => handleClick(e, 'brands')}
                             className={
                               'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
                             }
@@ -268,62 +223,48 @@ export default function Search({ categories, brands }: SearchPropsType) {
           </div>
         </div>
         {/* Products */}
-        <div className="col-span-8 order-3 lg:order-none">
+        <div className={styles.productsContainer}>
           {(q || activeCategory || activeBrand) && (
             <div className="mb-12 transition ease-in duration-75">
               {data ? (
                 <>
-                  <span
-                    className={cn('animated', {
-                      fadeIn: data.found,
-                      hidden: !data.found,
-                    })}
+                  <span className={cn('animated', {
+                         fadeIn: data.found,
+                         hidden: !data.found,
+                       })}
                   >
                     Showing {data.products.length} results{' '}
                     {q && (
-                      <>
-                        for "<strong>{q}</strong>"
-                      </>
+                      <> for "<strong>{q}</strong>" </>
                     )}
                   </span>
-                  <span
-                    className={cn('animated', {
-                      fadeIn: !data.found,
-                      hidden: data.found,
-                    })}
+                  <span className={cn('animated', {
+                          fadeIn: !data.found,
+                          hidden: data.found,
+                        })}
                   >
                     {q ? (
-                      <>
-                        There are no products that match "<strong>{q}</strong>"
-                      </>
+                      <> There are no products that match "<strong>{q}</strong>" </>
                     ) : (
-                      <>
-                        There are no products that match the selected category.
-                      </>
+                      <> There are no products that match the selected category. </>
                     )}
                   </span>
                 </>
               ) : q ? (
-                <>
-                  Searching for: "<strong>{q}</strong>"
-                </>
+                <> Searching for: "<strong>{q}</strong>" </>
               ) : (
                 <>Searching...</>
               )}
             </div>
           )}
           {data ? (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className={styles.productGrid}>
               {data.products.map((product: Product) => (
                 <ProductCard
-                  variant="simple"
+                  variant="custom"
                   key={product.path}
                   className="animated fadeIn"
                   product={product}
-                  imgProps={{
-                    width: 480,
-                    height: 480,
-                  }}
                 />
               ))}
             </div>
@@ -339,7 +280,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
         </div>
 
         {/* Sort */}
-        <div className="col-span-8 lg:col-span-2 order-2 lg:order-none">
+        <div className={styles.sidebarRIGHT}>
           <div className="relative inline-block w-full">
             <div className="lg:hidden">
               <span className="rounded-md shadow-sm">
@@ -372,50 +313,29 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 activeFilter !== 'sort' || toggleFilter !== true ? 'hidden' : ''
               }`}
             >
-              <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
+              <div className={styles.sort}>
                 <div
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
                 >
                   <ul>
-                    <li
-                      className={cn(
-                        'block text-sm leading-5 text-accent-4 lg:text-base lg:no-underline lg:font-bold lg:tracking-wide hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8',
-                        {
-                          underline: !sort,
-                        }
-                      )}
-                    >
+                    <li className={cn(styles.listBg,{underline: !sort,})}>
                       <Link href={{ pathname, query: filterQuery({ q }) }}>
-                        <a
-                          onClick={(e) => handleClick(e, 'sort')}
-                          className={
-                            'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
-                          }
-                        >
-                          Relevance
+                        <a onClick={(e) => handleClick(e, 'sort')} className={ 'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4' } >
+                          Relevance 
                         </a>
                       </Link>
                     </li>
                     {Object.entries(SORT).map(([key, text]) => (
                       <li
                         key={key}
-                        className={cn(
-                          'block text-sm leading-5 text-accent-4 hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8',
-                          {
-                            underline: sort === key,
-                          }
-                        )}
+                        className={cn(styles.listSm,{underline: sort === key,})}
                       >
                         <Link
-                          href={{
-                            pathname,
-                            query: filterQuery({ q, sort: key }),
-                          }}
+                          href={{ pathname,query: filterQuery({ q, sort: key }),}}
                         >
-                          <a
-                            onClick={(e) => handleClick(e, 'sort')}
+                          <a onClick={(e) => handleClick(e, 'sort')}
                             className={
                               'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
                             }
@@ -437,3 +357,6 @@ export default function Search({ categories, brands }: SearchPropsType) {
 }
 
 Search.Layout = Layout
+
+
+

@@ -1,5 +1,5 @@
 :root {
-  --primary: #ffffff;
+  /* --primary: #ffffff;
   --primary-2: #f1f3f5;
   --secondary: #000000;
   --secondary-2: #111;
@@ -29,7 +29,28 @@
   --accent-6: #444444;
   --accent-7: #333333;
   --accent-8: #111111;
-  --accent-9: #000;
+  --accent-9: #000; */
+  --primary: #000000;
+  --primary-2: #111;
+  --secondary: #ffffff;
+  --secondary-2: #f1f3f5;
+  --hover: rgba(255, 255, 255, 0.075);
+  --hover-1: rgba(255, 255, 255, 0.15);
+  --hover-2: rgba(255, 255, 255, 0.25);
+  --selection: var(--purple);
+  --text-base: white;
+  --text-primary: white;
+  --text-secondary: black;
+  --accent-9: #fff;
+  --accent-8: #fafafa;
+  --accent-7: #eaeaea;
+  --accent-6: #999999;
+  --accent-5: #888888;
+  --accent-4: #666666;
+  --accent-3: #444444;
+  --accent-2: #333333;
+  --accent-1: #111111;
+  --accent-0: #000;
   --font-sans: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
     'Helvetica', sans-serif;
 }

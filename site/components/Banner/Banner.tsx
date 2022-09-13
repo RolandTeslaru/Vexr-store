@@ -12,7 +12,7 @@ import { ArrowRight } from '@components/icons'
 
 const Banner = ({slideImages}:any) => {
   return (
-    <div className={styles.BannerContainer}>
+    <div className={styles.BannerContainer + " animated fadeIn"} >
         <div className={styles.infoBoxContainer}>
             <div className={styles.infoBox}>
                 <Text variant='sectionHeading'>Enhance your gaming experience today with new and amazing products</Text>

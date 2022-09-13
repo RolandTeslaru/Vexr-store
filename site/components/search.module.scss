@@ -1,0 +1,123 @@
+.sidebarLEFT{
+    grid-column: span 8 / span 8;
+    order: 1;
+
+    background-color: var(--accent-1);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    height: min-content;
+}
+
+.productsContainer{
+    grid-column: span 8 / span 8;
+    order: 3;
+    border-left: 1px solid rgba(255, 255, 255, 0.428);
+    border-right: 1px solid rgba(255, 255, 255, 0.428);
+    .productGrid{
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 1.5rem/* 24px */;
+    }
+}
+
+.sidebarRIGHT{
+    grid-column: span 8 / span 8;
+    order: 2;
+
+    background-color: var(--accent-1);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    height: min-content;
+}
+
+.headerText{
+    display: block;
+    padding-left: 1rem/* 16px */;
+    padding-right: 1rem ;
+    padding-left: 1rem/* 16px */;
+    padding-right: 1rem ;
+}
+.listSm{
+    display: block;
+    font-size: 0.875rem/* 14px */;
+    line-height: 1.25rem/* 20px */;
+    line-height: 1.25rem/* 20px */;
+    color: var(--accent-4);
+    &:hover{
+        background-color: var(--accent-1);
+        color: var(--accent-8);
+    }
+    &:focus{
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        background-color: var(--accent-1);
+        color: var(--accent-8);
+    }
+}
+.listBg{
+    display: block;
+    font-size: 0.875rem/* 14px */;
+    line-height: 1.25rem/* 20px */;
+    color: var(--accent-4);
+    &:hover{
+        background-color: var(--accent-1);
+        color: var(--accent-8);
+    }
+    &:focus{
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        background-color: var(--accent-1);
+        color: var(--accent-8);
+    }
+}
+
+@media (min-width: 1024px) {
+    .sidebarLEFT{
+        grid-column: span 2 / span 2;
+        order: 0;
+    }
+    .productsContainer{
+        order: 0;
+        .productGrid{
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+    .sidebarRIGHT{
+        grid-column: span 2 / span 2;
+        order: 0;
+    }
+    .listBg{
+        color: var(--text-base);
+        font-size: 1rem/* 16px */;
+        line-height: 1.5rem/* 24px */;
+        text-decoration-line: none;
+        font-weight: 700;
+        letter-spacing: 0.025em;
+        &:hover{
+            background-color: transparent;
+        }
+
+    }
+    .listSm{
+        &:hover{
+            background-color: transparent;
+        }
+    }
+    
+    .headerText{
+        display: inline-block;
+        padding: 0px;
+        margin-bottom: 0.5rem/* 8px */;
+        margin-top: 0.5rem/* 8px */;
+        margin-left: 1rem/* 16px */;
+        margin-right: 1rem/* 16px */;
+    }
+}
+
+@media screen and (max-width:640px){
+    .productsContainer{
+        .productGrid{
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+}

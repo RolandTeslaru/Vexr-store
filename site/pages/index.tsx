@@ -14,7 +14,7 @@ import "swiper/css"
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Mousewheel, Autoplay } from "swiper";
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 // import banner from 'shopify---clever-products-7224/schemas/banner'
 // import Infobox from '@components/infobox/infobox'
 
@@ -47,15 +47,13 @@ export async function getStaticProps({
     revalidate: 60,
   }
 }
-
 export default function Home({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 
   const [slides , setSlides] = useState(3);
-
   const handleMobile = () => {
-    if(window.innerWidth < 500) {
+    if(window.innerWidth < 700) {
       setSlides(2);
     }
     else {
@@ -68,9 +66,10 @@ export default function Home({
 
   return (
     <>
+
       <Banner slideImages={bannerImages}></Banner>
 
-      <div className={styles.homeContainer}>
+      <div className={styles.homeContainer + " animated fadeIn"}>
 
         <MiniBanner
           img='/content/img1.jpg'
@@ -105,8 +104,7 @@ export default function Home({
                   ))}
                 </div>
               </div>
-              <div className={styles.imgContainer}>
-                <img src="/content/img4.jpg" alt="" className={styles.thumbnail}/>
+              <div className={styles.imgContainer + " animated fadeIn"} style = {{backgroundImage: 'url(/content/img4.jpg)'}}>
                 <h4 className={`${slides === 2 ? styles.headerImg : styles.hide}`}>LED RGB products</h4>
               </div>
                 
@@ -121,9 +119,8 @@ export default function Home({
                     ))}
                   </div>
                 </div>
-                <div className={styles.imgContainer}>
-                  <img src="/content/photo4.jpeg" alt="" className={styles.thumbnail}/>
-                  <h4 className={`${slides === 2 ? styles.headerImg : styles.hide}`}>PC RBB PRODUCTS</h4>
+                <div className={styles.imgContainer + " animated fadeIn"} style = {{backgroundImage: 'url(/content/photo4.jpeg)'}}>
+                  <h4 className={`${slides === 2 ? styles.headerImg : styles.hide}` + " fadeIn"}>PC RBB PRODUCTS</h4>
                 </div>
               </div>
             </div>

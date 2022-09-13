@@ -1,0 +1,19 @@
+.loadingWindow{
+    position: fixed;
+    z-index: 9999;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    .loadingContainer{
+        width: 300px;
+        min-height: 500px;
+        margin: auto auto;
+        .spinner{
+            width: 150px;
+            height: 150px;
+            margin: auto auto;
+            margin-top: 50px;
+        }
+    }
+}

@@ -6,6 +6,7 @@ import usePrice from '@framework/product/use-price'
 import { WishlistButton } from '@components/wishlist'
 import { ProductSlider, ProductCard } from '@components/product'
 import { Container, Text } from '@components/ui'
+import { Marquee, Hero } from '@components/ui'
 import { SEO } from '@components/common'
 import styles from "./ProductPage.module.scss"
 import ProductSidebar from "./ProductSidebar/ProductSidebar"
@@ -52,7 +53,12 @@ const ProductPage: FC<ProductViewProps> = ({product, relatedProducts}) => {
       {/* ======= Related Products */}
       <div className={styles.sugestedProducts}>
       <div className={styles.swiperContainer}>
-            <Swiper
+      <Marquee className={styles.marquee}>
+          {relatedProducts.slice(0, 5).map((product: any, i: number) => (
+            <ProductCard key={product.id} product={product} variant="custom" />
+          ))}
+        </Marquee>
+            {/* <Swiper
                 slidesPerView={4}
                 spaceBetween={2}
                 cssMode={true}
@@ -74,7 +80,7 @@ const ProductPage: FC<ProductViewProps> = ({product, relatedProducts}) => {
                         <ProductCard product={product} variant={"custom"}></ProductCard>
                     </SwiperSlide>
                 ))}
-            </Swiper>
+            </Swiper> */}
         </div>
       </div>
     <SEO

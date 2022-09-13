@@ -50,11 +50,11 @@ const ProductCard: FC<Props> = ({
               </div>
               {product?.images && (
                 <>
-                <img
-                src={product.images[0]?.url || placeholderImg}
-                alt={product.name || 'Product Image'}
-                className={styles.product_image}
-                />
+                  <img
+                    src={product.images[0]?.url || placeholderImg}
+                    alt={product.name || 'Product Image'}
+                    className={styles.product_image}
+                  />
                 </>
               )}
               <div className={styles.infoContainer}>
@@ -76,11 +76,11 @@ const ProductCard: FC<Props> = ({
               {product?.images && (
                 <>
                   <img
-                  quality="85"
-                  src={product.images[0]?.url || placeholderImg}
-                  alt={product.name || 'Product Image'}
-                  className={styles.product_image}
-                  {...imgProps}
+                    quality="85"
+                    src={product.images[0]?.url || placeholderImg}
+                    alt={product.name || 'Product Image'}
+                    className={styles.product_image}
+                    {...imgProps}
                   />
                 </>
               )}
