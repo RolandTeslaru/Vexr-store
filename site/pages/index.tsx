@@ -66,7 +66,7 @@ export default function Home({
 
   return (
     <>
-
+      {/* Banner slideshow */}
       <Banner slideImages={bannerImages}></Banner>
 
       <div className={styles.homeContainer + " animated fadeIn"}>
