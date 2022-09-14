@@ -1,7 +1,7 @@
 {
-  "name": "Next.js Commerce",
-  "short_name": "Next.js Commerce",
-  "description": "Next.js Commerce -> https://www.nextjs.org/commerce",
+  "name": "Vexr store",
+  "short_name": "Vexr",
+  "description": "Vexr techanology ecommerce store",
   "display": "standalone",
   "start_url": "/",
   "theme_color": "#fff",

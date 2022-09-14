@@ -66,10 +66,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
   }
 
   return (
-    <Container>
-      
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-3 mb-20">
-        
+    <div className={styles.Container}>
         <div className={styles.sidebarLEFT }>
 
           {/* Categories */}
@@ -349,10 +346,9 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
-    </Container>
+    </div>
   )
 }
 

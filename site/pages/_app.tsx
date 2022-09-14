@@ -8,30 +8,25 @@ import type { AppProps } from 'next/app'
 import { Head } from '@components/common'
 import { ManagedUIContext } from '@components/ui/context'
 import { useRouter } from 'next/router'
-import {Logo} from "@components/ui"
 import LoadingScreen from '@components/ui/LoadingScreen/LoadingScreen'
 
 const Noop: FC = ({ children }) => <>{children}</>
 
 export const Loading = () => {
-  const router = useRouter();
 
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const handleStart = (url:any) => (url !== router.asPath) && setLoading(true);
-    const handleComplete = (url:any) => (url === router.asPath) && setLoading(false);
+      const handleStart = (url:any) => {
+        url !== router.pathname ? setLoading(true) : setLoading(false);
+      };
+      const handleComplete = (url:any) => setLoading(false);
 
-    router.events.on('routeChangeStart', handleStart)
-    router.events.on('routeChangeComplete', handleComplete)
-    router.events.on('routeChangeError', handleComplete)
-
-    return () => {
-        router.events.off('routeChangeStart', handleStart)
-        router.events.off('routeChangeComplete', handleComplete)
-        router.events.off('routeChangeError', handleComplete)
-    }
-  })
+      router.events.on("routeChangeStart", handleStart);
+      router.events.on("routeChangeComplete", handleComplete);
+      router.events.on("routeChangeError", handleComplete);
+    }, [router]);
 
   return (
     <>

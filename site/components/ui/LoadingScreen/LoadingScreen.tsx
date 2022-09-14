@@ -5,13 +5,13 @@ import Image from "next/image"
 
 const LoadingScreen = () => {
   return (
-    <div className={loadingS.loadingWindow}>
+    <div className={loadingS.loadingWindow + " animated fadeIn"}>
       <div className={loadingS.loadingContainer}>
         <div className={loadingS.logo + " animated fadeIn"}>
           <Logo/>
         </div>
         <div className={loadingS.spinner}>
-            <Image src="/spinner.gif" width={150} height={150}  />
+            <Image src="/spinner.gif" width={200} height={200}  />
         </div>
       </div>
     </div>

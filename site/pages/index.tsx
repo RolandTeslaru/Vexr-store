@@ -4,7 +4,7 @@ import { ProductCard } from '@components/product'
 import { Marquee, Hero } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import styles from "./Home.module.scss"
+import styles from "../styles/Home.module.scss"
 import { ALL } from 'dns'
 import bannerImages from "../info/bannerImages.js"
 import Banner from '@components/Banner/Banner'

@@ -20,6 +20,10 @@ const links = [
     name: 'Home',
     url: '/',
   },
+  {
+    name:'Help',
+    url:'/help'
+  }
 ]
 
 const Footer: FC<Props> = ({ className, pages }) => {
@@ -33,10 +37,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="col-span-1 lg:col-span-2">
             <Link href="/">
               <a className="flex flex-initial items-center font-bold md:mr-24">
-                <span className="rounded-full border border-accent-6 mr-2">
-                  <Logo />
-                </span>
-                <span>Vexr</span>
+                <img src="/icon-192x192.png" alt="vexr logo" />
               </a>
             </Link>
           </div>
@@ -55,14 +56,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-primary">
             <div className="flex space-x-6 items-center h-10">
-              <a
-                className={s.link}
-                aria-label="Github Repository"
-                href="https://github.com/vercel/commerce"
-              >
-                <Github />
-              </a>
-              <I18nWidget />
+              {/* <I18nWidget /> */}
             </div>
           </div>
         </div>
