@@ -51,36 +51,19 @@ const ProductPage: FC<ProductViewProps> = ({product, relatedProducts}) => {
 
 
       {/* ======= Related Products */}
+      <div className={styles.bottomHeader}>
+        <h4>Related Products</h4>
+      </div>
+      <div className={styles.borderBottom}>
+        <hr />
+      </div>
       <div className={styles.sugestedProducts}>
-      <div className={styles.swiperContainer}>
-      <Marquee className={styles.marquee}>
-          {relatedProducts.slice(0, 5).map((product: any, i: number) => (
-            <ProductCard key={product.id} product={product} variant="custom" />
-          ))}
-        </Marquee>
-            {/* <Swiper
-                slidesPerView={4}
-                spaceBetween={2}
-                cssMode={true}
-                pagination={{
-                    clickable:true
-                }}
-                mousewheel={true}
-                centeredSlides={true}
-
-                autoplay={{
-                    delay:2000,
-                    disableOnInteraction: true
-                }}
-                modules={[Navigation, Pagination, Mousewheel, Autoplay]}
-                className='mySwiper'
-            >
-                {relatedProducts.map((product:any, index:number) => (
-                    <SwiperSlide key={index}>
-                        <ProductCard product={product} variant={"custom"}></ProductCard>
-                    </SwiperSlide>
-                ))}
-            </Swiper> */}
+        <div className={styles.swiperContainer}>
+          <Marquee className={styles.marquee}>
+            {relatedProducts.slice(0, 5).map((product: any, i: number) => (
+              <ProductCard key={product.id} product={product} variant="custom" />
+            ))}
+          </Marquee>
         </div>
       </div>
     <SEO

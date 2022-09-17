@@ -16,14 +16,42 @@
         min-height: 70px;       
         background-color: var(--primary); 
     }
-    .productPrice{
 
+
+    // M O B I L E
+
+    .mobile{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        .left{
+            width: 50%;
+        }
+        .right{
+            width: 50%;
+        }
     }
 }
 @media screen and (max-width:1200px){
     .sidebarContainer{
-        width: 100%;
-        margin-left: 0;
-        margin-top: 20px;
+        position: fixed;
+        width: 95vw;
+        z-index: 999 !important;
+        height: 250px;
+        bottom: 0;
+        margin: 0 auto; /* Will not center vertically and won't work in IE6/7. */
+        left: 0;
+        right: 0;
+        bottom: 2%;
+        border: 1px solid rgba(85, 85, 85, 0.567);
+        background-color: rgba(24, 24, 24, 0.498);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: black 0 0 20px;
+
     }
+}
+
+.hide{
+    display: none;
 }

@@ -29,6 +29,19 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
       baseAmount: product.price.retailPrice,
       currencyCode: product.price.currencyCode!,
     })
+    const [isMobile, setIsMobile] = useState(false);
+    const handleMobile = () => { 
+      if(window.innerWidth < 1200){
+        setIsMobile(true);
+      }
+      else{
+        setIsMobile(false);
+      }
+    }
+    useEffect(() => {
+      window.addEventListener("resize" , handleMobile);
+    })
+    
 
     useEffect(() => {
         selectDefaultOptionFromProduct(product, setSelectedOptions)
@@ -64,6 +77,8 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
 
   return (
     <div className={styles.sidebarContainer}>
+      {/* ======== D E S K T O P ========= */}
+      <div className={`${isMobile === true && styles.hide}`}>
         <ProductTag
             name={product.name}
             price={`${price}`}
@@ -96,6 +111,46 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
               className={styles.descriptionText}
               html={product.descriptionHtml || product.description}
           /> */}
+      </div>
+      {/* ===== M O B I L E ====== */}
+      <div className={`${isMobile === false && styles.hide}`}>
+        <div className={styles.mobile}>
+          <div className={styles.left}>
+            <h3 className={styles.NameTag}>
+              <ProductTag
+                name={product.name}
+                price={`${price}`}
+                fontSize={20}
+              />
+            </h3>
+            <h3 className={styles.PriceTag}>
+
+            </h3>
+          </div>
+          <div className={styles.right}>
+            <ProductOptions
+              options={product?.options}
+              selectedOptions={selectedOptions}
+              setSelectedOptions={setSelectedOptions}
+            />
+            {process.env.COMMERCE_CART_ENABLED && (
+              <Button
+                  aria-label="Add to Cart"
+                  type="button"
+                  className={styles.button}
+                  onClick={addToCart}
+                  disabled={variant?.availableForSale === false}
+              >
+                {variant?.availableForSale === false
+                  ? 'Not Available'
+                  : 'Add To Cart'}
+              </Button>
+            )}
+          </div>
+
+        </div>
+
+      </div>
     </div>
   )
 }

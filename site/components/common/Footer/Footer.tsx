@@ -73,7 +73,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               target="_blank"
               className="text-primary"
             >
-              <img src="/VexrLogo-WhitePNG.png" alt="" className={s.logo} />
+              <img src="/vexrGroupLogo-white.png" alt="" className={s.logo} />
             </a>
           </div>
         </div>

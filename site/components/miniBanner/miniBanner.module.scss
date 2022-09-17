@@ -1,6 +1,6 @@
 .miniBannerContainer{
     border-radius: 20px;
-    margin: 20px 0;
+    margin: 15px 0;
     display: table;
     background-repeat: no-repeat;
     background-position: center center;
@@ -50,6 +50,16 @@
             p{
                 font-size: 1.2rem;
             }
+        }
+    }
+}
+@media screen and (max-width:500px){
+    .miniBannerContainer{
+        height: fit-content;
+        .textContainer{
+            width: 90%;
+            height: fit-content;
+            margin-bottom: 80px;
         }
     }
 }

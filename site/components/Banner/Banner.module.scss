@@ -50,16 +50,18 @@
     .BannerContainer{
         display: flex;
         flex-direction: column;
-        height: 530px;
+        height: 400px;
         .infoBoxContainer{
             clip-path: none;
-            top: 50%;
+            top: 40%;
             height: 200px;
             width: 100vw;
             background: rgb(0,0,0);
             background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4682247899159664) 20%, rgba(0,0,0,0.5802696078431373) 55%, rgba(0,212,255,0) 90%);
+            
             .infoBox{
                 width: 90%;
+                margin: 0 auto;
                 padding: 5px;
                 padding-top: 20px;
                 h2{
