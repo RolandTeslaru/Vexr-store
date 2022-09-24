@@ -1,7 +1,7 @@
-import React, { useRef } from 'react'
+import React, { Ref, useRef } from 'react'
 import { FC, useState } from 'react'
 import styles from "./ProductImages.module.scss"
-import {Swiper , SwiperSlide , useSwiper} from "swiper/react"
+import {Swiper , SwiperProps, SwiperSlide , useSwiper} from "swiper/react"
 import "swiper/css"
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -15,6 +15,9 @@ interface ProductViewProps{
     product: Product
     related?: Product[]
 }
+// interface SwiperRefProp extends SwiperProps{
+//     ref?: Ref<any>
+// }
 
 const ProductImages: FC<ProductViewProps>= ({product}) => {
 
@@ -35,9 +38,11 @@ const ProductImages: FC<ProductViewProps>= ({product}) => {
                         modules={[Navigation, Pagination, Mousewheel, Scrollbar]}
                         navigation
                         className={styles.swiper}
-                        onSlideChange ={(swiper) => {setSelectedImg(swiper.activeIndex); }}
                         
+                        onSlideChange ={(swiper) => {setSelectedImg(swiper.activeIndex); }}
+                        // @ts-expect-error
                         ref={swiperRef}
+                        
                     >
                         {product.images.map((image:ImageType, i:number) => (
                             <SwiperSlide key={i}>
