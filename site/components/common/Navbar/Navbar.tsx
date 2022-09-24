@@ -22,22 +22,20 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
       {/* "flex items-center flex-1" */}
         <div className={s.items_container}>
           <Link href="/">
-            {/* <a className={s.logo} aria-label="Logo">
-              <img src="/VexrLogo-WhitePNG.png" alt="Vexr_logo" />
-            </a> */}
             <a aria-label='Logo' className={s.logo}>
               <Image width={147} height={30} src={"/VexrLogo-WhitePNG.png"} alt={"Vexr Logo "} />
             </a>
           </Link>
           <nav className={s.navMenu}>
             <Link href="/search">
-              <a className={s.link}>All</a>
+              <a className={s.link}>See all products</a>
             </Link>
-            {links?.map((l) => (
+            {/* Categories */}
+            {/* {links?.map((l) => (
               <Link href={l.href} key={l.href}>
                 <a className={s.link}>{l.label}</a>
               </Link>
-            ))}
+            ))} */}
           </nav>
         </div>
         {process.env.COMMERCE_SEARCH_ENABLED && (

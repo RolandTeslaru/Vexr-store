@@ -79,6 +79,7 @@ const SEO: FC<Props> = ({
       <title key="title">
         {title ? `${config.titleTemplate.replace(/%s/g, title)}` : config.title}
       </title>
+      <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></meta>
       <meta
         key="description"
         name="description"
@@ -95,6 +96,10 @@ const SEO: FC<Props> = ({
         content={
           openGraph?.title ?? config.openGraph.title ?? title ?? config.title
         }
+      />
+      <meta
+        name='theme-color'
+        content='#000000' 
       />
       <meta
         key="og:description"

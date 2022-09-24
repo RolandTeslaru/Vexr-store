@@ -8,6 +8,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { valueToPercent } from '@mui/base'
 
 interface ProductOptionsProps {
   options: ProductOption[]
@@ -20,14 +21,14 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
   selectedOptions,
   setSelectedOptions,
 }) => {
+  
   return (
     <div className={styles.optionsContainer}>
-      {console.log(options)
-      }
-      {options.map((opt) => (
+      {options.map((opt , i) => (
         <div key={opt.displayName}>
           {/* <div role="listbox" className="flex flex-row"> */}
               <>
+
                 <FormControl>
                   <h2 className="uppercase font-medium text-sm tracking-wide">
                     {opt.displayName}
@@ -43,7 +44,10 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
                           control={<Radio/>} 
                           label={value.label} 
                           key={index}
+
                           onClick={() => {
+                            // console.log(selectedOptions)
+                            
                             setSelectedOptions((selectedOptions) => {
                               return {
                                 ...selectedOptions,

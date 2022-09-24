@@ -14,6 +14,7 @@ import styles from "./ProductSidebar.module.scss"
 import ProductTag from "../../ProductTag/ProductTag"
 import {ImEye} from "react-icons/im"
 import Rating from '@mui/material/Rating';
+import Router from "next/router"
 
 interface ProductSidebarProps {
     product: Product
@@ -43,10 +44,13 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
         setIsMobile(false);
       }
     }
+    const handleBuyNow = () => {
+      addToCart();
+      Router.push("/checkout");
+    }
     useEffect(() => {
       window.addEventListener("resize" , handleMobile);
     })
-    
     useEffect(() => {
         selectDefaultOptionFromProduct(product, setSelectedOptions)
       }, [product])
@@ -114,6 +118,14 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
               : 'Add To Cart'}
           </Button>
         )}
+          <Button
+              aria-label='Buy now'
+              type='button'
+              className={styles.button2}
+              disabled={variant?.availableForSale === false}
+              onClick={handleBuyNow}
+              Component="a"
+            >Buy now</Button>
         {/* Description */}
         {/* <Text
               className={styles.descriptionText}
@@ -123,16 +135,8 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
       
       {/* ===== M O B I L E ====== */}
       <div className={styles.mobile}>
-          <div className={styles.left}>
-            <div className={styles.nameTag_container}>
-              {/* <ProductTag
-                name={product.name}
-                fontSize={20}
-                price={""}
-              /> */}
-              <h1 className={styles.productTag}>{product.name}</h1>
-              <h2 className={styles.priceTag}>{price}</h2>
-            </div>
+          <div className={`${product.options.length > 0 ? styles.left : styles.hide}`}>
+           
             <div className={styles.productOptions}>
               <ProductOptions
                 options={product?.options}
@@ -146,12 +150,14 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
               aria-label='Buy now'
               type='button'
               className={styles.button2}
-              onClick={addToCart}
               disabled={variant?.availableForSale === false}
+              onClick={handleBuyNow}
+              Component="a"
+              href="/checkout" 
             >
             {variant?.availableForSale === false
                   ? 'Not Available'
-                  : 'Buy now'}
+                  : `Buy now ${price}`}
             </Button>
             {process.env.COMMERCE_CART_ENABLED && (
               <Button

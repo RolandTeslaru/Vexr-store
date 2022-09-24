@@ -1,6 +1,6 @@
 {
   "title": "Vexr store",
-  "titleTemplate": "%s - ACME Storefront",
+  "titleTemplate": "Vexr store",
   "description": "Vexr store commerce",
   "openGraph": {
     "title": "Vexr",

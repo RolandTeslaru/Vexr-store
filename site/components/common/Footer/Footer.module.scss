@@ -1,0 +1,52 @@
+.root {
+  @apply border-t border-accent-2;
+}
+.logo{
+  width:200px
+}
+
+.link {
+  & > svg {
+    @apply transform duration-75 ease-linear;
+  }
+
+  &:hover > svg {
+    @apply scale-110;
+  }
+  
+}
+.topContainer{
+  width: 100%;
+  border-bottom: 1px solid var(--accent-2);
+}
+.top{
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  margin: 0 auto;
+}
+.links{
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  margin: auto 0;
+  margin-left: 30px;
+  span{
+    padding: 8px;
+    a{
+      color: var(--accent-9);
+      transition: .1s ease;
+      &:hover{
+        color: var(--accent-6);
+      }
+    }
+
+  }
+}
+@media screen and (max-width:750px){
+  .miniLogo{
+    img{
+      height: 100px;
+    }
+  }
+}

@@ -55,8 +55,6 @@ const ProductImages: FC<ProductViewProps>= ({product}) => {
                             </SwiperSlide>
                         ))}
                     </Swiper>
-                        {console.log(selectedImg)
-                        }
                         <div className={styles.preview}>
                             {product.images.map((image:ImageType, i:number) => (
                                 // eslint-disable-next-line @next/next/no-img-element

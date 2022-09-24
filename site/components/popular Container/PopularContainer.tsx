@@ -17,8 +17,6 @@ const PopularContainer = ({products} : any) => {
   useEffect(() => {
     window.addEventListener("resize" , handleMobile);
   })
-  {console.log(slides)
-  }
   return (
     <>
       <div className={styles.header}>
@@ -49,7 +47,7 @@ const PopularContainer = ({products} : any) => {
                   <h4 className={`${slides === 2 && "hide"}`}>PC RGB Components</h4>
                     {/* <img src="/content/photo4.jpeg" alt="" className={styles.thumbnail}/> */}
                   <div className={styles.swiperContainer}>
-                    {products.slice(0,slides).map((product:any , index: number) => (
+                    {products.slice(products.length - slides,products.length).map((product:any , index: number) => (
                       <ProductCard product={product} variant='mini' key={index} />
                     ))}
                   </div>

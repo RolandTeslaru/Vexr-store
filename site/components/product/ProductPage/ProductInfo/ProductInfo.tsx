@@ -55,6 +55,9 @@ const ProductInfo: FC<ProductSidebarProps> = ({product}) => {
 
   return (
     <div className={styles.productInfoContainer}>
+       <div className={styles.nameTag_container}>
+          <h1 className={styles.productTag}>{product.name}</h1>
+        </div>
       <div className={styles.info}>
         <div className={styles.viewers}><ImEye/> {viewers} people are viewing this right now</div>
         <div className={styles.rating}>
@@ -68,8 +71,8 @@ const ProductInfo: FC<ProductSidebarProps> = ({product}) => {
           html={product.descriptionHtml || product.description}
         />
       </Collapse>
-      <Collapse title='More Info'>
-      </Collapse>
+      {/* <Collapse title='More Info'>
+      </Collapse> */}
     </div>
   )
 }

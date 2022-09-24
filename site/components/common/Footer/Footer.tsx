@@ -7,7 +7,7 @@ import getSlug from '@lib/get-slug'
 import { Github, Vercel } from '@components/icons'
 import { Logo, Container } from '@components/ui'
 import { I18nWidget } from '@components/common'
-import s from './Footer.module.css'
+import s from './Footer.module.scss'
 
 interface Props {
   className?: string
@@ -33,33 +33,31 @@ const Footer: FC<Props> = ({ className, pages }) => {
   return (
     <footer className={rootClassName}>
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accent-2 py-12 text-primary bg-primary transition-colors duration-150">
-          <div className="col-span-1 lg:col-span-2">
-            <Link href="/">
-              <a className="flex flex-initial items-center font-bold md:mr-24">
+        <div className={s.topContainer}>
+          <div className={s.top}>
+            <div className={s.miniLogo}>
+              <Link href="/">
                 <img src="/icon-192x192.png" alt="vexr logo" />
-              </a>
-            </Link>
-          </div>
-          <div className="col-span-1 lg:col-span-8">
-            <div className="grid md:grid-rows-4 md:grid-cols-3 md:grid-flow-col">
-              {[...links, ...sitePages].map((page) => (
-                <span key={page.url} className="py-3 md:py-0 md:pb-4">
-                  <Link href={page.url!}>
-                    <a className="text-accent-9 hover:text-accent-6 transition ease-in-out duration-150">
-                      {page.name}
-                    </a>
-                  </Link>
-                </span>
-              ))}
+              </Link>
             </div>
+              <div className={s.links}>
+                  {[...links, ...sitePages].map((page) => (
+                    <span key={page.url}>
+                      <Link href={page.url!}>
+                        <a>
+                          {page.name}
+                        </a>
+                      </Link>
+                    </span>
+                  ))}
+              </div>
+          </div>
           </div>
           <div className="col-span-1 lg:col-span-2 flex items-start lg:justify-end text-primary">
             <div className="flex space-x-6 items-center h-10">
               {/* <I18nWidget /> */}
             </div>
           </div>
-        </div>
         <div className="pt-6 pb-10 flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
           <div>
             <span>&copy; 2022 VEXR group. All rights reserved.</span>
