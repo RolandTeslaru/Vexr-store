@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { Cross, ChevronLeft } from '@components/icons'
 import { UserNav } from '@components/common'
 import cn from 'clsx'
-import s from './SidebarLayout.module.css'
+import s from './SidebarLayout.module.scss'
 
 type ComponentProps = { className?: string } & (
   | { handleClose: () => any; handleBack?: never }

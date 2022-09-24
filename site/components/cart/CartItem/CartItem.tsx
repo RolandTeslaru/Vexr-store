@@ -2,7 +2,7 @@ import { ChangeEvent, FocusEventHandler, useEffect, useState } from 'react'
 import cn from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import s from './CartItem.module.css'
+import s from './CartItem.module.scss'
 import { useUI } from '@components/ui/context'
 import type { LineItem } from '@commerce/types/cart'
 import usePrice from '@framework/product/use-price'
@@ -83,20 +83,18 @@ const CartItem = ({
       })}
       {...rest}
     >
-      <div className="flex flex-row space-x-4 py-4">
+      <div className={`${s.cartItem_container} space-x-4`}>
         <div className="w-16 h-16 bg-violet relative overflow-hidden cursor-pointer z-0">
           <Link href={`/product/${item.path}`}>
-            <a>
-              <Image
+              <img
                 onClick={() => closeSidebarIfPresent()}
                 className={s.productImage}
-                width={150}
-                height={150}
+                // width={150}
+                // height={150}
                 src={item.variant.image?.url || placeholderImg}
                 alt={item.variant.image?.altText || "Product Image"}
-                unoptimized
+                // unoptimized
               />
-            </a>
           </Link>
         </div>
         <div className="flex-1 flex flex-col text-base">

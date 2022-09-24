@@ -4,6 +4,7 @@ import s from './Navbar.module.scss'
 import NavbarRoot from './NavbarRoot'
 import { Logo, Container } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
+import Image from "next/image"
 
 interface Link {
   href: string
@@ -18,10 +19,14 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
   <NavbarRoot>
     <Container clean className="mx-auto max-w-8xl px-6">
       <div className={s.nav}>
-        <div className="flex items-center flex-1">
+      {/* "flex items-center flex-1" */}
+        <div className={s.items_container}>
           <Link href="/">
-            <a className={s.logo} aria-label="Logo">
-              <Logo/>
+            {/* <a className={s.logo} aria-label="Logo">
+              <img src="/VexrLogo-WhitePNG.png" alt="Vexr_logo" />
+            </a> */}
+            <a aria-label='Logo' className={s.logo}>
+              <Image width={147} height={30} src={"/VexrLogo-WhitePNG.png"} alt={"Vexr Logo "} />
             </a>
           </Link>
           <nav className={s.navMenu}>
@@ -45,7 +50,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
         </div>
       </div>
       {process.env.COMMERCE_SEARCH_ENABLED && (
-        <div className="flex pb-4 lg:px-6 lg:hidden">
+        <div className={s.search}>
           <Searchbar id="mobile-search" />
         </div>
       )}

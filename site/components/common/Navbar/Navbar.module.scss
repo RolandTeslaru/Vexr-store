@@ -6,11 +6,41 @@
 }
 
 .nav {
-  @apply relative flex flex-row justify-between py-4 md:py-4;
+  @apply relative flex flex-row justify-between md:py-4;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.search{
+  display: flex;
+  padding-bottom: .5rem;
+  @media screen and (min-width:1024px){
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    display: none;
+  }
+}
+@media screen and (max-width:800px){
+  .nav{
+    padding-top: 0.5rem;
+    padding-bottom: 0.2rem;
+  }
 }
 
 .navMenu {
-  @apply hidden ml-6 space-x-4 lg:block;
+  @apply ml-6 space-x-4;
+  margin-left: 1.5rem/* 24px */;
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+  width: max-content;
+}
+@media (max-width: 1024px) {
+  .navMenu{
+    display: none
+  }
 }
 
 .link {
@@ -28,13 +58,25 @@
 }
 
 .logo {
-  //@apply cursor-pointer rounded-full border transform duration-100 ease-in-out;
   cursor: pointer;
   transition: ease .2s;
-  display: flex;
-  height: 30px;
   &:hover {
     @apply shadow-md;
     transform: scale(1.05);
+  }
+}
+.items_container{
+  height: fit-content;
+  margin: auto 0;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  flex: 1 1 0%;
+  display: flex;
+  width: 30%;
+  align-items: center;
+  Link{
+    cursor: pointer;
+    
   }
 }

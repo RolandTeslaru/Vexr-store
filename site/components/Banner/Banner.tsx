@@ -37,11 +37,12 @@ const Banner = ({slideImages}:any) => {
                     delay:2300,
                     disableOnInteraction: false
                 }}
+                speed={200}
                 modules={[Navigation, Pagination, Mousewheel, Autoplay]}
                 className={styles.swiper}
             >
                 {slideImages.map((image:any, index:number) => (
-                    <SwiperSlide key={index}>
+                    <SwiperSlide key={index} className={styles.swiperSlide}>
                         <img src={image.url} alt={image.caption} />
                     </SwiperSlide>
                 ))}

@@ -34,18 +34,25 @@
 }
 @media screen and (max-width:1200px){
     .productWindow{
+        .leftContainer{
+            padding-top: 10px;
+        }
         flex-direction: column;
-        width: 90%;
+        width: 85%;
         .leftContainer{
             width: 100%;
         }
     }
     .bottomHeader{
-        width: 90%;
+        width: 75%;
     }
 }
 @media screen and (max-width:500px){
+    .productWindow{
+        width: 90%;
+    }
     .bottomHeader{
+        width: 90%;
         h4{
             font-size: 25px;
         }

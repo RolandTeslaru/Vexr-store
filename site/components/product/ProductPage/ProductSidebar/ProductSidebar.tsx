@@ -3,7 +3,7 @@ import type { Product } from '@commerce/types/product'
 import { FC, useEffect, useState } from 'react'
 import usePrice from '@framework/product/use-price'
 import { useAddItem } from '@framework/cart'
-import { Button, Text, Rating, Collapse, useUI } from '@components/ui'
+import { Button, Text, Collapse, useUI } from '@components/ui'
 import ProductOptions from '@components/product/ProductOptions'
 import {
     getProductVariant,
@@ -12,6 +12,8 @@ import {
 } from "../../helpers"
 import styles from "./ProductSidebar.module.scss"
 import ProductTag from "../../ProductTag/ProductTag"
+import {ImEye} from "react-icons/im"
+import Rating from '@mui/material/Rating';
 
 interface ProductSidebarProps {
     product: Product
@@ -30,6 +32,9 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
       currencyCode: product.price.currencyCode!,
     })
     const [isMobile, setIsMobile] = useState(false);
+    const max = 769;
+    const min = 694
+    const viewers = Math.floor((Math.random() * (max - min + 1) + min))
     const handleMobile = () => { 
       if(window.innerWidth < 1200){
         setIsMobile(true);
@@ -42,7 +47,6 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
       window.addEventListener("resize" , handleMobile);
     })
     
-
     useEffect(() => {
         selectDefaultOptionFromProduct(product, setSelectedOptions)
       }, [product])
@@ -62,6 +66,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
             setLoading(false)
         }
     }
+    
     const addToWishlist = async () => {
       setLoading(true)
       try {
@@ -78,16 +83,19 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
   return (
     <div className={styles.sidebarContainer}>
       {/* ======== D E S K T O P ========= */}
-      <div className={`${isMobile === true && styles.hide}`}>
+      <div className={`${styles.desktop}`}>
         <ProductTag
             name={product.name}
             price={`${price}`}
             fontSize={32}
         />
-        <div className="flex flex-row justify-between items-center">
-            <Rating value={4} />
-            <div className="text-accent-6 pr-1 font-medium text-sm">36 reviews</div>
+        <div className={styles.info}>
+        <div className={styles.viewers}><ImEye/> {viewers} people are viewing this right now</div>
+        <div className={styles.rating}>
+          <Rating value={5} size={'small'} readOnly/>
+          <div className={styles.ratingText}>36 reviews</div>
         </div>
+      </div>
         <ProductOptions
             options={product?.options}
             selectedOptions={selectedOptions}
@@ -112,27 +120,39 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
               html={product.descriptionHtml || product.description}
           /> */}
       </div>
+      
       {/* ===== M O B I L E ====== */}
-      <div className={`${isMobile === false && styles.hide}`}>
-        <div className={styles.mobile}>
+      <div className={styles.mobile}>
           <div className={styles.left}>
-            <h3 className={styles.NameTag}>
-              <ProductTag
+            <div className={styles.nameTag_container}>
+              {/* <ProductTag
                 name={product.name}
-                price={`${price}`}
                 fontSize={20}
+                price={""}
+              /> */}
+              <h1 className={styles.productTag}>{product.name}</h1>
+              <h2 className={styles.priceTag}>{price}</h2>
+            </div>
+            <div className={styles.productOptions}>
+              <ProductOptions
+                options={product?.options}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
               />
-            </h3>
-            <h3 className={styles.PriceTag}>
-
-            </h3>
+            </div>
           </div>
           <div className={styles.right}>
-            <ProductOptions
-              options={product?.options}
-              selectedOptions={selectedOptions}
-              setSelectedOptions={setSelectedOptions}
-            />
+            <Button
+              aria-label='Buy now'
+              type='button'
+              className={styles.button2}
+              onClick={addToCart}
+              disabled={variant?.availableForSale === false}
+            >
+            {variant?.availableForSale === false
+                  ? 'Not Available'
+                  : 'Buy now'}
+            </Button>
             {process.env.COMMERCE_CART_ENABLED && (
               <Button
                   aria-label="Add to Cart"
@@ -147,9 +167,6 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
               </Button>
             )}
           </div>
-
-        </div>
-
       </div>
     </div>
   )

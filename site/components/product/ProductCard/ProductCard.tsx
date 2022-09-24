@@ -8,6 +8,8 @@ import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
 import styles from "./ProductCard.module.scss"
+import {Button} from "@components/ui"
+import { Heart, Bag, Menu } from '@components/icons'
 
 interface Props {
   className?: string
@@ -87,6 +89,9 @@ const ProductCard: FC<Props> = ({
               <div className={styles.infoContainer}>
                 <p className={styles.product_name}>{product.name}</p>
                 <p className={styles.product_price}>{`${price}`}</p>
+                <button className={styles.bag}>
+                  <Bag/>
+                </button>
               </div>
               {/* {[...Array(rating)].map((e ,i) => <AiFillStar key={i}/>)}
               {[...Array(5-rating)].map((e ,i) => <AiOutlineStar key={i}/>)} */}

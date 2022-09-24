@@ -11,6 +11,7 @@ import {
 } from '../../helpers'
 import usePrice from '@framework/product/use-price'
 import styles from "./ProductInfo.module.scss"
+import {ImEye} from "react-icons/im"
 
 interface ProductSidebarProps {
   product: Product
@@ -48,9 +49,19 @@ const ProductInfo: FC<ProductSidebarProps> = ({product}) => {
       setLoading(false)
     }
   }
+  const max = 769;
+  const min = 694
+  const viewers = Math.floor((Math.random() * (max - min + 1) + min))
 
   return (
     <div className={styles.productInfoContainer}>
+      <div className={styles.info}>
+        <div className={styles.viewers}><ImEye/> {viewers} people are viewing this right now</div>
+        <div className={styles.rating}>
+          <Rating value={5} />
+          <div className={styles.ratingText}>36 reviews</div>
+        </div>
+      </div>
       <Collapse title="Details" >
         <Text
           className={styles.descriptionText}

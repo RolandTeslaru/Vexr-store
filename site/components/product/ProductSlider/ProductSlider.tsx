@@ -53,10 +53,6 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
       // Size of the touch area
       const touchXRadius = event.touches[0].radiusX || 0
 
-      // We set a threshold (10px) on both sizes of the screen,
-      // if the touch area overlaps with the screen edges
-      // it's likely to trigger the navigation. We prevent the
-      // touchstart event in that case.
       if (
         touchXPosition - touchXRadius < 10 ||
         touchXPosition + touchXRadius > window.innerWidth - 10

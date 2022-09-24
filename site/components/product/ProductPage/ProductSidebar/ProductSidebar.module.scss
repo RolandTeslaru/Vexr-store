@@ -5,8 +5,21 @@
     border-radius: 10px;
     width: 40%;
     .button{
-        width: 100%;
         border-radius: 10px;
+        margin: 10px auto;
+        width: 100%;
+        max-height: 50px;
+        padding: 10px 20px
+    }
+    .button2{
+        background-color: black;
+        color: white;
+        border: 1px solid white;
+        border-radius: 10px;
+        margin: 10px auto;
+        width: 100%;
+        max-height: 50px;
+        padding: 10px 20px;
     }
     .productName{
         font-size: 2rem;
@@ -16,42 +29,155 @@
         min-height: 70px;       
         background-color: var(--primary); 
     }
-
-
-    // M O B I L E
-
+    //======== M O B I L E =========//
     .mobile{
+        display:none;
+    }
+}
+.productOptions{
+    overflow-y: scroll;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    .viewers{
         width: 100%;
+        height: min-content;
         display: flex;
         flex-direction: row;
-        .left{
-            width: 50%;
+    }
+    .rating{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        justify-content: flex-start;
+        .ratingText{
+            color: var(--accent-6);
+            margin: 0 10px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
         }
-        .right{
-            width: 50%;
-        }
+    }
+} 
+.nameTag_container{
+    width: 100%;
+    height: fit-content;
+    top: 0;   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .productTag{
+        font-family: var(--font-sans);
+        font-weight: 700;
+        color: var(--text-primary);
+        font-size: 2vw;
+        background-color: black;
+        padding: 8px 20px;
+        border-radius: 10px;
+        width: fit-content;
+        // border: 1px solid white;
+    }
+    .priceTag{
+        font-family: var(--font-sans);
+        font-weight: 700;
+        color: black;
+        font-size: 2vw;
+        background-color: white;
+        padding: 8px 20px;
+        border-radius: 10px;
+        width: fit-content;
+        height: fit-content;
+        margin: auto 0;
     }
 }
 @media screen and (max-width:1200px){
     .sidebarContainer{
         position: fixed;
         width: 95vw;
-        z-index: 999 !important;
-        height: 250px;
+        z-index: 30 !important;
+        height: 200px;
         bottom: 0;
         margin: 0 auto; /* Will not center vertically and won't work in IE6/7. */
         left: 0;
         right: 0;
-        bottom: 2%;
+        bottom: 1%;
         border: 1px solid rgba(85, 85, 85, 0.567);
         background-color: rgba(24, 24, 24, 0.498);
         backdrop-filter: blur(10px);
         border-radius: 20px;
         box-shadow: black 0 0 20px;
-
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .desktop{
+        display: none !important;
+    }
+    .mobile{
+        width: 100%;
+        display:flex !important;
+        height: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        .left{
+            display: flex;
+            flex-direction: column;
+            width: 49%;
+            height: 100%;
+            margin: auto;
+            .nameTag_container{
+                margin: 0 auto;
+                text-align: center;
+            }
+        }
+        .right{
+            display: flex;
+            flex-direction: column;
+            width: 49%;
+            height: fit-content;
+            margin: auto 0;
+            .productOptions{
+            }
+        }
+    }
+}
+@media screen and (max-width:800px){
+    .sidebarContainer{
+        height: 150px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .info{
+        .viewers{
+            font-size: 10px;
+        }
+        .rating{
+            .rating{
+            }
+        }
+    }
+    .nameTag_container{
+        flex-direction: column;
+        .productTag{
+            padding: 0 10px;
+            width: fit-content;
+            margin: 0 auto;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+        .priceTag{
+            padding: 0px 10px;
+            font-size: 13px;
+            width: fit-content;
+            margin: 0 auto;
+        }
     }
 }
 
 .hide{
     display: none;
+    height: 100%;
 }

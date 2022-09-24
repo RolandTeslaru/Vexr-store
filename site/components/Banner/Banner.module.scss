@@ -1,6 +1,7 @@
 .BannerContainer{
     display: flex;
     flex-direction: column;
+    height: 600px;
     .infoBoxContainer{
         background: rgb(0,0,0);
             background: linear-gradient(90deg, rgb(0, 0, 0) 30%, rgba(0, 0, 0, 0.73) 63%, rgba(0, 0, 0, 0.092) 80%);
@@ -21,6 +22,9 @@
             margin: auto auto;
             margin-top: 150px;
             margin-bottom: auto;
+            .sectionHeading{
+                font-size: 1rem;
+            }
         }
     }
     .swiperContainer{
@@ -28,19 +32,26 @@
         width: 85vw;
         margin-left: auto;
         position: flex;
+        img{
+            object-fit: cover;
+        }
     }
 }
 @media screen and (max-width:1200px){
     .BannerContainer{
+        height: 400px;
         .infoBoxContainer{
             height: 400px;
             .infoBox{
-                margin: 0;
-                font-size: .3 rem;
+                margin-top: 80px;
+                width: 70%;
+                h2{
+                    font-size: 1.1rem;
+                }
             }
         }
         .swiperContainer{
-            height: 400px;
+            height: 100%;
         }
 
     }
@@ -51,14 +62,15 @@
         display: flex;
         flex-direction: column;
         height: 400px;
+        position: relative;
         .infoBoxContainer{
             clip-path: none;
-            top: 40%;
             height: 200px;
             width: 100vw;
             background: rgb(0,0,0);
             background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4682247899159664) 20%, rgba(0,0,0,0.5802696078431373) 55%, rgba(0,212,255,0) 90%);
-            
+            position: absolute;
+            bottom: 0;
             .infoBox{
                 width: 90%;
                 margin: 0 auto;

@@ -150,3 +150,15 @@
       }
     }
   }
+
+  .bag{
+    position: absolute;
+    bottom: 0%;
+    right: 5%;
+    padding: 10px;
+    transition: .3s ease;
+    border-radius: 100px;
+    &:hover{
+      background-color: rgba(255, 255, 255, 0.22);
+    }
+  }
