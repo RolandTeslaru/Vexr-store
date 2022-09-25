@@ -23,7 +23,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
         <div className={s.items_container}>
           <Link href="/">
             <a aria-label='Logo' className={s.logo}>
-              <Image width={147} height={30} src={"/VexrLogo-WhitePNG.png"} alt={"Vexr Logo "} />
+              <Image width={147} height={30} src={"/VexrLogo-WhitePNG.webp"} alt={"Vexr Logo "} />
             </a>
           </Link>
           <nav className={s.navMenu}>
