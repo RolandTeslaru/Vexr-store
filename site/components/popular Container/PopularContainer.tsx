@@ -37,7 +37,7 @@ const PopularContainer = ({products} : any) => {
                   ))}
                 </div>
               </div>
-              <div className={styles.imgContainer + " animated fadeIn"} style = {{backgroundImage: 'url(/content/img4.jpg)'}}>
+              <div className={styles.imgContainer + " animated fadeIn"} style = {{backgroundImage: 'url(/content/img4.webp)'}}>
                 <h4 className={`${slides === 2 ? styles.headerImg : styles.hide}`}>LED RGB products</h4>
               </div>
                 
@@ -52,7 +52,7 @@ const PopularContainer = ({products} : any) => {
                     ))}
                   </div>
                 </div>
-                <div className={styles.imgContainer + " animated fadeIn"} style = {{backgroundImage: 'url(/content/photo4.jpeg)'}}>
+                <div className={styles.imgContainer + " animated fadeIn"} style = {{backgroundImage: 'url(/content/photo4.webp)'}}>
                   <h4 className={`${slides === 2 ? styles.headerImg : styles.hide}` + " fadeIn"}>PC RBB PRODUCTS</h4>
                 </div>
               </div>

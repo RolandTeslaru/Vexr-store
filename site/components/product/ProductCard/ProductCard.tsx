@@ -17,6 +17,7 @@ interface Props {
   noNameTag?: boolean
   imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
   variant?: 'default' | 'slim' | 'simple' | 'custom' | 'grid' | 'card' | 'mini'
+  margin?: number
 }
 
 const placeholderImg = '/product-img-placeholder.svg'

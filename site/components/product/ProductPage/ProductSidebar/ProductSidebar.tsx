@@ -13,6 +13,7 @@ import {
 import styles from "./ProductSidebar.module.scss"
 import ProductTag from "../../ProductTag/ProductTag"
 import {ImEye} from "react-icons/im"
+import {MdOutlineLocalShipping} from "react-icons/md"
 import Rating from '@mui/material/Rating';
 import Router from "next/router"
 
@@ -32,6 +33,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
       baseAmount: product.price.retailPrice,
       currencyCode: product.price.currencyCode!,
     })
+    const [quantity, setQuantity] = useState(1);
     const [isMobile, setIsMobile] = useState(false);
     const max = 769;
     const min = 694
@@ -94,11 +96,15 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
             fontSize={32}
         />
         <div className={styles.info}>
-        <div className={styles.viewers}><ImEye/> {viewers} people are viewing this right now</div>
-        <div className={styles.rating}>
-          <Rating value={5} size={'small'} readOnly/>
-          <div className={styles.ratingText}>36 reviews</div>
-        </div>
+          <hr />
+          <div className={styles.text}><MdOutlineLocalShipping/> &nbsp; Free shipping</div>
+          <div className={styles.text}><ImEye/>&nbsp; {viewers} people are viewing this right now</div>
+          <div className={styles.text}>Price includes VAT</div>
+          <hr />
+          <div className={styles.rating}>
+            <Rating value={5} size={'small'} readOnly/>
+            <div className={styles.ratingText}>36 reviews</div>
+          </div>
       </div>
         <ProductOptions
             options={product?.options}

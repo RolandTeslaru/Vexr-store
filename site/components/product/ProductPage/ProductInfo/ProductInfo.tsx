@@ -3,7 +3,7 @@ import { useAddItem } from '@framework/cart'
 import { FC, useEffect, useState } from 'react'
 import { ProductOptions } from '@components/product'
 import type { Product } from '@commerce/types/product'
-import { Button, Text, Rating, Collapse, useUI } from '@components/ui'
+import { Button, Text, Collapse, useUI } from '@components/ui'
 import {
   getProductVariant,
   selectDefaultOptionFromProduct,
@@ -12,6 +12,8 @@ import {
 import usePrice from '@framework/product/use-price'
 import styles from "./ProductInfo.module.scss"
 import {ImEye} from "react-icons/im"
+import {MdOutlineLocalShipping} from "react-icons/md"
+import Rating from '@mui/material/Rating';
 
 interface ProductSidebarProps {
   product: Product
@@ -59,13 +61,17 @@ const ProductInfo: FC<ProductSidebarProps> = ({product}) => {
           <h1 className={styles.productTag}>{product.name}</h1>
         </div>
       <div className={styles.info}>
-        <div className={styles.viewers}><ImEye/> {viewers} people are viewing this right now</div>
+          <hr />
+          <div className={styles.text}><MdOutlineLocalShipping/> &nbsp; Free shipping</div>
+          <div className={styles.text}><ImEye/>&nbsp; {viewers} people are viewing this right now</div>
+          <div className={styles.text}>Price includes VAT</div>
+          <hr />
         <div className={styles.rating}>
-          <Rating value={5} />
-          <div className={styles.ratingText}>36 reviews</div>
-        </div>
+            <Rating value={5} size={'small'} readOnly/>
+            <div className={styles.ratingText}>36 reviews</div>
+          </div>
       </div>
-      <Collapse title="Details" >
+      <Collapse title="Details" initialState={true} >
         <Text
           className={styles.descriptionText}
           html={product.descriptionHtml || product.description}

@@ -34,21 +34,17 @@ const ProductPage: FC<ProductViewProps> = ({product, relatedProducts}) => {
 
   return (
     <div className={styles.productPageContainer}>
+
       {/* ======= Product Window ====== */}
       <div className={styles.productWindow}>
         <div className={styles.leftContainer}>
           <ProductImages product={product}/>
           <ProductInfo product={product}/>
         </div>
-
         <ProductSidebar
           product={product}
         />
       </div>
-      {/* Product images */}
-      {/* Product sidebar */}
-      {/* Product info */}
-
 
       {/* ======= Related Products */}
       <div className={styles.bottomHeader}>
@@ -66,6 +62,9 @@ const ProductPage: FC<ProductViewProps> = ({product, relatedProducts}) => {
           </Marquee>
         </div>
       </div>
+
+
+      
     <SEO
         title={product.name}
         description={product.description}

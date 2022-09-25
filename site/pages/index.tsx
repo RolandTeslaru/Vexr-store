@@ -53,13 +53,11 @@ export default function Home({products,}:
   {
   return (
     <>
-      {/* Banner slideshow */}
       <Banner slideImages={bannerImages}></Banner>
 
       <div className={styles.homeContainer + " animated fadeIn"}>
-
         <MiniBanner
-          img='/content/img1.jpg'
+          img='/content/img1.webp'
           header='Full Immersion'
           text='Be fully immersed in your video games, movies or tv shows with our LED RGB products. Reinvent your viewing experience with more color.'
         />

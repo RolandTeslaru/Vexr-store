@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import s from './Quantity.module.css'
+import s from './Quantity.module.scss'
 import { Cross, Plus, Minus } from '@components/icons'
 import cn from 'clsx'
 export interface QuantityProps {
@@ -20,7 +20,7 @@ const Quantity: FC<QuantityProps> = ({
   max = 6,
 }) => {
   return (
-    <div className="flex flex-row h-9">
+    <div className={s.Container}>
       <button className={s.actions} onClick={handleRemove}>
         <Cross width={20} height={20} />
       </button>
@@ -34,7 +34,6 @@ const Quantity: FC<QuantityProps> = ({
           type="number"
           max={max}
           min="0"
-          readOnly
         />
       </label>
       <button
