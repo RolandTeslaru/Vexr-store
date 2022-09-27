@@ -20,6 +20,7 @@ export async function getStaticProps({
     revalidate: 200,
   }
 }
+// dasdads
 
 export default function NotFound() {
   return (
