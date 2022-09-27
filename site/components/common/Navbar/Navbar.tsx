@@ -28,7 +28,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
           </Link>
           <nav className={s.navMenu}>
             <Link href="/search">
-              <a className={s.link}>See all products </a>
+              <a className={s.link}>See all products</a>
             </Link>
             {/* Categories */}
             {/* {links?.map((l) => (
@@ -46,9 +46,6 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
         <div className="flex items-center justify-end flex-1 space-x-8">
           <UserNav />
         </div>
-      </div>
-      <div>
-        
       </div>
       {process.env.COMMERCE_SEARCH_ENABLED && (
         <div className={s.search}>

@@ -37,7 +37,7 @@ export async function getStaticProps({
   const { products } = await productsPromise
   const { pages } = await pagesPromise
   const { categories, brands } = await siteInfoPromise
-  
+
   return {
     props: {
       products,

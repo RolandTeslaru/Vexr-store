@@ -31,7 +31,6 @@
     "@mui/joy": "^5.0.0-alpha.46",
     "@mui/material": "^5.10.6",
     "bootstrap": "^5.2.1",
-    "firebase": "^9.10.0",
     "graphql": "^16.6.0",
     "next-image-zoom": "^1.1.7",
     "react-icons": "^4.4.0",

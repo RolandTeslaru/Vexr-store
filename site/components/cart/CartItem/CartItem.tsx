@@ -35,12 +35,7 @@ const CartItem = ({
   const removeItem = useRemoveItem()
   const updateItem = useUpdateItem({ item })
 
-  const    price    = usePrice({
-    amount: item.variant.price * item.quantity,
-    baseAmount: item.variant.listPrice * item.quantity,
-    currencyCode,
-  })
-  const  basePrice  = usePrice({
+  const { price } = usePrice({
     amount: item.variant.price * item.quantity,
     baseAmount: item.variant.listPrice * item.quantity,
     currencyCode,
@@ -88,7 +83,6 @@ const CartItem = ({
       })}
       {...rest}
     >
-   
       <div className={`${s.cartItem_container} space-x-4`}>
         <div className="w-16 h-16 bg-violet relative overflow-hidden cursor-pointer z-0">
           <Link href={`/product/${item.path}`}>
