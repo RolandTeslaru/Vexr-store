@@ -47,14 +47,13 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
     } catch (err) {
       setLoading(false)
     }
-  }
-
+  }  
   return (
     <div className={className}>
-
       <ProductTag
               name={product.name}
               price={`${price} ${product.price?.currencyCode}`}
+              oldPrice={`${price} ${product.price?.retailPrice}`}
               fontSize={32}
       />
       <ProductOptions

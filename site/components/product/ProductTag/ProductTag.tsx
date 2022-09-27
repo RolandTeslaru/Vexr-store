@@ -8,11 +8,13 @@ interface ProductTagProps {
   name: string
   price: string
   fontSize?: number
+  oldPrice?: string
 }
 
 const ProductTag: React.FC<ProductTagProps> = ({
   name,
   price='',
+  oldPrice= "",
   className = '',
   fontSize = 32,
 }) => {
@@ -33,6 +35,7 @@ const ProductTag: React.FC<ProductTagProps> = ({
         
       </h4>
       <h4 className={s.price}>{price}</h4>
+      <h3>{oldPrice}</h3>
     </div>
   )
 }

@@ -28,11 +28,12 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
     const { openSidebar, setSidebarView } = useUI()
     const [loading, setLoading] = useState(false)
     const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
-    const { price } = usePrice({
+    const { price }  = usePrice({
       amount: product.price.value,
       baseAmount: product.price.retailPrice,
       currencyCode: product.price.currencyCode!,
     })
+
     const [quantity, setQuantity] = useState(1);
     const [isMobile, setIsMobile] = useState(false);
     const max = 769;
@@ -84,12 +85,14 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
         } catch (err) {
           setLoading(false);
       }
-    }
+    }    
 
   return (
     <div className={styles.sidebarContainer}>
       {/* ======== D E S K T O P ========= */}
       <div className={`${styles.desktop}`}>
+        {console.log(product)
+        }
         <ProductTag
             name={product.name}
             price={`${price}`}
@@ -132,11 +135,6 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
               onClick={handleBuyNow}
               Component="a"
             >Buy now</Button>
-        {/* Description */}
-        {/* <Text
-              className={styles.descriptionText}
-              html={product.descriptionHtml || product.description}
-          /> */}
       </div>
       
       {/* ===== M O B I L E ====== */}
