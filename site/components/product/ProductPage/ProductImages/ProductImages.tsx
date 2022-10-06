@@ -6,7 +6,7 @@ import "swiper/css"
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Mousewheel, Autoplay, Scrollbar } from "swiper";
-import type { Product } from '@commerce/types/product'
+import type { Media, Product } from '@commerce/types/product'
 import { Image as ImageType } from '@commerce/types/common'
 // import { imageConfigDefault } from 'next/dist/shared/lib/image-config'
 import Image from "next/image"
@@ -22,7 +22,7 @@ interface ProductViewProps{
 const ProductImages: FC<ProductViewProps>= ({product}) => {
 
     const swiperRef = useRef(null);
-    const [selectedImg, setSelectedImg] = useState(0);
+    const [selectedImg, setSelectedImg] = useState(0);    
   return (
     <>
         <div className={styles.productImages}>
@@ -42,7 +42,6 @@ const ProductImages: FC<ProductViewProps>= ({product}) => {
                         onSlideChange ={(swiper) => {setSelectedImg(swiper.activeIndex); }}
                         // @ts-expect-error
                         ref={swiperRef}
-                        
                     >
                         {product.images.map((image:ImageType, i:number) => (
                             <SwiperSlide key={i}>
@@ -54,19 +53,43 @@ const ProductImages: FC<ProductViewProps>= ({product}) => {
                                 />
                             </SwiperSlide>
                         ))}
+                        {
+                            product.media?.map((video , index) => (
+                                <SwiperSlide className="m-auto" key={index}>
+                                    {video.sources[0].format === "mp4" ?
+                                     <video controls width={video.sources[0].width} height={video.sources[0].height}>
+                                        <source src={video.sources[0].url}/>
+                                    </video> 
+                                        : 
+                                        <video controls width={video.sources[1].width} height={video.sources[1].height}>
+                                            <source src={video.sources[1].url}/>
+                                        </video>}
+                                </SwiperSlide>
+                            ))
+                        }
                     </Swiper>
                         <div className={styles.preview}>
                             {product.images.map((image:ImageType, i:number) => (
                                 // eslint-disable-next-line @next/next/no-img-element
-                                <img 
-                                    key={i}
-                                    src={image.url} 
-                                    alt={product.name + " " + selectedImg}
-                                    className={`${styles.previewImg} ${i === selectedImg && styles.selectedImg}`}
-                                    // @ts-expect-error
-                                    onClick={() => {setSelectedImg(i); swiperRef.current !== null && swiperRef.current.swiper.slideTo(i)}}
-                                />
+                                <>
+                                    <img 
+                                        key={i}
+                                        src={image.url} 
+                                        alt={product.name + " " + selectedImg}
+                                        className={`${styles.previewImg} ${i === selectedImg && styles.selectedImg}`}
+                                        // @ts-expect-error
+                                        onClick={() => {setSelectedImg(i); swiperRef.current !== null && swiperRef.current.swiper.slideTo(i)}}
+                                    />
+                                </>
                             ))}
+                            {/* {product.media?.map((Video:VideoSource , i:number) => {
+                                <>
+                                    <img 
+                                        src=
+                                        alt="" 
+                                    />
+                                </>
+                            })} */}
                         </div>
                 </div>
         </div>

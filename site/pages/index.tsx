@@ -16,8 +16,7 @@ import "swiper/css/pagination";
 import { Navigation, Pagination, Mousewheel, Autoplay } from "swiper";
 import { useEffect, useRef, useState } from 'react'
 import PopularContainer from '@components/popular Container/PopularContainer'
-// import banner from 'shopify---clever-products-7224/schemas/banner'
-// import Infobox from '@components/infobox/infobox'
+
 
 export async function getStaticProps({
   preview,
@@ -26,7 +25,7 @@ export async function getStaticProps({
 }: GetStaticPropsContext) {
   const config = { locale, locales }
   const productsPromise = commerce.getAllProducts({
-    variables: { first: 6 },
+    variables: { first: 10 },
     config,
     preview,
     // Saleor provider only
@@ -37,7 +36,7 @@ export async function getStaticProps({
   const { products } = await productsPromise
   const { pages } = await pagesPromise
   const { categories, brands } = await siteInfoPromise
-
+  
   return {
     props: {
       products,
@@ -47,8 +46,9 @@ export async function getStaticProps({
     },
     revalidate: 60,
   }
+
 }
-export default function Home({products,}: 
+export default function Home({products}: 
   InferGetStaticPropsType<typeof getStaticProps>) 
   {
   return (
@@ -78,5 +78,4 @@ export default function Home({products,}:
   
   )
 }
-
 Home.Layout = Layout

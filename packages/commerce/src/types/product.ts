@@ -1,6 +1,19 @@
+// @ts-ignore
+import { VideoSource } from '@vercel/commerce-shopify/schema.js'
+import { Image } from './common'
+
 export type ProductImage = {
   url: string
   alt?: string
+}
+export type Media ={
+  id: string
+}
+export type Video = Media & {
+  id:string,
+  mediaContentType: string,
+  preview: Image,
+  sources: VideoSource[]
 }
 
 export type ProductPrice = {
@@ -44,6 +57,7 @@ export type Product = {
   price: ProductPrice
   options: ProductOption[]
   vendor?: string
+  media?:  Video[];
 }
 
 export type SearchProductsBody = {

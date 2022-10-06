@@ -39,7 +39,7 @@ export default function getProductOperation({
   }): Promise<T['data']> {
     const { fetch, locale } = commerce.getConfig(cfg)
 
-    const {
+    const { 
       data: { productByHandle },
     } = await fetch<GetProductBySlugQuery>(
       query,
@@ -54,10 +54,10 @@ export default function getProductOperation({
         }),
       }
     )
-
+    
     return {
       ...(productByHandle && {
-        product: normalizeProduct(productByHandle as ShopifyProduct),
+        product: normalizeProduct(productByHandle as unknown as ShopifyProduct),
       }),
     }
   }

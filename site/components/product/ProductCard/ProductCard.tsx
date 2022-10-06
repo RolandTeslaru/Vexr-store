@@ -33,9 +33,9 @@ const ProductCard: FC<Props> = ({
     amount: product.price.value,
     baseAmount: product.price.retailPrice,
     currencyCode: product.price.currencyCode!,
-  })
-
-
+  })  
+  const oldPrice = "$" + Number(product.price.value + 20) + ".00";
+ 
   const rootClassName = cn(
     s.root,
     { [s.slim]: variant === 'slim', [s.simple]: variant === 'simple' , [s.custom]: variant === 'custom'},
@@ -89,14 +89,12 @@ const ProductCard: FC<Props> = ({
                   </>
                 )}
                 <div className={styles.infoContainer}>
-                  <p className={styles.product_name}>{product.name} {price}</p>
-                  {/* <p className={styles.product_price}>{`${price}`}</p> */}
-                  {/* <button className={styles.bag}>
-                    <Bag/>
-                  </button> */}
+                  <p className={styles.text}>{product.name}</p>
+                  <div className="flex flex-row w-full justify-around">
+                    <p className={styles.text}>{price}</p>
+                    <p className={styles.text + " line-through text-slate-300"}>{oldPrice}</p>
+                  </div>
                 </div>
-                {/* {[...Array(rating)].map((e ,i) => <AiFillStar key={i}/>)}
-                {[...Array(5-rating)].map((e ,i) => <AiOutlineStar key={i}/>)} */}
               </div>
             </div>
           </div>
@@ -229,9 +227,13 @@ const ProductCard: FC<Props> = ({
               </> 
             )}
             <div className={styles.infoContainer}>
-                <p className={styles.product_name}>{product.name}</p>
-                <p className={styles.product_price}>{`${price}`}</p>
+              <p className={styles.text}>{product.name}</p>
+                <div className="flex flex-row w-full justify-around">
+                <p className={styles.text}>{price}</p>
+                <p className={styles.text + " line-through text-slate-300"}>{oldPrice}</p>
+              </div>
             </div>
+            
           </div>
         )
 

@@ -55,7 +55,7 @@ export default function getAllProductsOperation({
         }),
       }
     )
-
+      
     return {
       products: data.products.edges.map(({ node }) =>
         normalizeProduct(node as ShopifyProduct)

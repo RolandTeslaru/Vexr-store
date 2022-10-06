@@ -2902,7 +2902,6 @@ export type Media = {
   /** The media content type. */
   mediaContentType: MediaContentType
   /** The preview image for the media. */
-  previewImage?: Maybe<Image>
 }
 
 /** An auto-generated type for paginating through multiple Media. */
@@ -2926,13 +2925,23 @@ export enum MediaContentType {
   Video = 'VIDEO',
 }
 
+export enum MediaStatus {
+  Uploaded = "UPLOADED",
+
+  Processing = "PROCESSING",
+
+  Ready = "READY",
+
+  Failed = "FAILED"
+}
+
 /** An auto-generated type which holds one Media and a cursor during pagination. */
 export type MediaEdge = {
   __typename?: 'MediaEdge'
   /** A cursor for use in pagination. */
   cursor: Scalars['String']
   /** The item at the end of MediaEdge. */
-  node: Media
+  node: Video 
 }
 
 /** Represents a Shopify hosted image. */
@@ -3911,7 +3920,7 @@ export type Product = Node &
     /** The metafield associated with the resource. */
     metafield?: Maybe<Metafield>
     /** A paginated list of metafields associated with the resource. */
-    metafields: MetafieldConnection
+    metafields?: MetafieldConnection
     /**
      * The online store URL for the product.
      * A value of `null` indicates that the product is not published to the Online Store sales channel.
@@ -3955,6 +3964,7 @@ export type Product = Node &
     variants: ProductVariantConnection
     /** The product’s vendor name. */
     vendor: Scalars['String']
+
   }
 
 /**
@@ -4957,15 +4967,17 @@ export type Video = Node &
     /** Globally unique identifier. */
     id: Scalars['ID']
     /** The media content type. */
-    mediaContentType: MediaContentType
+    mediaContentType?: Maybe<Scalars['String']> 
     /** The preview image for the media. */
-    previewImage?: Maybe<Image>
+    preview?: Maybe<Image>
     /** The sources for a video. */
     sources: Array<VideoSource>
+
+    status?: MediaStatus
   }
 
 /** Represents a source for a Shopify hosted video. */
-export type VideoSource = {
+export type VideoSource = Node & {
   __typename?: 'VideoSource'
   /** The format of the video source. */
   format: Scalars['String']
@@ -5282,6 +5294,27 @@ export type ProductConnectionFragment = { __typename?: 'ProductConnection' } & {
               'amount' | 'currencyCode'
             >
           }
+          // media: {__typename?: "MediaConnection"} & {
+          //   pageInfo:{__typename?: 'PageInfo' } & Pick<
+          //     PageInfo,
+          //     'hasNextPage' | 'hasPreviousPage'
+          //   >
+          //   edges: Array<
+          //     {__typename?: 'MediaEdge'} & {
+          //       node: {__typename?: 'Video' } & Pick<
+          //         Video,
+          //         'id' | 'mediaContentType'
+          //       > & {
+          //         sources: Array<
+          //           {__typename?: "VideoSource"} & Pick <
+          //             Video,
+          //             'url' | 'format' | 'width' | 'height'
+          //           >
+          //         >
+          //       }
+          //     }
+          //   >
+          // }
           images: { __typename?: 'ImageConnection' } & {
             pageInfo: { __typename?: 'PageInfo' } & Pick<
               PageInfo,
@@ -5513,6 +5546,7 @@ export type GetProductBySlugQuery = { __typename?: 'QueryRoot' } & {
       | 'vendor'
       | 'description'
       | 'descriptionHtml'
+      | 'media'
     > & {
         options: Array<
           { __typename?: 'ProductOption' } & Pick<
@@ -5530,6 +5564,7 @@ export type GetProductBySlugQuery = { __typename?: 'QueryRoot' } & {
             'amount' | 'currencyCode'
           >
         }
+        
         variants: { __typename?: 'ProductVariantConnection' } & {
           pageInfo: { __typename?: 'PageInfo' } & Pick<
             PageInfo,
@@ -5561,6 +5596,35 @@ export type GetProductBySlugQuery = { __typename?: 'QueryRoot' } & {
             }
           >
         }
+ 
+        media: {__typename?: "MediaConnection"} & {
+          pageInfo:{__typename?: 'PageInfo' } & Pick<
+            PageInfo,
+            'hasNextPage' | 'hasPreviousPage'
+          >
+          edges: Array<
+            {__typename?: 'MediaEdge'} & {
+              node: {__typename?: 'MediaImage' | 'Video' } & Pick<
+                Video,
+                'id' | 'mediaContentType' 
+              > & {
+                sources: Array<
+                  {__typename?: "VideoSource"} & Pick <
+                    Video,
+                    'url' | 'format' | 'width' | 'height'
+                  >
+                >
+                preview: {__typename?: "MediaPreviewImage"} & {
+                  image: {__typename?:"Image"} & Pick<
+                    Image,
+                    "url" | "width" | "height" | "id"
+                  >
+                }
+              }
+            }
+          >
+        }
+
         images: { __typename?: 'ImageConnection' } & {
           pageInfo: { __typename?: 'PageInfo' } & Pick<
             PageInfo,

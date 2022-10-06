@@ -5,6 +5,7 @@ import type { Category } from '../types/site'
 
 import {
   Product as ShopifyProduct,
+  MediaConnection,
   Checkout,
   CheckoutLineItemEdge,
   SelectedOption,
@@ -15,8 +16,11 @@ import {
   Page as ShopifyPage,
   PageEdge,
   Collection,
+  VideoSource,
 } from '../../schema'
 import { colorMap } from './colors'
+import { height, width } from '@mui/system'
+import { indexOf } from 'lodash'
 
 const money = ({ amount, currencyCode }: MoneyV2) => {
   return {
@@ -24,39 +28,6 @@ const money = ({ amount, currencyCode }: MoneyV2) => {
     currencyCode,
   }
 }
-
-const normalizeProductOption = ({
-  id,
-  name: displayName,
-  values,
-}: ProductOption) => {
-  return {
-    __typename: 'MultipleChoiceOption',
-    id,
-    displayName: displayName.toLowerCase(),
-    values: values.map((value) => {
-      let output: any = {
-        label: value,
-      }
-      if (displayName.match(/colou?r/gi)) {
-        const mapedColor = colorMap[value.toLowerCase().replace(/ /g, '')]
-        if (mapedColor) {
-          output = {
-            ...output,
-            hexColors: [mapedColor],
-          }
-        }
-      }
-      return output
-    }),
-  }
-}
-
-const normalizeProductImages = ({ edges }: ImageConnection) =>
-  edges?.map(({ node: { originalSrc: url, ...rest } }) => ({
-    url,
-    ...rest,
-  }))
 
 const normalizeProductVariants = ({ edges }: ProductVariantConnection) => {
   return edges?.map(
@@ -86,13 +57,84 @@ const normalizeProductVariants = ({ edges }: ProductVariantConnection) => {
             name,
             values: [value],
           })
-
           return options
         }),
       }
     }
-  )
-}
+    )
+  }
+  const normalizeProductOption = ({
+    id,
+    name: displayName,
+    values,
+  }: ProductOption) => {
+    return {
+      __typename: 'MultipleChoiceOption',
+      id,
+      displayName: displayName.toLowerCase(),
+      values: values.map((value) => {
+        let output: any = {
+          label: value,
+        }
+        if (displayName.match(/colou?r/gi)) {
+          const mapedColor = colorMap[value.toLowerCase().replace(/ /g, '')]
+          if (mapedColor) {
+            output = {
+              ...output,
+              hexColors: [mapedColor],
+            }
+          }
+        }
+        return output
+      }),
+    }
+  }
+  interface VideoType {
+    id: string,
+    width: number,
+    format: string
+  }
+
+  const normalizeProductMedia = ({edges}: MediaConnection) => {       
+    return edges == null ? void 0 : edges.filter((edge) => {
+      return Object.keys(edge.node).length !== 0 
+    }).map(({
+      node:{
+        id,
+        mediaContentType,
+        sources
+      }
+    }) => {
+      return{
+        id,
+        mediaContentType,
+        sources: sources.map(({
+          height, 
+          width , 
+          mimeType , 
+          format, 
+          url
+        }) => {
+          let output:any  = {
+            height,
+            width,
+            mimeType,
+            format,
+            url,
+          }
+          return output
+        })
+      }
+    })
+
+    }
+
+const normalizeProductImages = ({ edges }: ImageConnection) =>
+  edges?.map(({ node: { originalSrc: url, ...rest } }) => ({
+    url,
+    ...rest,
+  }))
+
 
 export function normalizeProduct({
   id,
@@ -106,16 +148,20 @@ export function normalizeProduct({
   priceRange,
   options,
   metafields,
+  media,
   ...rest
 }: ShopifyProduct): Product {
+  console.log("media " + JSON.stringify(media));
   return {
     id,
     name,
     vendor,
+
     path: `/${handle}`,
     slug: handle?.replace(/^\/+|\/+$/g, ''),
     price: money(priceRange?.minVariantPrice),
     images: normalizeProductImages(images),
+    media: media ? normalizeProductMedia(media) : [],
     variants: variants ? normalizeProductVariants(variants) : [],
     options: options
       ? options

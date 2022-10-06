@@ -29,9 +29,8 @@ const Collapse: FC<CollapseProps> = ({ title, children , initialState }) => {
       role="button"
       tabIndex={0}
       aria-expanded={isActive}
-      onClick={toggle}
     >
-      <div className={s.header}>
+      <div className={s.header} onClick={toggle}>
         <ChevronRight className={cn(s.icon, { [s.open]: isActive })} />
         <span className={s.label}>{title}</span>
       </div>

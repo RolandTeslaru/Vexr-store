@@ -9638,12 +9638,14 @@ type Video implements Node & Media {
   """
   The preview image for the media.
   """
-  previewImage: Image
+  preview: Image
 
   """
   The sources for a video.
   """
   sources: [VideoSource!]!
+
+  status: MediaStatus!
 }
 
 """

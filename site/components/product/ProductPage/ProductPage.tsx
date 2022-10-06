@@ -34,7 +34,11 @@ const ProductPage: FC<ProductViewProps> = ({product, relatedProducts}) => {
 
   return (
     <div className={styles.productPageContainer}>
-
+      {/* {product.media?.map((video) => {
+        video.id
+      })} */}
+      {console.log("product " + JSON.stringify(product.media))
+      }
       {/* ======= Product Window ====== */}
       <div className={styles.productWindow}>
         <div className={styles.leftContainer}>

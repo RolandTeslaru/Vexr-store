@@ -51,6 +51,27 @@ const getProductQuery = /* GraphQL */ `
           }
         }
       }
+      media(first:20){
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+        }
+        edges{
+          node{
+            ... on Video {
+              id
+              mediaContentType
+              sources{
+                mimeType
+                width
+                height
+                format
+                url
+              }
+            }
+          }
+        }
+      }
       images(first: 250) {
         pageInfo {
           hasNextPage

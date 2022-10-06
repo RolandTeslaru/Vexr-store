@@ -56,8 +56,7 @@ export default function getAllPagesOperation({
           },
         }),
       }
-    )
-
+    )      
     return {
       pages: locales.reduce<Page[]>(
         (arr, locale) =>

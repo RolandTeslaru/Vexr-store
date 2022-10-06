@@ -14,6 +14,7 @@
     "prettier-fix": "prettier --write ."
   },
   "devDependencies": {
+    "@types/shopify-buy": "^2.10.10",
     "husky": "^7.0.4",
     "prettier": "^2.5.1",
     "turbo": "^1.2.16"
@@ -30,10 +31,12 @@
     "@mui/icons-material": "^5.10.6",
     "@mui/joy": "^5.0.0-alpha.46",
     "@mui/material": "^5.10.6",
+    "@shopify/shopify-api": "^5.1.0",
     "bootstrap": "^5.2.1",
     "graphql": "^16.6.0",
     "next-image-zoom": "^1.1.7",
     "react-icons": "^4.4.0",
-    "sass": "^1.54.5"
+    "sass": "^1.54.5",
+    "shopify-buy": "^2.16.1"
   }
 }
