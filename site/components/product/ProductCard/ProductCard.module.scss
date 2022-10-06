@@ -29,11 +29,9 @@
     @media screen and (max-width:600px){
       width: 150px;
       height: 220px;
-      font-size: x-small;
     }
     @media screen and (max-width:400px){
       width: 130px;
-      font-size:x-small;
     }
    }
    .product_container:hover{
@@ -60,8 +58,11 @@
      flex-direction: column;
      justify-content: space-around;
      .text{
-      font-size: 5vi;
+      font-size: 1rem;
        font-weight: 500;
+       @media screen and (max-width:600px){
+        font-size: x-small;
+       }
      }
   }
 
