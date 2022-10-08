@@ -6,9 +6,16 @@
   @apply flex flex-row items-center justify-items-end h-full;
 }
 
-.item {
-  @apply ml-6 cursor-pointer relative transition ease-in-out
-  duration-100 flex items-center outline-none text-primary;
+.item{
+  margin-left: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  transition: .1s ease-in-out;
+  display: flex;
+  align-items: center;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  color: var(--text-primary);
 }
 
 .item:hover {
@@ -49,11 +56,11 @@
   @apply hidden -z-10;
 }
 
-@media screen(lg) {
-  .dropdownDesktop {
-    @apply block;
-  }
-  .dropdownMobile {
-    @apply hidden;
-  }
-}
+// @media screen(lg) {
+//   .dropdownDesktop {
+//     @apply block;
+//   }
+//   .dropdownMobile {
+//     @apply hidden;
+//   }
+// }

@@ -16,6 +16,9 @@ import {ImEye} from "react-icons/im"
 import {MdOutlineLocalShipping} from "react-icons/md"
 import Rating from '@mui/material/Rating';
 import Router from "next/router"
+import { useRouter } from 'next/router';
+import Share from '@components/common/Share/Share'
+
 
 interface ProductSidebarProps {
     product: Product
@@ -28,11 +31,6 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
     const { openSidebar, setSidebarView } = useUI()
     const [loading, setLoading] = useState(false)
     const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
-    const { price } = usePrice({
-      amount: product.price.value,
-      baseAmount: product.price.retailPrice,
-      currencyCode: product.price.currencyCode!,
-    })
     const [quantity, setQuantity] = useState(1);
     const [isMobile, setIsMobile] = useState(false);
     const max = 769;
@@ -58,6 +56,26 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
       }, [product])
   
     const variant = getProductVariant(product, selectedOptions)
+    // @ts-ignore
+    const variantIndex = product.variants.indexOf(variant)
+    
+    const { price } = usePrice({
+      amount: product.variants[variantIndex]?.price,
+      baseAmount: product.variants[variantIndex]?.listPrice,
+      currencyCode: product.price.currencyCode!,
+    })
+    // @ts-ignore
+    const { basePrice } = usePrice({
+      amount: product.variants[variantIndex]?.price,
+      baseAmount: product.variants[variantIndex]?.listPrice,
+      currencyCode: product.price.currencyCode!,
+    })
+    // @ts-ignore
+    const { discount } = usePrice({
+      amount: product.variants[variantIndex]?.price,
+      baseAmount: product.variants[variantIndex]?.listPrice,
+      currencyCode: product.price.currencyCode!,
+    })    
     const addToCart = async () => {
         setLoading(true)
         try {
@@ -85,6 +103,13 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
           setLoading(false);
       }
     }
+    const { asPath } = useRouter();
+    const origin =
+        typeof window !== 'undefined' && window.location.origin
+            ? window.location.origin
+            : '';
+
+    const URL = `${origin}${asPath}`;
 
   return (
     <div className={styles.sidebarContainer}>
@@ -94,6 +119,8 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
             name={product.name}
             price={`${price}`}
             fontSize={32}
+            oldPrice={`${basePrice}`}
+            discount={`${discount}`}
         />
         <div className={styles.info}>
           <hr />
@@ -105,6 +132,15 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
             <Rating value={5} size={'small'} readOnly/>
             <div className={styles.ratingText}>36 reviews</div>
           </div>
+          <h4>Share !</h4>
+          <Share
+            url={URL}
+            facebook
+            messenger
+            whatsapp
+            telegram
+            twitter
+          />
       </div>
         <ProductOptions
             options={product?.options}
@@ -132,11 +168,6 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
               onClick={handleBuyNow}
               Component="a"
             >Buy now</Button>
-        {/* Description */}
-        {/* <Text
-              className={styles.descriptionText}
-              html={product.descriptionHtml || product.description}
-          /> */}
       </div>
       
       {/* ===== M O B I L E ====== */}
@@ -152,19 +183,10 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
             </div>
           </div>
           <div className={styles.right}>
-            <Button
-              aria-label='Buy now'
-              type='button'
-              className={styles.button2}
-              disabled={variant?.availableForSale === false}
-              onClick={handleBuyNow}
-              Component="a"
-              href="/checkout" 
-            >
-            {variant?.availableForSale === false
-                  ? 'Not Available'
-                  : `Buy now ${price}`}
-            </Button>
+            <div className="flex flex-row justify-around"> 
+              <h4>{price}</h4>
+              <h4 className=" line-through text-slate-300">{basePrice}</h4>
+            </div>
             {process.env.COMMERCE_CART_ENABLED && (
               <Button
                   aria-label="Add to Cart"

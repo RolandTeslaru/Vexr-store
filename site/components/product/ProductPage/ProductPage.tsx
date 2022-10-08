@@ -24,20 +24,13 @@ interface ProductViewProps {
 }
 
 const ProductPage: FC<ProductViewProps> = ({product, relatedProducts}) => {
-  const { price } = usePrice({
-    amount: product.price.value,
-    baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode!,
-  })
-
   const [index , setIndex] = useState(0);
   useEffect(() => {
 
   })
   return (
     <div className={styles.productPageContainer}>
-      {/* {console.log("product " + JSON.stringify(product.media))
-      } */}
+
       {/* ======= Product Window ====== */}
       <div className={styles.productWindow}>
         <div className={styles.leftContainer}>

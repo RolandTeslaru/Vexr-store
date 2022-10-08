@@ -10,6 +10,7 @@ import ProductTag from '../ProductTag'
 import styles from "./ProductCard.module.scss"
 import {Button} from "@components/ui"
 import { Heart, Bag, Menu } from '@components/icons'
+import DiscountTag from '../DiscountTag/DiscountTag'
 
 interface Props {
   className?: string
@@ -34,6 +35,20 @@ const ProductCard: FC<Props> = ({
     baseAmount: product.price.retailPrice,
     currencyCode: product.price.currencyCode!,
   })  
+  // @ts-ignore
+  const { basePrice } = usePrice({
+    amount: product.variants[0]?.price,
+    baseAmount: product.variants[0]?.listPrice,
+    currencyCode: product.price.currencyCode!,
+  })
+  // @ts-ignore
+  const { discount } = usePrice({
+    amount: product.variants[0]?.price,
+    baseAmount: product.variants[0]?.listPrice,
+    currencyCode: product.price.currencyCode!,
+  })
+  console.log("discount basepice " + discount + " " + basePrice)
+  
   const oldPrice = "$" + Number(product.price.value + 20) + ".00";
  
   const rootClassName = cn(
@@ -65,8 +80,6 @@ const ProductCard: FC<Props> = ({
                 <p className={styles.product_price}>{`${price}`}</p>
               </div>
               
-              {/* {[...Array(rating)].map((e ,i) => <AiFillStar key={i}/>)}
-              {[...Array(5-rating)].map((e ,i) => <AiOutlineStar key={i}/>)} */}
             </div>
           </div>
         )}
@@ -79,6 +92,9 @@ const ProductCard: FC<Props> = ({
                 </div>
                 {product?.images && (
                   <>
+                  <div className="absolute -right-3 left-auto">
+                    <DiscountTag discount={discount}/>
+                  </div>
                     <img
                       quality="85"
                       src={product.images[0]?.url || placeholderImg}
@@ -92,7 +108,7 @@ const ProductCard: FC<Props> = ({
                   <p className={styles.text}>{product.name}</p>
                   <div className="flex flex-row w-full justify-around">
                     <p className={styles.text}>{price}</p>
-                    <p className={styles.text + " line-through text-slate-300"}>{oldPrice}</p>
+                    <p className={styles.text + " line-through text-slate-300"}>{basePrice}</p>
                   </div>
                 </div>
               </div>
@@ -106,6 +122,9 @@ const ProductCard: FC<Props> = ({
             </div>
             {product?.images && (
               <div>
+                <div className="absolute right-0 left-auto">
+                    <DiscountTag discount={discount}/>
+                  </div>
                 <Image
                   quality="85"
                   src={product.images[0]?.url || placeholderImg}
@@ -142,6 +161,7 @@ const ProductCard: FC<Props> = ({
             <div className={s.imageContainer}>
               {product?.images && (
                 <div>
+                  
                   <Image
                     alt={product.name || 'Product Image'}
                     className={s.productImage}
@@ -217,11 +237,14 @@ const ProductCard: FC<Props> = ({
         )}
         {variant === "mini" && (
           <div className={styles.miniCard}>
+            <div className="absolute -right-3  xs:-right-1 left-auto">
+                    <DiscountTag discount={discount}/>
+                  </div>
             {product?.images && (
               <>
                 <img 
                   src={product.images[0]?.url || placeholderImg} 
-                  alt={product.name || 'Product Images'} 
+                   alt={product.name || 'Product Images'} 
                   className={styles.product_image}
                 />
               </> 

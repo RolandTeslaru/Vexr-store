@@ -11,6 +11,7 @@ import { Image as ImageType } from '@commerce/types/common'
 // import { imageConfigDefault } from 'next/dist/shared/lib/image-config'
 import Image from "next/image"
 import { useRouter } from 'next/router'
+import DiscountTag from '@components/product/DiscountTag/DiscountTag'
 
 interface ProductViewProps{
     product: Product

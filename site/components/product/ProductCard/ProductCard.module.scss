@@ -108,6 +108,7 @@
   }
 
   .miniCard{
+    z-index: 4;
     width:90%;
     transition: .4s ease;
     backdrop-filter: blur(10px);

@@ -14,6 +14,8 @@ import styles from "./ProductInfo.module.scss"
 import {ImEye} from "react-icons/im"
 import {MdOutlineLocalShipping} from "react-icons/md"
 import Rating from '@mui/material/Rating';
+import Share from '@components/common/Share/Share'
+import { useRouter } from 'next/router'
 
 interface ProductSidebarProps {
   product: Product
@@ -54,6 +56,13 @@ const ProductInfo: FC<ProductSidebarProps> = ({product}) => {
   const max = 769;
   const min = 694
   const viewers = Math.floor((Math.random() * (max - min + 1) + min))
+  const { asPath } = useRouter();
+    const origin =
+        typeof window !== 'undefined' && window.location.origin
+            ? window.location.origin
+            : '';
+
+    const URL = `${origin}${asPath}`;
 
   return (
     <div className={styles.productInfoContainer}>
@@ -70,6 +79,15 @@ const ProductInfo: FC<ProductSidebarProps> = ({product}) => {
             <Rating value={5} size={'small'} readOnly/>
             <div className={styles.ratingText}>36 reviews</div>
         </div>
+        <h4>Share !</h4>
+          <Share
+            url={URL}
+            facebook
+            messenger
+            whatsapp
+            telegram
+            twitter
+          />
       </div>
       <Collapse title="Videos" initialState={true} color={""}>
         {product.media?.map((video , index) => {

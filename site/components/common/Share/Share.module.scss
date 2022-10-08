@@ -1,0 +1,7 @@
+.ShareContainer{
+    display: flex;
+    gap: 4px;
+    @media screen and (max-width:900px){
+        margin: 10px 0;
+    }
+}

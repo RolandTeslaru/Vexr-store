@@ -51,6 +51,7 @@ export default function usePrice(
   } | null
 ) {
   const { amount, baseAmount, currencyCode } = data ?? {}
+  
   const { locale } = useCommerce()
   const value = useMemo(() => {
     if (typeof amount !== 'number' || !currencyCode) return ''

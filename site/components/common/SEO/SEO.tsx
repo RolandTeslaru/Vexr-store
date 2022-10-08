@@ -148,11 +148,11 @@ const SEO: FC<Props> = ({
           content={config.twitter.handle}
         />
       )}
-      <meta key="robots" name="robots" content={robots ?? 'index,follow'} />
+      {/* <meta key="robots" name="robots" content={robots ?? 'index,follow'} /> */}
       <meta
         key="googlebot"
         name="googlebot"
-        content={robots ?? 'index,follow'}
+        content="all"
       ></meta>
       {children}
     </Head>

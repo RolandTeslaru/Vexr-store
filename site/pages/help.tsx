@@ -8,6 +8,22 @@ import Refund from '@components/policies/Refund'
 import Privacy from '@components/policies/Privacy'
 import questionsForm from "../info/questions"
 
+export async function getStaticProps({
+  preview,
+  locale,
+  locales,
+}: GetStaticPropsContext) {
+  const config = { locale, locales }
+  const pagesPromise = commerce.getAllPages({ config, preview })
+  const siteInfoPromise = commerce.getSiteInfo({ config, preview })
+  const { pages } = await pagesPromise
+  const { categories } = await siteInfoPromise
+
+  return {
+    props: { pages, categories },
+  }
+}
+
 const help = () => {
   return (
     <div className={styles.layout}>

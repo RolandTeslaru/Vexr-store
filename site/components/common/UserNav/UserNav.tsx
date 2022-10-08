@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import Link from 'next/link'
-import s from './UserNav.module.css'
+import s from './UserNav.module.scss'
 import { Avatar } from '@components/common'
 import useCart from '@framework/cart/use-cart'
 import { useUI } from '@components/ui/context'
