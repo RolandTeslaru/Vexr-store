@@ -60,6 +60,8 @@ const ModalView: React.FC<{ modalView: string; closeModal(): any }> = ({
   closeModal,
 }) => {
   return (
+    // @ts-nocheck
+    // @ts-nocheck
     <Modal onClose={closeModal}>
       {modalView === 'LOGIN_VIEW' && <LoginView />}
       {modalView === 'SIGNUP_VIEW' && <SignUpView />}
@@ -118,6 +120,8 @@ const Layout: React.FC<Props> = ({
       <div className={cn(s.root)}>
         <Navbar links={navBarlinks} />
         <main className="fit">{children}</main>
+        {console.log("pages " + JSON.stringify(pageProps.pages))
+        }
         <Footer pages={pageProps.pages} />
         <ModalUI />
         <CheckoutProvider>

@@ -6,7 +6,6 @@ import type {
 import { useRouter } from 'next/router'
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
-import { ProductView } from '@components/product'
 import ProductPage from '@components/product/ProductPage/ProductPage'
 
 export async function getStaticProps({
@@ -75,9 +74,8 @@ export default function Slug({
   return router.isFallback ? (
     <h1>Loading...</h1>
   ) : (
-    // <ProductView product={product} relatedProducts={relatedProducts} />
     <ProductPage product={product} relatedProducts={relatedProducts}/>
-  )
+  ) 
 }
 
 Slug.Layout = Layout

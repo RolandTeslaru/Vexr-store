@@ -1,13 +1,29 @@
 .swatch {
   box-sizing: border-box;
   composes: root from '@components/ui/Button/Button.module.css';
-  @apply h-10 w-10 bg-primary text-primary rounded-full mr-3 inline-flex
-  items-center justify-center cursor-pointer transition duration-150 ease-in-out
-  p-0 shadow-none border-accent-3 border box-border select-none;
+  height: 2,5rem;
+  width: 2,5rem;
+  background-color: var(--primary);
+  color: var(--tet-primary);
+  border-radius: 999px;
+  margin-right: 0,75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 1,5s ease-in-out;
+  padding: 0;
+  
+  @apply border-accent-3 border box-border select-none;
   margin-right: calc(0.75rem - 1px);
   overflow: hidden;
   width: 48px;
   height: 48px;
+  @media screen and (max-width:800px){
+    margin: 5px;
+    width: 28px;
+    height: 28px;
+  }
 }
 
 .swatch::before,
@@ -51,4 +67,9 @@
   @apply border-accent-9 border-2;
   padding-right: calc(1rem - 1px);
   padding-left: calc(1rem - 1px);
+}
+.swatch{
+  @media screen and (max-width:800px){
+    
+  }
 }

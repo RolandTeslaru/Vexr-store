@@ -21,6 +21,11 @@
         max-height: 50px;
         min-height: 50px;
         padding: 10px 20px;
+        transition: .2s ease-in-out;
+        &:hover{
+            background-color: rgb(27, 27, 27);
+
+        }
     }
     .productName{
         font-size: 2rem;
@@ -36,7 +41,9 @@
     }
 }
 .productOptions{
-    overflow-y: scroll;
+    overflow-y: auto;
+    height: auto;
+    margin: auto 0;
 }
 .info{
     display: flex;

@@ -1,4 +1,4 @@
-import React, { Ref, useRef } from 'react'
+import React, { Ref, useEffect, useRef } from 'react'
 import { FC, useState } from 'react'
 import styles from "./ProductImages.module.scss"
 import {Swiper , SwiperProps, SwiperSlide , useSwiper} from "swiper/react"
@@ -10,6 +10,7 @@ import type { Media, Product } from '@commerce/types/product'
 import { Image as ImageType } from '@commerce/types/common'
 // import { imageConfigDefault } from 'next/dist/shared/lib/image-config'
 import Image from "next/image"
+import { useRouter } from 'next/router'
 
 interface ProductViewProps{
     product: Product
@@ -22,51 +23,60 @@ interface ProductViewProps{
 const ProductImages: FC<ProductViewProps>= ({product}) => {
 
     const swiperRef = useRef(null);
-    const [selectedImg, setSelectedImg] = useState(0);    
+    const [selectedImg, setSelectedImg] = useState(0);  
+    const router = useRouter();
+    const forceReload = () => {
+        router.reload();
+    }  
   return (
     <>
         <div className={styles.productImages}>
             <div className={styles.container}>
-                    <Swiper
-                        cssMode={true}
-                        pagination={{
-                            clickable:true
-                        }}
-                        scrollbar={{draggable: true}}
-                        mousewheel={true}
-                        centeredSlides={true}
-                        modules={[Navigation, Pagination, Mousewheel, Scrollbar]}
-                        navigation
-                        className={styles.swiper}
-                        
-                        onSlideChange ={(swiper) => {setSelectedImg(swiper.activeIndex); }}
-                        // @ts-expect-error
-                        ref={swiperRef}
-                    >
-                        {product.images.map((image:ImageType, i:number) => (
-                            <SwiperSlide key={i}>
-                                <Image 
-                                    src={image.url} 
-                                    alt={product.name + " " + selectedImg}
-                                    width={720}
-                                    height={720}     
+                <Swiper
+                    cssMode={true}
+                    pagination={{
+                        clickable:true
+                    }}
+                    scrollbar={{draggable: true}}
+                    mousewheel={true}
+                    centeredSlides={true}
+                    modules={[Navigation, Pagination, Mousewheel, Scrollbar]}
+                    navigation
+                    className={styles.swiper}
+                    
+                    onSlideChange ={(swiper) => {setSelectedImg(swiper.activeIndex); }}
+                    // @ts-expect-error
+                    ref={swiperRef}
+                >
+                    {product.images.map((image:ImageType, i:number) => (
+                        <SwiperSlide key={i}>
+                            <Image 
+                                src={image.url} 
+                                alt={product.name + " " + selectedImg}
+                                width={720}
+                                height={720}     
+                            />
+                        </SwiperSlide>
+                    ))}
+                    {product.media?.map((video , index) => (
+                        <SwiperSlide className="m-auto" key={index}>
+                            {video.sources[0].format === "mp4" ?
+                                 <video 
+                                    controls 
+                                    width={video.sources[0].width} 
+                                    height={video.sources[0].height}
+                                    src={video.sources[0].url}
                                 />
-                            </SwiperSlide>
-                        ))}
-                        {
-                            product.media?.map((video , index) => (
-                                <SwiperSlide className="m-auto" key={index}>
-                                    {video.sources[0].format === "mp4" ?
-                                     <video controls width={video.sources[0].width} height={video.sources[0].height}>
-                                        <source src={video.sources[0].url}/>
-                                    </video> 
-                                        : 
-                                        <video controls width={video.sources[1].width} height={video.sources[1].height}>
-                                            <source src={video.sources[1].url}/>
-                                        </video>}
-                                </SwiperSlide>
-                            ))
-                        }
+                                    : 
+                                <video 
+                                    controls 
+                                    width={video.sources[1].width} 
+                                    height={video.sources[1].height}
+                                    src={video.sources[1].url}
+                                />
+                            }
+                        </SwiperSlide>
+                    ))}
                     </Swiper>
                         <div className={styles.preview}>
                             {product.images.map((image:ImageType, i:number) => (

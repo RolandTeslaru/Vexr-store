@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import Image from 'next/image'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import type { Product } from '@commerce/types/product'
 import usePrice from '@framework/product/use-price'
 import { WishlistButton } from '@components/wishlist'
@@ -31,14 +31,13 @@ const ProductPage: FC<ProductViewProps> = ({product, relatedProducts}) => {
   })
 
   const [index , setIndex] = useState(0);
+  useEffect(() => {
 
+  })
   return (
     <div className={styles.productPageContainer}>
-      {/* {product.media?.map((video) => {
-        video.id
-      })} */}
-      {console.log("product " + JSON.stringify(product.media))
-      }
+      {/* {console.log("product " + JSON.stringify(product.media))
+      } */}
       {/* ======= Product Window ====== */}
       <div className={styles.productWindow}>
         <div className={styles.leftContainer}>

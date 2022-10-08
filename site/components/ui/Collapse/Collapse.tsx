@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import React, { FC, ReactNode, useState } from 'react'
-import s from './Collapse.module.css'
+import s from './Collapse.module.scss'
 import { ChevronRight } from '@components/icons'
 import { useSpring, a } from '@react-spring/web'
 import useMeasure from 'react-use-measure'
@@ -9,9 +9,10 @@ export interface CollapseProps {
   title: string
   children: ReactNode
   initialState: boolean
+  color?:string
 }
 
-const Collapse: FC<CollapseProps> = ({ title, children , initialState }) => {
+const Collapse: FC<CollapseProps> = ({ title, children , initialState, color = "White" }) => {
   const [isActive, setActive] = useState(initialState)
   const [ref, { height: viewHeight }] = useMeasure()
 
@@ -32,7 +33,7 @@ const Collapse: FC<CollapseProps> = ({ title, children , initialState }) => {
     >
       <div className={s.header} onClick={toggle}>
         <ChevronRight className={cn(s.icon, { [s.open]: isActive })} />
-        <span className={s.label}>{title}</span>
+        <span className={`${s.label}  ${color=== "black" && s.blackTxt}`}>{title}</span>
       </div>
       <a.div style={{ overflow: 'hidden', ...animProps }}>
         <div ref={ref} className="pb-4 break-words w-full max-w-xl">

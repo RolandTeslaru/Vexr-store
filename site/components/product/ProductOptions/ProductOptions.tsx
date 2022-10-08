@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import React, { memo, useState } from 'react'
 import { Swatch } from '@components/product'
 import type { ProductOption } from '@commerce/types/product'
 import { SelectedOptions } from '../helpers'
@@ -9,6 +9,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { valueToPercent } from '@mui/base'
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 interface ProductOptionsProps {
   options: ProductOption[]
@@ -22,17 +24,26 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
   setSelectedOptions,
 }) => {
   
+  const [value , setValue] = useState(0);
+  const handleChange = (event: React.SyntheticEvent , newValue: number) => {
+    setValue(newValue)
+  }
+
   return (
     <div className={styles.optionsContainer}>
       {options.map((opt , i) => (
         <div key={opt.displayName}>
           {/* <div role="listbox" className="flex flex-row"> */}
               <>
+              <h2 className="uppercase font-medium text-sm tracking-wide">
+                    {opt.displayName}
+                  </h2>
 
-                <FormControl>
+                {/* <FormControl>
                   <h2 className="uppercase font-medium text-sm tracking-wide">
                     {opt.displayName}
                   </h2>
+                  
                   <RadioGroup
                     row
                     aria-labelledby="demo-row-radio-buttons-group-label"
@@ -57,33 +68,29 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
                         />
                      ))}
                   </RadioGroup>
-                </FormControl>
+                </FormControl> */}
               </>
             
             {opt.values.map((v, i: number) => {
               const active = selectedOptions[opt.displayName.toLowerCase()]
-              return (
-                <>
-                </>
-
+              
+                return (
+                  
+                  <Swatch
+                    key={`${opt.id}-${i}`}
+                    active={v.label.toLowerCase() === active}
+                    variant={opt.displayName}
+                    color={v.hexColors ? v.hexColors[0] : ''}
+                    label={v.label}
+                    onClick={() => {
+                      setSelectedOptions((selectedOptions) => {
+                        return {
+                          ...selectedOptions,
+                          [opt.displayName.toLowerCase()]: v.label.toLowerCase(),
+                        }
+                      })}}
+                  />
               )
-              // return(
-              //   return (
-              //     <Swatch
-              //       key={`${opt.id}-${i}`}
-              //       active={v.label.toLowerCase() === active}
-              //       variant={opt.displayName}
-              //       color={v.hexColors ? v.hexColors[0] : ''}
-              //       label={v.label}
-                    // onClick={() => {
-                    //   setSelectedOptions((selectedOptions) => {
-                    //     return {
-                    //       ...selectedOptions,
-                    //       [opt.displayName.toLowerCase()]: v.label.toLowerCase(),
-                    //     }
-                    //   })}}
-              //     />
-              // )
             })}
           </div>
       ))}

@@ -71,19 +71,25 @@ const ProductInfo: FC<ProductSidebarProps> = ({product}) => {
             <div className={styles.ratingText}>36 reviews</div>
         </div>
       </div>
-      <Collapse title="Videos" initialState={true}>
+      <Collapse title="Videos" initialState={true} color={""}>
         {product.media?.map((video , index) => {
           if(video.sources[0].format === "mp4")
             return(
-              <video controls width={video.sources[0].width} height={video.sources[0].height}>
-                <source src={video.sources[0].url}/>
-              </video> 
+              <video 
+                controls 
+                width={video.sources[0].width} 
+                height={video.sources[0].height}
+                src={video.sources[0].url}
+              />
             )
           else
               return(
-                <video controls width={video.sources[1].width} height={video.sources[1].height}>
-                  <source src={video.sources[1].url}/>
-                </video>
+                <video 
+                  controls 
+                  width={video.sources[1].width} 
+                  height={video.sources[1].height}
+                  src={video.sources[1].url}
+                />
               )
         })}
       </Collapse>

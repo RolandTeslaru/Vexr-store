@@ -1,0 +1,67 @@
+.contactContainer{
+    h1{
+        font-size: 2rem;
+        font-weight: 500;
+        font-family: "Roboto mono";
+      }
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding-top: 120px;
+    background-color: white;
+    color: black;
+    height: 80vh ;
+    @media screen and (max-width:850px){
+        flex-direction: column;
+        height: fit-content;
+        padding-top: 40px;
+    }
+    .logoContainer{
+        display: flex;
+        width: 40%;
+        height: fit-content;
+        @media screen and (max-width:850px){
+            margin: 0 auto;
+            .logo{
+                margin: 0;
+            }
+        }
+        .logo{
+            width: 400px;
+            margin-left: auto;
+            margin-right: 30px;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+    .info{
+        display: flex;
+        flex-direction: column;
+        padding: 40px;
+        width: 600px;
+        margin-right: auto;
+        @media screen and (max-width:850px){
+            margin: 0 auto;
+            width: 100%;
+            padding: 20px;
+        }
+    }
+}
+.sendBtn{
+    background-color: black;
+        color: white;
+        border: 2px solid white;
+        border-radius: 10px;
+        margin: 10px auto;
+        width: 100%;
+        max-height: 50px;
+        min-height: 50px;
+        padding: 10px 20px;
+        transition: .2s ease-in-out;
+        &:hover{
+            background-color: white;
+            border: 2px solid black;
+            color: black;
+
+        }
+}
