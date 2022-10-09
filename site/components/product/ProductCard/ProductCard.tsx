@@ -92,9 +92,9 @@ const ProductCard: FC<Props> = ({
                 </div>
                 {product?.images && (
                   <>
-                  <div className="absolute -right-3 left-auto">
-                    <DiscountTag discount={discount}/>
-                  </div>
+                    <div className="absolute -right-4 left-auto">
+                      <DiscountTag discount={discount}/>
+                    </div>
                     <img
                       quality="85"
                       src={product.images[0]?.url || placeholderImg}
@@ -105,38 +105,16 @@ const ProductCard: FC<Props> = ({
                   </>
                 )}
                 <div className={styles.infoContainer}>
-                  <p className={styles.text}>{product.name}</p>
+                  <h1 className="text-[0.5rem] sm:text-base font-medium">{product.name}</h1>
+                  <hr/>
                   <div className="flex flex-row w-full justify-around">
-                    <p className={styles.text}>{price}</p>
-                    <p className={styles.text + " line-through text-slate-300"}>{basePrice}</p>
+                    <p className="font-medium text-xs sm:text-xl ">{price}</p>
+                    <p className={"font-medium text-xs sm:text-lg line-through text-slate-300"}>{basePrice}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        )}
-        {variant === 'slim' && (
-          <>
-            <div className={s.header}>
-              <span>{product.name}</span>
-            </div>
-            {product?.images && (
-              <div>
-                <div className="absolute right-0 left-auto">
-                    <DiscountTag discount={discount}/>
-                  </div>
-                <Image
-                  quality="85"
-                  src={product.images[0]?.url || placeholderImg}
-                  alt={product.name || 'Product Image'}
-                  height={320}
-                  width={320}
-                  layout="fixed"
-                  {...imgProps}
-                />
-              </div>
-            )}
-          </>
         )}
 
         {variant === 'simple' && (
@@ -252,7 +230,7 @@ const ProductCard: FC<Props> = ({
             <div className={styles.infoContainer}>
               <p className={styles.text}>{product.name}</p>
                 <div className="flex flex-row w-full justify-around">
-                <p className={styles.text}>{price}</p>
+                <p className={styles.text + " " }>{price}</p>
                 <p className={styles.text + " line-through text-slate-300"}>{oldPrice}</p>
               </div>
             </div>

@@ -34,9 +34,9 @@
 }
 @media screen and (max-width: 1200px){
     .miniBannerContainer{
-        height: 500px;
+        height: 400px;
         .textContainer{
-            margin-top: 80px;
+            margin-top: 50px;
         }
     }
 }
@@ -45,7 +45,7 @@
         .textContainer{
             width: 300px;
             h4{
-                font-size: 2rem;
+                font-size: 1.7rem;
             }
             p{
                 font-size: 1.2rem;
@@ -57,9 +57,12 @@
     .miniBannerContainer{
         height: fit-content;
         .textContainer{
+            p{
+                font-size: 1rem;
+            }
             width: 90%;
             height: fit-content;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
     }
 }

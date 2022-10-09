@@ -37,6 +37,7 @@
     "next-image-zoom": "^1.1.7",
     "next-share": "^0.18.1",
     "react-icons": "^4.4.0",
+    "react-in-viewport": "^1.0.0-alpha.28",
     "sass": "^1.54.5",
     "shopify-buy": "^2.16.1"
   }

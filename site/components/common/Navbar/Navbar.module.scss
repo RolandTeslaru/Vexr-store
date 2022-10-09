@@ -1,7 +1,8 @@
 .root {
   @apply sticky top-0  z-40 transition-all duration-150;
   min-height: 74px;
-  background-color: rgba(0, 0, 0, 0.578);
+  background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0, 0, 0, 0.275) 0%, rgba(0,0,0,1) 100%);
   backdrop-filter: blur(15px);
 }
 
