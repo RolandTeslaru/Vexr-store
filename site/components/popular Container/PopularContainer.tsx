@@ -5,18 +5,18 @@ import { InferGetStaticPropsType } from 'next'
 
 const PopularContainer = ({products} : any) => {
 
-  const [slides , setSlides] = useState(3);
-  const handleMobile = () => {
-    if(window.innerWidth < 700) {
-      setSlides(2);
-    }
-    else {
-      setSlides(3);
-    }
-  }
-  useEffect(() => {
-    window.addEventListener("resize" , handleMobile);
-  })
+  // const [slides , setSlides] = useState(3);
+  // const handleMobile = () => {
+  //   if(window.innerWidth < 700) {
+  //     setSlides(2);
+  //   }
+  //   else {
+  //     setSlides(3);
+  //   }
+  // }
+  // useEffect(() => {
+  //   window.addEventListener("resize" , handleMobile);
+  // })
   return (
     <>
       <div className={styles.header}>
@@ -30,30 +30,30 @@ const PopularContainer = ({products} : any) => {
             </div>
               <div className={styles.first_row}>
                 <div className={styles.info}>
-                  <h4 className={`${slides === 2 && "hide"}`}>LED RGB products</h4>
+                  <h4 className={styles.hide}>LED RGB products</h4>
                   <div className={styles.swiperContainer}>
-                  {products.slice(0,slides).map((product:any , index: number) => (
-                    <ProductCard product={product} variant='mini' key={index}/>
+                  {products.map((product:any , index: number) => (
+                    <ProductCard product={product} variant='mini' key={index} className={styles.listItem} />
                   ))}
                 </div>
               </div>
               <div className={styles.imgContainer + " animated fadeIn"} style = {{backgroundImage: 'url(/content/img4.webp)'}}>
-                <h4 className={`${slides === 2 ? styles.headerImg : styles.hide}`}>LED RGB products</h4>
+                <h4 className={styles.headerImg}>LED RGB products</h4>
               </div>
                 
               </div>
               <div className={styles.second_row}>
                 <div className={styles.info}>
-                  <h4 className={`${slides === 2 && "hide"}`}>PC RGB Components</h4>
+                  <h4 className={styles.hide}>PC RGB Components</h4>
                     {/* <img src="/content/photo4.jpeg" alt="" className={styles.thumbnail}/> */}
                   <div className={styles.swiperContainer}>
-                    {products.slice(products.length - slides,products.length).map((product:any , index: number) => (
-                      <ProductCard product={product} variant='mini' key={index} />
+                    {products.map((product:any , index: number) => (
+                        <ProductCard product={product} variant='mini' className={styles.listItem} key={index}/>
                     ))}
                   </div>
                 </div>
                 <div className={styles.imgContainer + " animated fadeIn"} style = {{backgroundImage: 'url(/content/photo4.webp)'}}>
-                  <h4 className={`${slides === 2 ? styles.headerImg : styles.hide}` + " fadeIn"}>PC RBB PRODUCTS</h4>
+                  <h4 className={styles.headerImg + " fadeIn"}>PC RBB PRODUCTS</h4>
                 </div>
               </div>
             </div>

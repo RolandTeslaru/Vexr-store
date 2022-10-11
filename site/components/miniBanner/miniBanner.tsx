@@ -22,7 +22,7 @@ const MiniBanner:FC<Props> = ({
         style={{ backgroundImage: `url(${img})` }}
     >
         <div className={styles.textContainer}>
-            <h4>{header}</h4>
+            <h1>{header}</h1>
             <p>{text}</p>
         </div>
     </div>

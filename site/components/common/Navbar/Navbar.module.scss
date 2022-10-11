@@ -2,8 +2,9 @@
   @apply sticky top-0  z-40 transition-all duration-150;
   min-height: 74px;
   background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0, 0, 0, 0.275) 0%, rgba(0,0,0,1) 100%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.275) 0%, rgba(0,0,0,1) 100%);
   backdrop-filter: blur(15px);
+  box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.641);
 }
 
 .nav {
@@ -62,8 +63,9 @@ background: linear-gradient(0deg, rgba(0, 0, 0, 0.275) 0%, rgba(0,0,0,1) 100%);
   cursor: pointer;
   transition: ease .2s;
   &:hover {
-    @apply shadow-md;
     transform: scale(1.05);
+    filter:drop-shadow(0px 0px 10px white);
+    -webkit-filter: drop-shadow(0px 0px 10px white);
   }
 }
 .items_container{

@@ -49,7 +49,7 @@ const ProductCard: FC<Props> = ({
   })
   console.log("discount basepice " + discount + " " + basePrice)
   
-  const oldPrice = "$" + Number(product.price.value + 20) + ".00";
+  const oldPrice =  Number(product.price.value + 20) + ".00";
  
   const rootClassName = cn(
     s.root,
@@ -105,11 +105,11 @@ const ProductCard: FC<Props> = ({
                   </>
                 )}
                 <div className={styles.infoContainer}>
-                  <h1 className="text-[0.5rem] sm:text-base font-medium">{product.name}</h1>
+                  <h1 className="">{product.name}</h1>
                   <hr/>
                   <div className="flex flex-row w-full justify-around">
-                    <p className="font-medium text-xs sm:text-xl ">{price}</p>
-                    <p className={"font-medium text-xs sm:text-lg line-through text-slate-300"}>{basePrice}</p>
+                    <p className="font-medium">{price}</p>
+                    <p className={"line-through text-slate-300 text-center"}>{basePrice}</p>
                   </div>
                 </div>
               </div>
@@ -215,7 +215,7 @@ const ProductCard: FC<Props> = ({
         )}
         {variant === "mini" && (
           <div className={styles.miniCard}>
-            <div className="absolute -right-3  xs:-right-1 left-auto">
+            <div className="absolute -right-[0.5rem]  xs:-right-1 left-auto">
                     <DiscountTag discount={discount}/>
                   </div>
             {product?.images && (
@@ -228,10 +228,10 @@ const ProductCard: FC<Props> = ({
               </> 
             )}
             <div className={styles.infoContainer}>
-              <p className={styles.text}>{product.name}</p>
-                <div className="flex flex-row w-full justify-around">
-                <p className={styles.text + " " }>{price}</p>
-                <p className={styles.text + " line-through text-slate-300"}>{oldPrice}</p>
+              <p className="text-xs xl:text-xs">{product.name}</p>
+              <div className="flex flex-row w-full justify-around">
+                <p className={styles.text + " font-semibold"}>{price}</p>
+                <p className={styles.text + " line-through text-slate-300"}>{basePrice}</p>
               </div>
             </div>
             

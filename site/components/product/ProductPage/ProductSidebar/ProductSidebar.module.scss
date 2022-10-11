@@ -151,6 +151,11 @@
             
             height: fit-content;
             margin: auto auto;
+            h4{
+                font-weight: 500;
+                font-size: 20px;
+                margin: 0 10px;
+            }
             .productOptions{
             }
         }
@@ -165,10 +170,6 @@
     .info{
         .viewers{
             font-size: 10px;
-        }
-        .rating{
-            .rating{
-            }
         }
     }
 }

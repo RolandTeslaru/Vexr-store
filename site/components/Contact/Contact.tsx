@@ -15,6 +15,7 @@ const Contact = () => {
         </div>
         <div className={styles.info}>
             <h1>Contact</h1>
+            <p>email :  <span>vexr@vexr-store.com</span> </p> 
             {/* <form action="" method='post'>
                 <label htmlFor="firstName">First Name</label>
                 <input type="text" id="firstName" required minLength={2} maxLength={30}/>
@@ -23,7 +24,7 @@ const Contact = () => {
                 <input type="text" id='lastName' required minLength={2} maxLength={30}/>
                 <button type='submit'>Send</button>
             </form> */}
-            <form action="" autoComplete='on'>
+            {/* <form action="" autoComplete='on'>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                         <TextField 
@@ -79,7 +80,7 @@ const Contact = () => {
                     </Grid>
                 </Grid>
 
-            </form>
+            </form> */}
         </div>
     </div>
   )

@@ -15,7 +15,7 @@ const Hero: FC<HeroProps> = ({ headline, description, url }) => {
     <div className="bg-accent-9 border-b border-t border-accent-2">
       <Container>
         <div className={s.root}>
-          <h2 className={s.title}>{headline}</h2>
+          <h1 className={s.title}>{headline}</h1>
           <div className={s.description}>
             <p>{description}</p>
             {url && (

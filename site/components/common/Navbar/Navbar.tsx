@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import Link from 'next/link'
 import s from './Navbar.module.scss'
 import NavbarRoot from './NavbarRoot'
@@ -16,10 +16,25 @@ interface NavbarProps {
 }
 
 const Navbar: FC<NavbarProps> = ({ links }) => (
+  // // Nav hide control system
+  // const [showNav, setShowNav] = useState(true)
+  // const handleNav = () => {
+  //   if(window.scrollY > 100 ){
+  //     setShowNav(false);
+  //   } else {
+  //     setShowNav(true);
+  //   }
+  // }
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleNav)
+  //   return () => {
+  //     window.removeEventListener('scroll', handleNav)
+  //   }
+  // })
+
   <NavbarRoot>
     <Container clean className="mx-auto max-w-8xl px-6">
       <div className={s.nav}>
-      {/* "flex items-center flex-1" */}
         <div className={s.items_container}>
           <Link href="/">
             <a aria-label='Logo' className={s.logo}>
@@ -55,5 +70,4 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
     </Container>
   </NavbarRoot>
 )
-
 export default Navbar

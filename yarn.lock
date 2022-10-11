@@ -1228,10 +1228,10 @@
   "resolved" "https://registry.npmjs.org/@n1ru4l/graphql-live-query/-/graphql-live-query-0.10.0.tgz"
   "version" "0.10.0"
 
-"@next/bundle-analyzer@^12.0.8":
-  "integrity" "sha512-WLydwytAeHoC/neXsiIgK+a6Me12PuSpwopnsZgX5JFNwXQ9MlwPeMGS3aTZkYsv8QmSm0Ns9Yh9FkgLKYaUuQ=="
-  "resolved" "https://registry.npmjs.org/@next/bundle-analyzer/-/bundle-analyzer-12.1.6.tgz"
-  "version" "12.1.6"
+"@next/bundle-analyzer@^12.0.8", "@next/bundle-analyzer@^12.3.1":
+  "integrity" "sha512-2f/eei0YqZZBMTs4g1+HbgHyAFH5MbI/w9wLXmE8ly9SFze2D40sRH46JcC//EFVM/TIynVBh5sxn9CVO/vtxg=="
+  "resolved" "https://registry.npmjs.org/@next/bundle-analyzer/-/bundle-analyzer-12.3.1.tgz"
+  "version" "12.3.1"
   dependencies:
     "webpack-bundle-analyzer" "4.3.0"
 
