@@ -47,7 +47,7 @@ const PopularContainer = ({products} : any) => {
                   <h4 className={styles.hide}>PC RGB Components</h4>
                     {/* <img src="/content/photo4.jpeg" alt="" className={styles.thumbnail}/> */}
                   <div className={styles.swiperContainer}>
-                    {products.map((product:any , index: number) => (
+                    {products.slice(products.length - 3).map((product:any , index: number) => (
                         <ProductCard product={product} variant='mini' className={styles.listItem} key={index}/>
                     ))}
                   </div>

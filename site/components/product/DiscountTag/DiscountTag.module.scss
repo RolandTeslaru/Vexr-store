@@ -8,6 +8,7 @@
     margin: auto 0 !important;
     text-align: center;
     z-index: 10;
+    overflow: visible !important;
     @media screen and (max-width:600px){
        padding: 0 10px !important;
     }

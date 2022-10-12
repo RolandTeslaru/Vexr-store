@@ -36,11 +36,13 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
     <Container clean className="mx-auto max-w-8xl px-6">
       <div className={s.nav}>
         <div className={s.items_container}>
-          <Link href="/">
-            <a aria-label='Logo' className={s.logo}>
-              <Image width={147} height={30} src={"/VexrLogo-WhitePNG.webp"} alt={"Vexr Logo "} />
-            </a>
-          </Link>
+          <div className={s.logo}>
+            <Link href="/">
+              <a aria-label='Logo'>
+                <Image width={147} height={30} src={"/VexrLogo-WhitePNG.webp"} alt={"Vexr Logo "} />
+              </a>
+            </Link>
+          </div>
           <nav className={s.navMenu}>
             <Link href="/search">
               <a className={s.link}>See all products</a>

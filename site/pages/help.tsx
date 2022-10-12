@@ -7,6 +7,8 @@ import { Collapse } from '@components/ui'
 import Refund from '@components/policies/Refund'
 import Privacy from '@components/policies/Privacy'
 import questionsForm from "../info/questions"
+import TermsOfService from "@components/policies/TermsOfService"
+import Shipping from '@components/policies/Shipping'
 
 export async function getStaticProps({
   preview,
@@ -42,7 +44,10 @@ const help = () => {
               <Privacy/>
             </Collapse>
             <Collapse title='Terms of service' color="black" initialState={false}>
-              <Privacy/>
+              <TermsOfService/>
+            </Collapse>
+            <Collapse title='Shipping Policy' color='black' initialState={false}>
+              <Shipping/>
             </Collapse>
           </div>
           <div className={styles.questions}>

@@ -92,7 +92,7 @@ const ProductCard: FC<Props> = ({
                 </div>
                 {product?.images && (
                   <>
-                    <div className="absolute -right-4 left-auto">
+                    <div className="absolute -right-4 -top-2 left-auto">
                       <DiscountTag discount={discount}/>
                     </div>
                     <img
@@ -215,7 +215,7 @@ const ProductCard: FC<Props> = ({
         )}
         {variant === "mini" && (
           <div className={styles.miniCard}>
-            <div className="absolute -right-[0.5rem]  xs:-right-1 left-auto">
+            <div className="absolute -right-[0.9px]  xs:-right-1 left-auto">
                     <DiscountTag discount={discount}/>
                   </div>
             {product?.images && (

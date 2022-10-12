@@ -15,7 +15,8 @@ const Contact = () => {
         </div>
         <div className={styles.info}>
             <h1>Contact</h1>
-            <p>email :  <span>vexr@vexr-store.com</span> </p> 
+            <p>Email :  <span>vexr@vexr-store.com</span> </p> 
+            <p>Support email : <span>support@vexr-store.com</span></p>
             {/* <form action="" method='post'>
                 <label htmlFor="firstName">First Name</label>
                 <input type="text" id="firstName" required minLength={2} maxLength={30}/>

@@ -18,6 +18,7 @@ import Rating from '@mui/material/Rating';
 import Router from "next/router"
 import { useRouter } from 'next/router';
 import Share from '@components/common/Share/Share'
+import {FaShippingFast} from "react-icons/fa"
 
 
 interface ProductSidebarProps {
@@ -125,6 +126,9 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
         <div className={styles.info}>
           <hr />
           <div className={styles.text}><MdOutlineLocalShipping/> &nbsp; Free shipping</div>
+          <div className={styles.text}>
+            <FaShippingFast/>&nbsp; Fast shipping (see availability)
+          </div>
           <div className={styles.text}><ImEye/>&nbsp; {viewers} people are viewing this right now</div>
           <div className={styles.text}>Price includes VAT</div>
           <hr />
