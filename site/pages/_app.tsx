@@ -9,6 +9,7 @@ import { Head } from '@components/common'
 import { ManagedUIContext } from '@components/ui/context'
 import { useRouter } from 'next/router'
 import LoadingScreen from '@components/ui/LoadingScreen/LoadingScreen'
+import Script from 'next/script'
 
 const Noop: FC = ({ children }) => <>{children}</>
 
@@ -43,9 +44,23 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     document.body.classList?.remove('loading')
   }, [])
-
   return (
     <>
+      <Script
+        strategy='lazyOnload'
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      />
+      <Script id='google-analytics' strategy='lazyOnload'>
+        {`
+           window.dataLayer = window.dataLayer || [];
+           function gtag(){window.dataLayer.push(arguments);}
+           gtag('js', new Date());
+          
+           gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+            page_path: window.location.pathname
+           });
+        `}
+      </Script>
       <Head />
       <Loading/>
       <ManagedUIContext>

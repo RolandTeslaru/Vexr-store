@@ -1,7 +1,7 @@
 {
   "name": "Vexr store",
   "short_name": "Vexr",
-  "description": "Vexr techanology ecommerce store",
+  "description": "Vexr online ecommerce store",
   "display": "standalone",
   "start_url": "/",
   "theme_color": "#fff",
