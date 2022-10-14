@@ -28,7 +28,7 @@ export async function getStaticProps({
     variables: { first: 10 },
     config,
     preview,
-    // Saleor provider only
+    // for Saleor provider only
     ...({ featured: true } as any),
   })
   const pagesPromise = commerce.getAllPages({ config, preview })
