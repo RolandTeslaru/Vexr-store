@@ -49,7 +49,7 @@ const ProductCard: FC<Props> = ({
   })
   console.log("discount basepice " + discount + " " + basePrice)
   
-  const oldPrice =  Number(product.price.value + 20) + ".00";
+  const oldPrice =  Number(product.variants[0]?.price + 20) + ".00";
  
   const rootClassName = cn(
     s.root,
@@ -63,9 +63,6 @@ const ProductCard: FC<Props> = ({
         {variant === 'grid' && (
           <div className={styles.gridImg}>
             <div className={styles.product_card}>
-              <div className="header">
-
-              </div>
               {product?.images && (
                 <>
                   <img

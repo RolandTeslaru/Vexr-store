@@ -76,6 +76,8 @@ const SEO: FC<Props> = ({
    */
   return (
     <Head>
+      {console.log("CONFIG " + config )
+      }
       <title key="title">
         {title ? `${config.titleTemplate.replace(/%s/g, title)}` : config.title}
       </title>

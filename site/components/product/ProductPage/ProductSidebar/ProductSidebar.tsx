@@ -171,7 +171,9 @@ const ProductSidebar: FC<ProductSidebarProps> = ({product}) => {
               disabled={variant?.availableForSale === false}
               onClick={handleBuyNow}
               Component="a"
-            >Buy now</Button>
+            >{variant?.availableForSale === false
+              ? 'Not Available'
+              : 'Buy Now'}</Button>
       </div>
       
       {/* ===== M O B I L E ====== */}

@@ -1,5 +1,5 @@
 import commerce from '@lib/api/commerce'
-import { Layout } from '@components/common'
+import { Layout, SEO } from '@components/common'
 import { ProductCard } from '@components/product'
 import { Marquee, Hero } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
@@ -77,6 +77,10 @@ export default function Home({products}:
           products = {products}
         />
       </div>
+
+      <SEO
+        title='Vexr'
+      />
     </>
   
   )
