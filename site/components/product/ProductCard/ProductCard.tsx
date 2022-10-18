@@ -31,8 +31,8 @@ const ProductCard: FC<Props> = ({
   variant = 'default',
 }) => {
   const { price } = usePrice({
-    amount: product.price.value,
-    baseAmount: product.price.retailPrice,
+    amount: product.variants[0]?.price,
+    baseAmount: product.variants[0]?.listPrice,
     currencyCode: product.price.currencyCode!,
   })  
   // @ts-ignore

@@ -23,7 +23,6 @@ export const Loading = () => {
         url !== router.pathname ? setLoading(true) : setLoading(false);
       };
       const handleComplete = (url:any) => setLoading(false);
-
       router.events.on("routeChangeStart", handleStart);
       router.events.on("routeChangeComplete", handleComplete);
       router.events.on("routeChangeError", handleComplete);
