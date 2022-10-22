@@ -47,6 +47,9 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
             <Link href="/search">
               <a className={s.link}>See all products</a>
             </Link>
+            <Link href="/order">
+              <a href={s.link}>Track Order</a>
+            </Link>
             {/* Categories */}
             {/* {links?.map((l) => (
               <Link href={l.href} key={l.href}>

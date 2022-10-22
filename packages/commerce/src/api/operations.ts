@@ -6,12 +6,13 @@ import type { GetCustomerWishlistOperation } from '../types/wishlist'
 import type {
   GetAllProductPathsOperation,
   GetAllProductsOperation,
+  getOrderOperation,
   GetProductOperation,
 } from '../types/product'
 import type { APIProvider, CommerceAPI } from '.'
 
 const noop = () => {
-  throw new Error('Not implemented')
+  throw new Error('Not implemented dasdasd')
 }
 
 export const OPERATIONS = [
@@ -23,9 +24,10 @@ export const OPERATIONS = [
   'getAllProductPaths',
   'getAllProducts',
   'getProduct',
+  'getOrder',
 ] as const
 
-export const defaultOperations = OPERATIONS.reduce((ops, k) => {
+export const defaultOperations = OPERATIONS.reduce((ops, k) => {  
   ops[k] = noop
   return ops
 }, {} as { [K in AllowedOperations]: typeof noop })
@@ -138,23 +140,38 @@ export type Operations<P extends APIProvider> = {
       } & OperationOptions
     ): Promise<T['data']>
   }
-
+  
   getProduct: {
     <T extends GetProductOperation>(opts: {
       variables: T['variables']
       config?: P['config']
       preview?: boolean
     }): Promise<T['data']>
-
+    
     <T extends GetProductOperation>(
       opts: {
         variables: T['variables']
         config?: P['config']
         preview?: boolean
       } & OperationOptions
-    ): Promise<T['data']>
+      ): Promise<T['data']>
+    }
+    getOrder:{
+      <T extends getOrderOperation>(opts:{
+        variables: T['variables']
+        config?: P['config']
+        preview?: boolean
+      }): Promise<T['data']>
+  
+      <T extends getOrderOperation>(
+        opts: {
+          variables?: T['variables']
+          config?: P['config']
+          preview?: boolean
+      } & OperationOptions
+      ): Promise<T['data']>
+    }
   }
-}
 
 export type APIOperations<P extends APIProvider> = {
   [K in keyof Operations<P>]?: (ctx: OperationContext<P>) => Operations<P>[K]

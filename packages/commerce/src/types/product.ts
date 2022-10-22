@@ -1,5 +1,6 @@
 // @ts-ignore
-import { VideoSource } from '@vercel/commerce-shopify/schema.js'
+import { VideoSource, Order } from '@vercel/commerce-shopify/schema.js'
+import { type } from 'os'
 import { Image } from './common'
 
 export type ProductImage = {
@@ -74,7 +75,12 @@ export type ProductTypes = {
   product: Product
   searchBody: SearchProductsBody
 }
-
+export type SearchOrderHook<T extends OrderTypes = OrderTypes> = {
+  data:{
+    order: T['order'][]
+    found: boolean
+  }
+}
 export type SearchProductsHook<T extends ProductTypes = ProductTypes> = {
   data: {
     products: T['product'][]
@@ -93,6 +99,14 @@ export type ProductsSchema<T extends ProductTypes = ProductTypes> = {
     }
   }
 }
+export type OrderSchema<T extends OrderTypes = OrderTypes> = {
+  endpoint:{
+    options:{}
+    handlers: {
+      getOrder: SearchOrderHook<T>
+    }
+  }
+}
 
 export type GetAllProductPathsOperation<T extends ProductTypes = ProductTypes> =
   {
@@ -107,6 +121,14 @@ export type GetAllProductsOperation<T extends ProductTypes = ProductTypes> = {
     ids?: string[]
     first?: number
   }
+}
+
+export type OrderTypes = {
+  order: Order
+}
+export type getOrderOperation<T extends OrderTypes = OrderTypes > = {
+  data:{ order?: T['order'][] }
+  variables:{id?: Number}
 }
 
 export type GetProductOperation<T extends ProductTypes = ProductTypes> = {

@@ -17,6 +17,7 @@ import {
   PageEdge,
   Collection,
   VideoSource,
+  Order,
 } from '../../schema'
 import { colorMap } from './colors'
 import { height, width } from '@mui/system'
@@ -172,6 +173,10 @@ export function normalizeProduct({
     ...(descriptionHtml && { descriptionHtml }),
     ...rest,
   }
+}
+
+export function normalizeOrder(order: Order) {
+  console.log("THIS ORDER " + JSON.stringify(order))
 }
 
 export function normalizeCart(checkout: Checkout): Cart {

@@ -2576,6 +2576,11 @@ export type Fulfillment = {
   fulfillmentLineItems: FulfillmentLineItemConnection
   /** The name of the tracking company. */
   trackingCompany?: Maybe<Scalars['String']>
+
+  status?: OrderFulfillmentStatus
+
+  totalQuantity?:Scalars[Int]
+
   /**
    * Tracking information associated with the fulfillment,
    * such as the tracking number and tracking URL.
@@ -2628,6 +2633,8 @@ export type FulfillmentLineItemEdge = {
 export type FulfillmentTrackingInfo = {
   __typename?: 'FulfillmentTrackingInfo'
   /** The tracking number of the fulfillment. */
+  company?: Scalars['String']
+
   number?: Maybe<Scalars['String']>
   /** The URL to track the fulfillment. */
   url?: Maybe<Scalars['URL']>
@@ -3504,6 +3511,8 @@ export type Node = {
 /** An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provides an email address, billing address and payment information. */
 export type Order = Node & {
   __typename?: 'Order'
+
+  confirmed?: Scalars['Boolean']
   /** The reason for the order's cancellation. Returns `null` if the order wasn't canceled. */
   cancelReason?: Maybe<OrderCancelReason>
   /** The date and time when the order was canceled. Returns null if the order wasn't canceled. */
@@ -5229,6 +5238,18 @@ export type GetAllPagesQueryVariables = Exact<{
   first?: Maybe<Scalars['Int']>
 }>
 
+export type getOrder = { __typename?: 'QueryRoot'} & {
+  pages: {__typename?: 'OrderConnection'} & {
+    edges: Array<
+      {__typename?:'OrderEdge'} & {
+        node: {__typename?: 'Order'} & {
+          
+        }
+      }
+    >
+  }
+}
+
 export type GetAllPagesQuery = { __typename?: 'QueryRoot' } & {
   pages: { __typename?: 'PageConnection' } & {
     edges: Array<
@@ -5534,6 +5555,50 @@ export type GetPageQuery = { __typename?: 'QueryRoot' } & {
 export type GetProductBySlugQueryVariables = Exact<{
   slug: Scalars['String']
 }>
+
+export type getOrderIngoByIdQueryVariables = Exact<{
+  id: Scalars["Int"]
+}>
+
+export type getOrderByIdQuery = { __typename?: 'QueryRoot'} & {
+  orderByHandle?: Maybe<
+    {__typename?: 'Order'} & Pick<
+      Order,
+      | 'id'
+      | 'email'
+      | 'fulfillmentStatus'
+      | 'customerUrl'
+      | 'confirmed'
+      | 'phone'
+    > & {
+      shippingAddress: Array<
+        { __typename?: 'MailingAddress'} & Pick<
+          MailingAddress,
+          'firstName' | 'lastName' | 'phone' | 'formatted'
+        >
+      >
+      billingAddress: Array<
+        {__typename?: 'MailingAddress'} & Pick<
+          MailingAddress,
+          'firstName' | 'lastName' | 'phone' | 'formatted'
+        >
+      >
+      fulfillments: Array<
+        {__typename?: Fulfillment} & Pick<
+          Fulfillment,
+          'status' | 'totalQuantity'
+        >
+      > & {
+        trackingInfo: Array<
+          {__typename?: FulfillmentTrackingInfo} & Pick<
+            FulfillmentTrackingInfo,
+            'company' | 'number' | 'url'
+          >
+         >
+      }
+    }
+  >
+}
 
 export type GetProductBySlugQuery = { __typename?: 'QueryRoot' } & {
   productByHandle?: Maybe<

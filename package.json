@@ -32,14 +32,20 @@
     "@mui/joy": "^5.0.0-alpha.46",
     "@mui/material": "^5.10.6",
     "@next/bundle-analyzer": "^12.3.1",
+    "@shopify/hydrogen": "^1.6.0",
     "@shopify/shopify-api": "^5.1.0",
     "bootstrap": "^5.2.1",
+    "dns": "^0.2.2",
+    "fs": "^0.0.1-security",
     "graphql": "^16.6.0",
     "next-image-zoom": "^1.1.7",
     "next-share": "^0.18.1",
     "react-icons": "^4.4.0",
     "react-in-viewport": "^1.0.0-alpha.28",
     "sass": "^1.54.5",
-    "shopify-buy": "^2.16.1"
+    "shopify": "^0.1.0",
+    "shopify-api-node": "^3.11.3",
+    "shopify-buy": "^2.16.1",
+    "sqlite3": "^5.1.2"
   }
 }

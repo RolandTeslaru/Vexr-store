@@ -6,7 +6,7 @@ import type { CustomerSchema } from '../types/customer'
 import type { LoginSchema } from '../types/login'
 import type { LogoutSchema } from '../types/logout'
 import type { SignupSchema } from '../types/signup'
-import type { ProductsSchema } from '../types/product'
+import type { OrderSchema, ProductsSchema } from '../types/product'
 import type { WishlistSchema } from '../types/wishlist'
 import type { CheckoutSchema } from '../types/checkout'
 import type { CustomerCardSchema } from '../types/customer/card'
@@ -29,6 +29,7 @@ export type APISchemas =
   | CheckoutSchema
   | CustomerCardSchema
   | CustomerAddressSchema
+  | OrderSchema
 
 export type GetAPISchema<
   C extends CommerceAPI<any>,
@@ -101,6 +102,7 @@ export function getCommerceApi<P extends APIProvider>(
     new CommerceAPICore(customProvider),
     defaultOperations as AllOperations<P>
   )
+  
   const ops = customProvider.operations
 
   OPERATIONS.forEach((k) => {
@@ -110,6 +112,8 @@ export function getCommerceApi<P extends APIProvider>(
     }
   })
 
+  console.log("COMMERCE " + JSON.stringify(commerce))
+  
   return commerce
 }
 
