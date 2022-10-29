@@ -16,7 +16,7 @@ import "swiper/css/pagination";
 import { Navigation, Pagination, Mousewheel, Autoplay } from "swiper";
 import { useEffect, useRef, useState } from 'react'
 import PopularContainer from '@components/popular Container/PopularContainer'
-
+import InfoBox from '@components/InfoBox/InfoBox'
 
 export async function getStaticProps({
   preview,
@@ -56,8 +56,13 @@ export default function Home({products}:
     
   return (
     <>
-      <Banner slideImages={bannerImages}></Banner>
-
+      <Banner slideImages={bannerImages}/>
+      <InfoBox
+        variant='products'
+        products={products}
+        text={"asdfasdasdsadsd"}
+        backgroundImg=""
+      />
       <div className={styles.homeContainer + " animated fadeIn"}>
         <MiniBanner
           img='/content/img1.webp'

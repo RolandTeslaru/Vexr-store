@@ -27,6 +27,7 @@ const PopularContainer = ({products} : any) => {
         >
           <div className={styles.backgroundBlur}>
             <div className={styles.content}>
+              
             </div>
               <div className={styles.first_row}>
                 <div className={styles.info}>

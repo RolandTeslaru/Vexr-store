@@ -231,7 +231,6 @@ const ProductCard: FC<Props> = ({
                 <p className={styles.text + " line-through text-slate-300"}>{basePrice}</p>
               </div>
             </div>
-            
           </div>
         )
 
