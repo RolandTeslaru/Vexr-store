@@ -1,3 +1,5 @@
+.fade{display: none;}
+.bottomFade{display: none;}
 .infoBox_container{
     margin: 20px 0;
     height: 400px;
@@ -6,17 +8,17 @@
     flex-direction: row;
     background-position: center;
     background-size: cover;
-    @media screen and (max-width:800px){
+    @media screen and (max-width:1200px){
         height: 250px;
     }
     .content_container{
-        height: 250px;
+        height: 300px;
         display: flex;
-        width: 60%;
+        width: 50%;
         flex-direction: row;
         margin: auto 0;
         justify-content: space-around;
-        @media screen and (max-width:800px){
+        @media screen and (max-width:1200px){
             height: 200px;
         }
     }
@@ -26,17 +28,95 @@
     .text_container{
         position: absolute;
         height: 400px;
-        width: 40%;
+        width: 50%;
         right: 0;
+        backdrop-filter: blur(20px) ;
         clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%) ;
         padding-left: 6%;
-        // background: rgba(77, 77, 77, 0.43);
-        backdrop-filter: blur(20px) ;
-        @media screen and (max-width:800px){
+        background: rgba(0, 0, 0, 0.182);
+
+        .text{padding: 40px;}
+        .header{width: 100%;}
+        .paragraph{
+            text-align: center;
+            margin-top: 30px;
+        }
+        @media screen and (max-width:1200px){
             height: 250px;
+            .text{padding: 20px;}
+            .header{font-size: xx-large; padding-left: 30px;}
+            .paragraph{
+                font-size:medium;
+                margin-top: 10px;
+                padding: 0 20px;
+            }
         }
     }
 }
 .reverse{
-    flex-direction: row-reverse;
+    .infoBox_container{
+        flex-direction: row-reverse;
+        .text_container{
+            clip-path: none;
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%) ;
+            left: 0;
+            padding-left: 0;
+            padding-right: 6%;
+        }
+    }
+}
+@media screen and (max-width:800px){
+    .fade{
+        display: block;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+        height: 175px;
+        width: 100vw;
+        position: absolute;
+    }
+    .bottomFade{
+        display: block;
+        height: 275px;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+        position: absolute;
+        width: 100vw;
+        bottom: 0;
+    }
+    .reverse{
+        clip-path: none;
+        .infoBox_container{
+            flex-direction: column;
+            clip-path: polygon(0 0, 100% 11%, 100% 86%, 0 100%);
+            .text_container{
+                clip-path: polygon(0 70px, 100% 0, 100% 330px, 0% 100%);
+                .text{
+                    .header{text-align: end;}
+                }
+            }
+        }
+    }
+    .infoBox_container{
+        flex-direction: column;
+        height: 730px;
+        width: 100vw;
+        clip-path: polygon(0 70px, 100% 0, 100% 100%, 0% 660px);
+        .content_container{
+            width: 100%;
+            padding: 0 30px;
+            height: 250px;
+            margin: 0;
+            margin-top: 100px;
+        }
+        .text_container{
+            position:relative;
+            padding: 0;
+            width: 100%;
+            height: 400px;
+            clip-path: polygon(0 0, 100% 70px, 100% 100%, 0% 330px);
+            .text{
+                padding: 0 10px;
+                padding-top: 50px;
+            }
+            .paragraph{margin-top: 25px;}
+        }
+    }
 }

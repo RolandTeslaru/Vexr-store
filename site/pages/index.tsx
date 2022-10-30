@@ -60,8 +60,17 @@ export default function Home({products}:
       <InfoBox
         variant='products'
         products={products}
-        text={"asdfasdasdsadsd"}
-        backgroundImg=""
+        text={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "}
+        header={"Top sellers"}
+        backgroundImg="/infobox1/background-faded1.png"
+      />
+      <InfoBox
+        variant='products'
+        products={products}
+        text={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "}
+        header={"GPU Brackets"}
+        backgroundImg="/infobox1/background-faded2.png"
+        reverse
       />
       <div className={styles.homeContainer + " animated fadeIn"}>
         <MiniBanner

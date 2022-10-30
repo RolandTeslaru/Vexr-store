@@ -4,7 +4,8 @@ import {FC} from 'react'
 import s from "./InfoBox.module.scss"
 import { ProductCard } from '@components/product'
 import { CSSProperties } from '@mui/styled-engine'
- 
+import { Text } from '@components/ui' 
+
 interface Props {
   classname?: string
   products?: Product[]
@@ -29,25 +30,31 @@ const InfoBox: FC<Props> = ({
   backgroundImg
 }) => {
   return (
-    <div className={s.infoBox_container + ` ${reverse === true && s.reverse}`} style = {{backgroundImage: 'url(/infobox1/background-faded1.png)'}}>
-        <div className={s.content_container}>
-          {variant === "products" && (
-            <>
-            {products?.slice(0, 3).map((product , index) => (
-              <div key={index}>
-                <ProductCard
-                  variant='mini'
-                  product={product}
-                />
-              </div>
-            ))}
-            </>
-          )}
-        </div>
-        <div className={s.text_container + ` ${reverse && s.reverse}`}>
-          <h4>{header}</h4>
-          <p>{text}</p>
-        </div>
+    <div className={`${reverse && s.reverse}`}>
+      <div className={s.infoBox_container} style = {{backgroundImage: `url(${backgroundImg})`}}>
+          <div className={s.fade}/>
+          <div className={s.content_container}>
+            {variant === "products" && (
+              <>
+              {products?.slice(0, 3).map((product , index) => (
+                <div key={index}>
+                  <ProductCard
+                    variant='mini'
+                    product={product}
+                  />
+                </div>
+              ))}
+              </>
+            )}
+          </div>
+          <div className={s.text_container + ` ${reverse && s.reverse}`}>
+            <div className={s.text}>
+              <Text variant="heading" className={s.header}>{header}</Text>
+              <Text variant='body' className={s.paragraph}>{text}</Text>
+            </div>
+            <div className={s.bottomFade}/>
+          </div>
+      </div>
     </div>
   )
 }

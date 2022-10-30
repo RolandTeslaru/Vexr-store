@@ -1,19 +1,28 @@
 .root {
-  @apply sticky top-0  z-40 transition-all duration-150;
+  transition: .16s ease;
+  position: fixed;
+  width: 100%;
+  @apply top-0  z-40 transition-all;
+}
+
+.nav {
+  @apply relative flex flex-row justify-between md:py-4;
   min-height: 74px;
   background: rgb(0,0,0);
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.275) 0%, rgba(0,0,0,1) 100%);
   backdrop-filter: blur(15px);
   box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.641);
-}
-
-.nav {
-  @apply relative flex flex-row justify-between md:py-4;
   position: relative;
   display: flex;
   flex-direction: row;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  transition: .16s ease;
+}
+.transparent{
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: none;
+  box-shadow: none;
 }
 .search{
   display: flex;

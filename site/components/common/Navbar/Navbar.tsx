@@ -15,26 +15,28 @@ interface NavbarProps {
   links?: Link[]
 }
 
-const Navbar: FC<NavbarProps> = ({ links }) => (
-  // // Nav hide control system
-  // const [showNav, setShowNav] = useState(true)
-  // const handleNav = () => {
-  //   if(window.scrollY > 100 ){
-  //     setShowNav(false);
-  //   } else {
-  //     setShowNav(true);
-  //   }
-  // }
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleNav)
-  //   return () => {
-  //     window.removeEventListener('scroll', handleNav)
-  //   }
-  // })
-
+const Navbar: FC<NavbarProps> = ({ links }) => {
+  // Nav hide control system
+  const [hideNav, setHideNav] = useState(true)
+  const handleNav = () => {
+    if(window.scrollY > 200 ){
+      setHideNav(false);
+    } else {
+      setHideNav(true);
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleNav)
+    return () => {
+      window.removeEventListener('scroll', handleNav)
+    }
+  },[])
+  console.log(hideNav)
+  
+  return(
   <NavbarRoot>
     <Container clean className="mx-auto max-w-8xl px-6">
-      <div className={s.nav}>
+      <div className={`${s.nav} ${hideNav && s.transparent}`}>
         <div className={s.items_container}>
           <div className={s.logo}>
             <Link href="/">
@@ -74,5 +76,6 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
       )}
     </Container>
   </NavbarRoot>
-)
+  )
+}
 export default Navbar
