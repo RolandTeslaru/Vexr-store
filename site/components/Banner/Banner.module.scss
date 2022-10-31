@@ -1,7 +1,7 @@
 .BannerContainer{
     display: flex;
     flex-direction: column;
-    height: 600px;
+    height: 800px;
     .infoBoxContainer{
         background: rgb(0,0,0);
             background: linear-gradient(90deg, rgb(0, 0, 0) 30%, rgba(0, 0, 0, 0.73) 63%, rgba(0, 0, 0, 0.092) 80%);
@@ -10,7 +10,7 @@
             position: absolute;
             z-index: 4;
             clip-path: polygon(0 0, 100% 0, 84% 100%, 0% 100%);
-            height: 600px;   
+            height: 800px;   
         .infoBox{ 
             // background-color: rgba(128, 128, 128, 0.585);
             margin-left: 20px;
@@ -20,7 +20,7 @@
             height: 40%;
             width: 60%;
             margin: auto auto;
-            margin-top: 150px;
+            margin-top: 250px;
             margin-bottom: auto;
             .sectionHeading{
                 font-size: 1rem;
@@ -39,11 +39,11 @@
 }
 @media screen and (max-width:1200px){
     .BannerContainer{
-        height: 400px;
+        height: 500px;
         .infoBoxContainer{
-            height: 400px;
+            height: 500px;
             .infoBox{
-                margin-top: 80px;
+                margin-top: 140px;
                 width: 70%;
                 h2{
                     font-size: 1.1rem;
@@ -61,21 +61,21 @@
     .BannerContainer{
         display: flex;
         flex-direction: column;
-        height: 400px;
+        height: 600px;
         position: relative;
         .infoBoxContainer{
-            clip-path: none;
+            clip-path: polygon(0 0, 100% 30%, 100% 100%, 0% 100%);
             height: 200px;
             width: 100vw;
             background: rgb(0,0,0);
             background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4682247899159664) 20%, rgba(0,0,0,0.5802696078431373) 55%, rgba(0,212,255,0) 90%);
             position: absolute;
-            bottom: 0;
+            bottom: 7%;
             .infoBox{
                 width: 90%;
                 margin: 0 auto;
                 padding: 5px;
-                padding-top: 20px;
+                padding-top: 80px;
                 h2{
                     font-size: 1rem;
                     line-height: normal;
@@ -83,7 +83,7 @@
             }
         }
         .swiperContainer{
-            height: 450px;
+            height: 550px;
             width: 100vw;
             .swiper{
                 height: 100%;

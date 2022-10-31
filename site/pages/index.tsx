@@ -52,8 +52,6 @@ export async function getStaticProps({
 export default function Home({products}: 
   InferGetStaticPropsType<typeof getStaticProps>) 
   {
-    console.log("ALL products " + JSON.stringify(products))
-    
   return (
     <>
       <Banner slideImages={bannerImages}/>

@@ -4,7 +4,7 @@ import { Bag } from '@components/icons'
 import { Layout } from '@components/common'
 import { Container, Text } from '@components/ui'
 import {Order} from '@shopify/shopify-api/dist/rest-resources/2022-07/index';
-import {useShopQuery, CacheLong, gql , useUrl, Link } from "@shopify/hydrogen"
+// import {useShopQuery, CacheLong, gql , useUrl, Link } from "@shopify/hydrogen"
 
 export default function Orders() {
   return (
