@@ -115,6 +115,8 @@ const Layout: React.FC<Props> = ({
     href: `/search/${c.slug}`,
   }))
 
+  
+
   return (
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>

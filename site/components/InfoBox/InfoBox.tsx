@@ -37,7 +37,7 @@ const InfoBox: FC<Props> = ({
             {variant === "products" && (
               <>
               {products?.slice(0, 3).map((product , index) => (
-                <div key={index}>
+                <div key={index} className={s.listItem}>
                   <ProductCard
                     variant='mini'
                     product={product}
